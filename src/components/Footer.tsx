@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand & Contact */}
           <div className="lg:col-span-1">
-            <h3 className="text-2xl font-serif font-semibold mb-6">Divine Spa</h3>
+            <h3 className="text-2xl font-vonique font-semibold mb-6">aroma spa</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Inspired by the Divine. Created for You. Experience transformative wellness through 
               mindful therapies and luxurious self-care.
@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Phone className="h-4 w-4 mr-3 text-sage" />
-                <span className="text-gray-300">1-800-DIVINE-SPA</span>
+                <span className="text-gray-300" >1-800-DIVINE-SPA</span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-3 text-sage" />
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-6">Quick Links</h4>
+            <h4 className="font-vonique text-2xl font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3">
               <li>
                 <Link to="/" className="text-gray-300 hover:text-sage transition-colors">
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold mb-6">Our Services</h4>
+            <h4 className="font-vonique text-2xl font-semibold mb-6">Our Services</h4>
             <ul className="space-y-3">
               <li>
                 <Link to="/services" className="text-gray-300 hover:text-sage transition-colors">
@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
 
           {/* Business */}
           <div>
-            <h4 className="font-semibold mb-6">Business</h4>
+            <h4 className="font-vonique text-2xl font-semibold mb-6">Business</h4>
             <ul className="space-y-3">
               <li>
                 <Link to="/franchise" className="text-gray-300 hover:text-sage transition-colors">
@@ -200,8 +200,8 @@ const Footer: React.FC = () => {
               </Link>
             </div>
             <div className="text-center lg:text-right">
-              <p className="flex items-center justify-center lg:justify-end">
-                © 2025 Divine Spa. All rights reserved. Made with 
+              <p className="flex items-center justify-center lg:justify-end text-sm text-gray-400">
+                © 2025 aroma spa. All rights reserved. Made with 
                 <Heart className="h-4 w-4 mx-1 text-red-500" />
                 by Scalers
               </p>

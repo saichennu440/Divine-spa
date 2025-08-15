@@ -83,7 +83,7 @@ const Blog: React.FC = () => {
       <section className="py-20 bg-gradient-to-b from-cream to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h1 className="text-5xl md:text-6xl font-serif font-light text-gray-900 mb-8">
+            <h1 className="text-5xl md:text-6xl font-vonigue font-light text-gray-900 mb-8">
               Wellness Wisdom
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
@@ -127,7 +127,7 @@ const Blog: React.FC = () => {
                       {featuredPost.readTime}
                     </div>
                   </div>
-                  <h2 className="text-3xl font-serif font-semibold text-gray-900 mb-4">
+                  <h2 className="text-3xl font-montserrat font-semibold text-gray-900 mb-4">
                     {featuredPost.title}
                   </h2>
                   <p className="text-gray-600 mb-6 leading-relaxed">
@@ -209,7 +209,7 @@ const Blog: React.FC = () => {
                         {post.readTime}
                       </div>
                     </div>
-                    <h3 className="font-serif text-xl font-semibold mb-3 text-gray-900 line-clamp-2">
+                    <h3 className="font-serif text-xl font-montserrat mb-3 text-gray-900 line-clamp-2">
                       {post.title}
                     </h3>
                     <p className="text-gray-600 mb-4 line-clamp-3">
@@ -231,7 +231,7 @@ const Blog: React.FC = () => {
       <section className="py-20 bg-sage text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl font-serif font-light mb-6">
+            <h2 className="text-4xl font-vonique font-light mb-6">
               Stay Updated with Wellness Insights
             </h2>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
@@ -258,7 +258,7 @@ const Blog: React.FC = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
               Popular Wellness Topics
             </h2>
             <p className="text-lg text-gray-600">

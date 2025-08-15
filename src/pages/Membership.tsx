@@ -88,7 +88,7 @@ const Membership: React.FC = () => {
       <section className="py-20 bg-gradient-to-b from-cream to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h1 className="text-5xl md:text-6xl font-serif font-light text-gray-900 mb-8">
+            <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
               Wellness Memberships
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
@@ -104,7 +104,7 @@ const Membership: React.FC = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
               Choose Your Wellness Journey
             </h2>
             <p className="text-lg text-gray-600">
@@ -137,14 +137,14 @@ const Membership: React.FC = () => {
                           {plan.icon}
                         </div>
                       </div>
-                      <h3 className="text-2xl font-serif font-semibold text-gray-900 mb-2">
+                      <h3 className="text-2xl font-montserrat font-semibold text-gray-900 mb-2">
                         {plan.name}
                       </h3>
                       <p className="text-gray-600 mb-4">
                         {plan.description}
                       </p>
                       <div className="text-center">
-                        <span className="text-5xl font-serif font-light text-sage">
+                        <span className="text-5xl font-montserrat font-light text-sage">
                           ${plan.price}
                         </span>
                         <span className="text-gray-600 ml-2">/{plan.period}</span>
@@ -179,7 +179,7 @@ const Membership: React.FC = () => {
       <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
               Member Exclusive Benefits
             </h2>
             <p className="text-lg text-gray-600">
@@ -200,7 +200,7 @@ const Membership: React.FC = () => {
                       {perk.icon}
                     </div>
                   </div>
-                  <h3 className="font-serif text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="font-montserrat text-lg font-semibold text-gray-900 mb-2">
                     {perk.title}
                   </h3>
                   <p className="text-gray-600 text-sm">
@@ -221,7 +221,7 @@ const Membership: React.FC = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <AnimatedSection animation="fade-in-left">
                   <div>
-                    <h2 className="text-4xl font-serif font-light mb-6">
+                    <h2 className="text-4xl font-voniaue font-light mb-6">
                       Gift a Wellness Membership
                     </h2>
                     <p className="text-xl text-white/90 mb-8 leading-relaxed">
@@ -272,7 +272,7 @@ const Membership: React.FC = () => {
       <section className="py-20 bg-cream">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-gray-600">
@@ -305,7 +305,7 @@ const Membership: React.FC = () => {
                 animation="fade-in-up"
               >
                 <div className="bg-white rounded-xl p-6 shadow">
-                  <h3 className="font-serif text-lg font-semibold text-gray-900 mb-3">
+                  <h3 className="font-montserrat text-lg font-semibold text-gray-900 mb-3">
                     {faq.question}
                   </h3>
                   <p className="text-gray-600">
@@ -322,7 +322,7 @@ const Membership: React.FC = () => {
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
               Ready to Join Our Wellness Community?
             </h2>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">

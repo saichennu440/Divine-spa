@@ -33,11 +33,16 @@ const Header: React.FC = () => {
       <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0">
-            <h2 className="text-2xl font-serif font-semibold text-sage-dark">
-              Divine Spa
-            </h2>
-          </Link>
+         
+<Link to="/" className="flex-shrink-0 inline-flex items-center">
+  <img
+    src="/Aroma_Spa_Logo_Web.png"            // <-- put the file name you used in /public here
+    alt="Aroma Spa"
+    className="h-10 md:h-16 w-auto object-contain"
+  />
+  <span className="sr-only">Aroma Spa</span>
+</Link>
+
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
@@ -115,14 +120,7 @@ const Header: React.FC = () => {
             >
               Gallery
             </a>
-            <Link 
-              to="/franchise" 
-              className={`text-sm font-medium hover:text-sage transition-colors ${
-                location.pathname === '/franchise' ? 'text-sage' : 'text-gray-700'
-              }`}
-            >
-              Franchise
-            </Link>
+           
             <Link 
               to="/blog" 
               className={`text-sm font-medium hover:text-sage transition-colors ${
@@ -197,6 +195,13 @@ const Header: React.FC = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
+              </Link>
+                <Link 
+                to="/gallery" 
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Gallery
               </Link>
               <button
                 onClick={() => {

@@ -1,47 +1,130 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+/* src/app.css */
+
+/* Self-hosted fonts (placed in public/fonts/) */
+@font-face {
+  font-family: 'Vonique';
+  src: url('/fonts/vonique-43d.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/montserrat-light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/montserrat-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/montserrat-medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --color-cream: #FDF6E3;
   --color-beige: #F5E6D3;
-  --color-sage: #9CA986;
-  --color-sage-dark: #7A8B68;
+  --color-sage: #d0461f;
+  --color-sage-dark: #d24325;
   --color-brown: #8B6B47;
   --color-brown-dark: #6B4423;
   --color-text: #2D3748;
   --color-text-light: #718096;
-  --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Inter', sans-serif;
+
+  /* Headings: Vonique. Body/UI: Montserrat */
+  --font-serif: 'Vonique', Georgia, serif;
+  --font-sans: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Base body */
 body {
   font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;           /* base font size */
   line-height: 1.6;
   color: var(--color-text);
   background-color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Paragraphs: explicit Montserrat usage and sensible spacing */
+p {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 1rem;           /* 16px */
+  line-height: 1.7;          /* slightly more than body for readability */
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
 }
 
+/* Small variants */
+small {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Links inherit Montserrat and have a subtle underline on hover */
+a {
+  font-family: var(--font-sans);
+  color: var(--color-sage-dark);
+  text-decoration: none;
+  transition: color .15s ease, text-decoration .15s ease;
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
+  color: var(--color-brown-dark);
+}
+
+/* Buttons / inputs: inherit the UI font */
+button, input, textarea, select {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+/* Headings: use Vonique (display serif) */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
-  font-weight: 500;
+  font-weight: 400; /* decorative fonts often sit at normal weight */
   line-height: 1.2;
   margin-bottom: 1rem;
+
 }
 
+/* Optional utility: lead paragraph style for hero/intro text */
+.lead {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--color-text);
+}
+
+/* Animations & utilities */
 .parallax-zoom {
   transform-origin: center;
   animation: parallaxZoom 20s ease-out infinite alternate;
 }
-
 @keyframes parallaxZoom {
   0% { transform: scale(1); }
   100% { transform: scale(1.05); }
@@ -52,7 +135,6 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(30px);
   transition: all 0.6s ease-out;
 }
-
 .fade-in-up.visible {
   opacity: 1;
   transform: translateY(0);
@@ -62,7 +144,6 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0;
   transition: opacity 0.6s ease-out;
 }
-
 .fade-in.visible {
   opacity: 1;
 }
@@ -70,7 +151,6 @@ h1, h2, h3, h4, h5, h6 {
 .scale-on-hover {
   transition: transform 0.3s ease;
 }
-
 .scale-on-hover:hover {
   transform: scale(1.02);
 }

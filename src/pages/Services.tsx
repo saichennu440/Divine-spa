@@ -120,7 +120,7 @@ const Services: React.FC = () => {
       <section className="py-20 bg-gradient-to-b from-cream to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h1 className="text-5xl md:text-6xl font-serif font-light text-gray-900 mb-8">
+            <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
               Our Sacred Services
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
@@ -138,7 +138,7 @@ const Services: React.FC = () => {
           {serviceCategories.map((category, categoryIndex) => (
             <AnimatedSection key={categoryIndex} className="mb-20">
               <div className="text-center mb-12">
-                <h2 className="text-4xl font-serif font-light text-gray-900 mb-4">
+                <h2 className="text-4xl font-vonique font-light text-gray-900 mb-4">
                   {category.category}
                 </h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -156,11 +156,11 @@ const Services: React.FC = () => {
                     <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden scale-on-hover">
                       <div className="p-8">
                         <div className="flex justify-between items-start mb-4">
-                          <h3 className="text-xl font-serif font-semibold text-gray-900">
+                          <h3 className="text-xl font-montserrat font-semibold text-gray-900">
                             {service.name}
                           </h3>
                           <div className="text-right">
-                            <div className="text-2xl font-serif font-light text-sage mb-1">
+                            <div className="text-2xl font-montserrat font-light text-sage mb-1">
                               {service.price}
                             </div>
                             <div className="flex items-center text-sm text-gray-500">
@@ -204,7 +204,7 @@ const Services: React.FC = () => {
       <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
               Enhance Your Experience
             </h2>
             <p className="text-lg text-gray-600">
@@ -221,7 +221,7 @@ const Services: React.FC = () => {
             ].map((addon, index) => (
               <AnimatedSection key={index} delay={index * 100}>
                 <div className="bg-white rounded-lg p-6 text-center shadow hover:shadow-lg transition-shadow">
-                  <h3 className="font-serif text-lg font-semibold mb-2">{addon.name}</h3>
+                  <h3 className="font-montserrat text-lg font-semibold mb-2">{addon.name}</h3>
                   <p className="text-2xl font-light text-sage mb-2">{addon.price}</p>
                   <p className="text-sm text-gray-600">{addon.description}</p>
                 </div>
@@ -235,11 +235,11 @@ const Services: React.FC = () => {
       <section className="py-20 bg-sage text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl font-serif font-light mb-6">
+            <h2 className="text-4xl font-vonique font-light mb-6">
               Ready to Begin Your Wellness Journey?
             </h2>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              Book your appointment today and discover why Divine Spa is the ultimate destination for wellness and relaxation.
+              Book your appointment today and discover why aroma spa is the ultimate destination for wellness and relaxation.
             </p>
             <button className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">
               Book An Appointment

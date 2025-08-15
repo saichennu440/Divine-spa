@@ -4,14 +4,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+         'vonique': ['Vonique', 'Georgia', 'serif'],
+         'montserrat': ['Montserrat', 'system-ui', 'sans-serif'],
         'serif': ['Playfair Display', 'Georgia', 'serif'],
         'sans': ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         'cream': '#FDF6E3',
         'beige': '#F5E6D3',
-        'sage': '#9CA986',
-        'sage-dark': '#7A8B68',
+        'sage': '#d0461f',
+        'sage-dark': '#d24325',
         'brown': '#8B6B47',
         'brown-dark': '#6B4423',
       },

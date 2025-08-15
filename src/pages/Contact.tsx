@@ -58,7 +58,7 @@ const Contact: React.FC = () => {
       <section className="py-20 bg-gradient-to-b from-cream to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h1 className="text-5xl md:text-6xl font-serif font-light text-gray-900 mb-8">
+            <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
               Get in Touch
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
@@ -78,7 +78,7 @@ const Contact: React.FC = () => {
               <div className="bg-white rounded-2xl shadow-xl p-8">
                 {!isSubmitted ? (
                   <>
-                    <h2 className="text-3xl font-serif font-semibold text-gray-900 mb-8">
+                    <h2 className="text-3xl font-montserrat font-semibold text-gray-900 mb-8">
                       Send us a Message
                     </h2>
                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -182,7 +182,7 @@ const Contact: React.FC = () => {
                       Message Sent Successfully!
                     </h3>
                     <p className="text-gray-600 mb-6">
-                      Thank you for contacting Divine Spa. We'll get back to you within 24 hours.
+                      Thank you for contacting aroma spa. We'll get back to you within 24 hours.
                     </p>
                     <button
                       onClick={() => {
@@ -210,7 +210,7 @@ const Contact: React.FC = () => {
             <AnimatedSection animation="fade-in-right">
               <div className="space-y-8">
                 <div className="bg-sage text-white rounded-2xl p-8">
-                  <h3 className="text-2xl font-serif font-semibold mb-6">
+                  <h3 className="text-2xl font-montserrat font-semibold mb-6">
                     Let's Connect
                   </h3>
                   <div className="space-y-4">
@@ -240,24 +240,24 @@ const Contact: React.FC = () => {
 
                 {/* FAQ Section */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
-                  <h3 className="text-xl font-serif font-semibold text-gray-900 mb-6">
+                  <h3 className="text-xl font-montserrat font-semibold text-gray-900 mb-6">
                     Quick Answers
                   </h3>
                   <div className="space-y-4">
                     <div className="border-b border-gray-100 pb-4">
-                      <h4 className="font-medium text-gray-900 mb-2">How far in advance should I book?</h4>
+                      <h4 className="font-montserrat font-medium text-gray-900 mb-2">How far in advance should I book?</h4>
                       <p className="text-sm text-gray-600">We recommend booking 1-2 weeks in advance for the best availability.</p>
                     </div>
                     <div className="border-b border-gray-100 pb-4">
-                      <h4 className="font-medium text-gray-900 mb-2">What's your cancellation policy?</h4>
+                      <h4 className="font-montserrat font-medium text-gray-900 mb-2">What's your cancellation policy?</h4>
                       <p className="text-sm text-gray-600">Cancellations must be made 24 hours in advance to avoid charges.</p>
                     </div>
                     <div className="border-b border-gray-100 pb-4">
-                      <h4 className="font-medium text-gray-900 mb-2">Do you offer gift certificates?</h4>
+                      <h4 className="font-montserrat font-medium text-gray-900 mb-2">Do you offer gift certificates?</h4>
                       <p className="text-sm text-gray-600">Yes! Gift cards are available in any amount and never expire.</p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900 mb-2">Are gratuities included?</h4>
+                      <h4 className="font-montserrat font-medium text-gray-900 mb-2">Are gratuities included?</h4>
                       <p className="text-sm text-gray-600">Gratuities are not included but are always appreciated.</p>
                     </div>
                   </div>
@@ -272,7 +272,7 @@ const Contact: React.FC = () => {
       <section className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
               Our Locations
             </h2>
             <p className="text-lg text-gray-600">
@@ -288,7 +288,7 @@ const Contact: React.FC = () => {
                 animation="fade-in-up"
               >
                 <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 scale-on-hover">
-                  <h3 className="font-serif text-xl font-semibold text-gray-900 mb-4">
+                  <h3 className="font-montserrat text-xl font-semibold text-gray-900 mb-4">
                     {location.name}
                   </h3>
                   <div className="space-y-3 text-gray-600">
@@ -343,7 +343,7 @@ const Contact: React.FC = () => {
       <section className="py-12 bg-sage text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
-            <h3 className="text-2xl font-serif font-semibold mb-4">
+            <h3 className="text-2xl font-vonique font-semibold mb-4">
               Need Immediate Assistance?
             </h3>
             <p className="text-white/90 mb-6">

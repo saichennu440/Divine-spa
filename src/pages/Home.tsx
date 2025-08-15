@@ -44,7 +44,7 @@ const Home: React.FC = () => {
       name: 'Michael Chen',
       city: 'Los Angeles',
       rating: 5,
-      text: 'Divine Spa truly lives up to its name. Every visit feels like a journey to inner peace and wellness.'
+      text: 'aroma spa truly lives up to its name. Every visit feels like a journey to inner peace and wellness.'
     },
     {
       name: 'Emily Rodriguez',
@@ -101,11 +101,11 @@ const Home: React.FC = () => {
       <section id="about" className="py-20 bg-cream">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-8">
+            <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-8">
               Divine means <em>God</em> — and that essence flows through everything we do.
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
-              At Divine Spa, we believe in the transformative power of mindful therapies and conscious self-care. 
+              At aroma spa, we believe in the transformative power of mindful therapies and conscious self-care. 
               Our sanctuary provides a space where ancient wisdom meets modern wellness, creating an experience 
               that nurtures your body, calms your mind, and enriches your spirit. Every treatment is designed 
               to restore your natural balance and awaken your inner radiance.
@@ -118,7 +118,7 @@ const Home: React.FC = () => {
       <section id="services" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
               Our Sacred Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -145,11 +145,11 @@ const Home: React.FC = () => {
       <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
               What Our Guests Say
             </h2>
             <p className="text-lg text-gray-600">
-              Hear from those who have experienced the Divine Spa difference.
+              Hear from those who have experienced the aroma spa difference.
             </p>
           </AnimatedSection>
 
@@ -171,7 +171,7 @@ const Home: React.FC = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
               Our Sanctuary
             </h2>
             <p className="text-lg text-gray-600">
@@ -204,7 +204,7 @@ const Home: React.FC = () => {
       <section id="membership" className="py-20 bg-sage text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-light mb-6">
+            <h2 className="text-4xl md:text-5xl font-vonique font-light mb-6">
               Exclusive Memberships & Gift Cards
             </h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto">
@@ -216,13 +216,13 @@ const Home: React.FC = () => {
             <AnimatedSection animation="fade-in-left">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
                 <Users className="h-12 w-12 mb-6 text-white" />
-                <h3 className="text-2xl font-serif font-semibold mb-4">Wellness Membership</h3>
+                <h3 className="text-2xl font-vonique font-semibold mb-4">Wellness Membership</h3>
                 <p className="text-white/90 mb-6 leading-relaxed">
                   Enjoy unlimited access to our facilities, priority booking, exclusive member rates, 
                   and personalized wellness consultations.
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-3xl font-serif font-light">Starting at $199<span className="text-lg">/month</span></span>
+                  <span className="text-3xl font-montserrat font-light">Starting at $199<span className="text-lg">/month</span></span>
                   <button className="bg-white text-sage px-6 py-3 rounded-full font-medium hover:bg-white/90 transition-colors">
                     Learn More
                   </button>
@@ -233,13 +233,13 @@ const Home: React.FC = () => {
             <AnimatedSection animation="fade-in-right">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
                 <Leaf className="h-12 w-12 mb-6 text-white" />
-                <h3 className="text-2xl font-serif font-semibold mb-4">Gift Cards</h3>
+                <h3 className="text-2xl font-vonique font-semibold mb-4">Gift Cards</h3>
                 <p className="text-white/90 mb-6 leading-relaxed">
                   Share the gift of wellness with beautifully designed gift cards available in any amount. 
                   Perfect for birthdays, anniversaries, or any special occasion.
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-3xl font-serif font-light">$50 - $500</span>
+                  <span className="text-3xl font-montserrat font-light">$50 - $500</span>
                   <button className="bg-white text-sage px-6 py-3 rounded-full font-medium hover:bg-white/90 transition-colors">
                     Purchase
                   </button>
@@ -254,11 +254,11 @@ const Home: React.FC = () => {
       <section id="spa-locator" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
               Find Your Nearest Sanctuary
             </h2>
             <p className="text-lg text-gray-600">
-              Discover Divine Spa locations in your area.
+              Discover aroma spa locations in your area.
             </p>
           </AnimatedSection>
 
@@ -275,7 +275,7 @@ const Home: React.FC = () => {
             <AnimatedSection>
               <div className="space-y-6">
                 <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-serif text-xl font-semibold mb-3">Manhattan Flagship</h3>
+                  <h3 className="font-vonique text-xl font-semibold mb-3">Manhattan Flagship</h3>
                   <p className="text-gray-600 mb-3">123 Fifth Avenue<br />New York, NY 10010</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />
@@ -285,7 +285,7 @@ const Home: React.FC = () => {
                 </div>
 
                 <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-serif text-xl font-semibold mb-3">Beverly Hills</h3>
+                  <h3 className="font-vonique text-xl font-semibold mb-3">Beverly Hills</h3>
                   <p className="text-gray-600 mb-3">456 Rodeo Drive<br />Beverly Hills, CA 90210</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />
@@ -295,7 +295,7 @@ const Home: React.FC = () => {
                 </div>
 
                 <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-serif text-xl font-semibold mb-3">South Beach</h3>
+                  <h3 className="font-vonique text-xl font-semibold mb-3">South Beach</h3>
                   <p className="text-gray-600 mb-3">789 Ocean Drive<br />Miami Beach, FL 33139</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />
@@ -313,7 +313,7 @@ const Home: React.FC = () => {
       <section className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
               Wellness Wisdom
             </h2>
             <p className="text-lg text-gray-600">
@@ -340,7 +340,7 @@ const Home: React.FC = () => {
                       <span className="mx-2">•</span>
                       <span>{post.readTime}</span>
                     </div>
-                    <h3 className="font-serif text-xl font-semibold mb-3 text-gray-900">
+                    <h3 className="font-montserrat text-xl font-semibold mb-3 text-gray-900">
                       {post.title}
                     </h3>
                     <p className="text-gray-600 mb-4 line-clamp-3">

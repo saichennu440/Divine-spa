@@ -61,19 +61,19 @@ const Franchise: React.FC = () => {
     {
       step: '4',
       title: 'Training & Launch',
-      description: 'Complete comprehensive training and launch your Divine Spa location.'
+      description: 'Complete comprehensive training and launch your aroma spa location.'
     }
   ];
 
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-sage to-sage-dark text-white relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-cream to-white  relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h1 className="text-5xl md:text-6xl font-serif font-light mb-8">
-              Own a Divine Spa Franchise
+            <h1 className="text-5xl md:text-6xl font-vonique font-light mb-8">
+              Own a aroma spa Franchise
             </h1>
             <p className="text-xl leading-relaxed max-w-3xl mx-auto mb-8">
               Join our mission to bring wellness and transformation to communities worldwide. 
@@ -83,7 +83,7 @@ const Franchise: React.FC = () => {
               <button className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">
                 Request Information
               </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-sage px-8 py-4 rounded-full text-lg font-medium transition-all duration-300">
+              <button className="border-2 border-white  hover:bg-white hover:text-sage px-8 py-4 rounded-full text-lg font-medium transition-all duration-300">
                 Download Brochure
               </button>
             </div>
@@ -91,12 +91,12 @@ const Franchise: React.FC = () => {
         </div>
       </section>
 
-      {/* Why Divine Spa */}
+      {/* Why aroma spa */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
-              Why Choose Divine Spa Franchise?
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
+              Why Choose aroma spa Franchise?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Partner with a proven wellness brand that combines spiritual wellness with business success.
@@ -116,7 +116,7 @@ const Franchise: React.FC = () => {
                       {benefit.icon}
                     </div>
                   </div>
-                  <h3 className="font-serif text-xl font-semibold text-gray-900 mb-4">
+                  <h3 className="font-montserrat text-xl font-semibold text-gray-900 mb-4">
                     {benefit.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -135,16 +135,16 @@ const Franchise: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <AnimatedSection animation="fade-in-left">
               <div>
-                <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
+                <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
                   Investment Overview
                 </h2>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  Start your Divine Spa franchise with a comprehensive investment package 
+                  Start your aroma spa franchise with a comprehensive investment package 
                   designed to set you up for success from day one.
                 </p>
 
                 <div className="bg-white rounded-xl p-6 shadow-lg">
-                  <h3 className="font-serif text-xl font-semibold text-gray-900 mb-6 flex items-center">
+                  <h3 className="font-montserrat text-xl font-semibold text-gray-900 mb-6 flex items-center">
                     <DollarSign className="h-5 w-5 text-sage mr-2" />
                     Investment Breakdown
                   </h3>
@@ -168,7 +168,7 @@ const Franchise: React.FC = () => {
 
             <AnimatedSection animation="fade-in-right">
               <div className="bg-white rounded-xl p-8 shadow-lg">
-                <h3 className="font-serif text-xl font-semibold text-gray-900 mb-6">
+                <h3 className="font-montserrat text-xl font-semibold text-gray-900 mb-6">
                   Franchise Requirements
                 </h3>
                 <div className="space-y-4">
@@ -183,7 +183,7 @@ const Franchise: React.FC = () => {
                 </div>
 
                 <div className="mt-8 p-4 bg-sage/10 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 mb-2">Financing Available</h4>
+                  <h4 className="font-montserrat text-lg font-semibold text-gray-900 mb-2">Financing Available</h4>
                   <p className="text-sm text-gray-600">
                     We work with approved lenders to help qualified candidates secure 
                     financing for up to 70% of the total investment.
@@ -199,7 +199,7 @@ const Franchise: React.FC = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
               Your Journey to Ownership
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -223,7 +223,7 @@ const Franchise: React.FC = () => {
                       <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-sage/30 transform -translate-y-1/2" />
                     )}
                   </div>
-                  <h3 className="font-serif text-xl font-semibold text-gray-900 mb-4">
+                  <h3 className="font-montserrat text-xl font-semibold text-gray-900 mb-4">
                     {step.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -240,11 +240,11 @@ const Franchise: React.FC = () => {
       <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
               Franchise Success Stories
             </h2>
             <p className="text-lg text-gray-600">
-              Hear from successful Divine Spa franchise owners about their journey.
+              Hear from successful aroma spa franchise owners about their journey.
             </p>
           </AnimatedSection>
 
@@ -263,7 +263,7 @@ const Franchise: React.FC = () => {
                   </div>
                 </div>
                 <blockquote className="text-gray-700 italic mb-4">
-                  "Opening my Divine Spa has been the most rewarding business decision I've ever made. 
+                  "Opening my aroma spa has been the most rewarding business decision I've ever made. 
                   The support from corporate is exceptional, and seeing the positive impact on my 
                   community's wellness makes every day meaningful."
                 </blockquote>
@@ -287,7 +287,7 @@ const Franchise: React.FC = () => {
                   </div>
                 </div>
                 <blockquote className="text-gray-700 italic mb-4">
-                  "The Divine Spa franchise model is incredibly well-structured. From the initial 
+                  "The aroma spa franchise model is incredibly well-structured. From the initial 
                   training to ongoing marketing support, they've provided everything needed to build 
                   a thriving wellness business."
                 </blockquote>
@@ -306,11 +306,11 @@ const Franchise: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection animation="fade-in-left">
               <div>
-                <h2 className="text-4xl font-serif font-light mb-6">
+                <h2 className="text-4xl font-vonique font-light mb-6">
                   Ready to Start Your Journey?
                 </h2>
                 <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                  Take the first step towards owning a Divine Spa franchise. Our franchise 
+                  Take the first step towards owning a aroma spa franchise. Our franchise 
                   development team is ready to guide you through the process.
                 </p>
                 <div className="space-y-4">
@@ -332,7 +332,7 @@ const Franchise: React.FC = () => {
 
             <AnimatedSection animation="fade-in-right">
               <form className="bg-white/10 backdrop-blur-md rounded-2xl p-8">
-                <h3 className="text-2xl font-serif font-semibold mb-6">Request Information</h3>
+                <h3 className="text-2xl font-montserrat font-semibold mb-6">Request Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <input
                     type="text"

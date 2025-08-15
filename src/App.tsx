@@ -11,12 +11,18 @@ import Franchise from './pages/Franchise';
 import Contact from './pages/Contact';
 import BookingModal from './components/BookingModal';
 import { BookingProvider } from './context/BookingContext';
+import useScrollToTop from './hooks/useScrollToTop';
 import './App.css';
 
+const ScrollToTop: React.FC = () => {
+  useScrollToTop();
+  return null;
+};
 function App() {
   return (
     <BookingProvider>
       <Router>
+          <ScrollToTop />
         <div className="App">
           <Header />
           <main>

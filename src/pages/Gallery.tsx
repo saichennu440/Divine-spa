@@ -101,12 +101,12 @@ const Gallery: React.FC = () => {
       <section className="py-20 bg-gradient-to-b from-cream to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h1 className="text-5xl md:text-6xl font-serif font-light text-gray-900 mb-8">
+            <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
               Our Sanctuary Gallery
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Step into our world of tranquility and elegance. Explore the serene spaces, luxurious 
-              amenities, and peaceful environments that make Divine Spa your ultimate wellness destination.
+              amenities, and peaceful environments that make aroma spa your ultimate wellness destination.
             </p>
           </AnimatedSection>
         </div>
@@ -175,11 +175,11 @@ const Gallery: React.FC = () => {
       <section className="py-20 bg-sage text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl font-serif font-light mb-6">
+            <h2 className="text-4xl font-vonique font-light mb-6">
               Experience Our Space in Person
             </h2>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              Schedule a personal tour of our facilities and discover why Divine Spa is the perfect 
+              Schedule a personal tour of our facilities and discover why aroma spa is the perfect 
               sanctuary for your wellness journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

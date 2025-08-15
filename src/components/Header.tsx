@@ -114,13 +114,14 @@ const Header: React.FC = () => {
             >
               Franchise
             </Link>
-            <a 
-              href="/gallery" 
-              className="text-sm font-medium text-gray-700 hover:text-sage transition-colors"
+           <Link 
+              to="/gallery" 
+              className={`text-sm font-medium hover:text-sage transition-colors ${
+                location.pathname === '/blog' ? 'text-sage' : 'text-gray-700'
+              }`}
             >
               Gallery
-            </a>
-           
+            </Link>
             <Link 
               to="/blog" 
               className={`text-sm font-medium hover:text-sage transition-colors ${

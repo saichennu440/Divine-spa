@@ -217,21 +217,21 @@ const Contact: React.FC = () => {
                     <div className="flex items-center">
                       <Phone className="h-5 w-5 mr-3 text-white/80" />
                       <div>
-                        <p className="font-medium">Call Us</p>
+                        <p className="font-bold text-white">Call Us</p>
                         <p className="text-white/90">1-800-DIVINE-SPA</p>
                       </div>
                     </div>
                     <div className="flex items-center">
                       <Mail className="h-5 w-5 mr-3 text-white/80" />
                       <div>
-                        <p className="font-medium">Email Us</p>
+                        <p className="font-bold text-white">Email Us</p>
                         <p className="text-white/90">hello@divinespa.com</p>
                       </div>
                     </div>
                     <div className="flex items-center">
                       <Clock className="h-5 w-5 mr-3 text-white/80" />
                       <div>
-                        <p className="font-medium">Customer Service</p>
+                        <p className="font-bold text-white">Customer Service</p>
                         <p className="text-white/90">Mon-Fri: 8:00 AM - 8:00 PM EST</p>
                       </div>
                     </div>

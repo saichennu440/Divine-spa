@@ -68,8 +68,8 @@ const Franchise: React.FC = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-cream to-white  relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10" />
+      <section className="py-20 bg-gradient-to-b from-cream to-white ">
+        <div className="" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h1 className="text-5xl md:text-6xl font-vonique font-light mb-8">
@@ -80,10 +80,10 @@ const Franchise: React.FC = () => {
               Build a profitable business while making a meaningful impact on people's lives.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">
+              <button className="bg-sage text-white hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">
                 Request Information
               </button>
-              <button className="border-2 border-white  hover:bg-white hover:text-sage px-8 py-4 rounded-full text-lg font-medium transition-all duration-300">
+              <button className="border-2 border-sage  hover:bg-white hover:text-sage px-8 py-4 rounded-full text-lg font-medium transition-all duration-300">
                 Download Brochure
               </button>
             </div>
@@ -362,7 +362,7 @@ const Franchise: React.FC = () => {
                   placeholder="Preferred Location"
                   className="w-full px-4 py-3 rounded-lg bg-white/20 placeholder-white/70 text-white focus:outline-none focus:bg-white/30 transition-colors mb-4"
                 />
-                <select className="w-full px-4 py-3 rounded-lg bg-white/20 text-white focus:outline-none focus:bg-white/30 transition-colors mb-6">
+                <select className="w-full px-4 py-3 rounded-lg bg-white/20 text-white focus:outline-none focus:bg-sage/90 transition-colors mb-6">
                   <option value="">Available Capital</option>
                   <option value="250k">$250K - $350K</option>
                   <option value="350k">$350K - $500K</option>

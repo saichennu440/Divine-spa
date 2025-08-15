@@ -100,12 +100,14 @@ const Header: React.FC = () => {
             >
               Membership
             </Link>
-            <a 
-              href="/#gift-cards" 
-              className="text-sm font-medium text-gray-700 hover:text-sage transition-colors"
+ <Link 
+              to="/giftcards" 
+              className={`text-sm font-medium hover:text-sage transition-colors ${
+                location.pathname === '/blog' ? 'text-sage' : 'text-gray-700'
+              }`}
             >
               Gift Cards
-            </a>
+            </Link>
               <Link 
               to="/franchise" 
               className={`text-sm font-medium hover:text-sage transition-colors ${

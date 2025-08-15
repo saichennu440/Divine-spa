@@ -8,6 +8,7 @@ import Membership from './pages/Membership';
 import Gallery from './pages/Gallery';
 import Blog from './pages/Blog';
 import Franchise from './pages/Franchise';
+import GiftCards from './pages/GiftCards';
 import Contact from './pages/Contact';
 import BookingModal from './components/BookingModal';
 import { BookingProvider } from './context/BookingContext';
@@ -33,6 +34,7 @@ function App() {
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/franchise" element={<Franchise />} />
+              <Route path="/giftcards" element={<GiftCards />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>

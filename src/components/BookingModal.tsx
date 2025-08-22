@@ -101,7 +101,7 @@ const BookingModal: React.FC = () => {
             <form onSubmit={handleSubmit}>
               {step === 1 && (
                 <div className="space-y-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Select Service & Date</h4>
+                  <h4 className="text-lg font-montserrat font-semibold text-gray-900 mb-4">Select Service & Date</h4>
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">

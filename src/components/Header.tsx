@@ -48,18 +48,21 @@ const Header: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-8">
             <Link 
               to="/" 
-              className={`text-sm font-medium hover:text-sage transition-colors ${
+              className={`text-md font-montserrat font-semibold hover:text-sage transition-colors ${
                 location.pathname === '/' ? 'text-sage' : 'text-gray-700'
               }`}
             >
               Home
             </Link>
-            <a 
-              href="/#about" 
-              className="text-sm font-medium text-gray-700 hover:text-sage transition-colors"
+            
+            <Link 
+              to="/about" 
+              className={`text-md font-montserrat font-semibold hover:text-sage transition-colors ${
+                location.pathname === '/about' ? 'text-sage' : 'text-gray-700'
+              }`}
             >
               About
-            </a>
+            </Link>
             
             {/* Services Dropdown */}
             <div 
@@ -69,7 +72,7 @@ const Header: React.FC = () => {
             >
               <Link 
                 to="/services"
-                className={`flex items-center text-sm font-medium hover:text-sage transition-colors ${
+                className={`flex items-center text-md font-montserrat font-semibold hover:text-sage transition-colors ${
                   location.pathname === '/services' ? 'text-sage' : 'text-gray-700'
                 }`}
               >
@@ -94,13 +97,13 @@ const Header: React.FC = () => {
 
             <Link 
               to="/membership" 
-              className={`text-sm font-medium hover:text-sage transition-colors ${
+              className={`text-md font-montserrat font-semibold hover:text-sage transition-colors ${
                 location.pathname === '/membership' ? 'text-sage' : 'text-gray-700'
               }`}
             >
               Membership
             </Link>
- <Link 
+ {/* <Link 
               to="/giftcards" 
               className={`text-sm font-medium hover:text-sage transition-colors ${
                 location.pathname === '/blog' ? 'text-sage' : 'text-gray-700'
@@ -131,10 +134,10 @@ const Header: React.FC = () => {
               }`}
             >
               Blog
-            </Link>
+            </Link> */}
             <Link 
               to="/contact" 
-              className={`text-sm font-medium hover:text-sage transition-colors ${
+              className={`text-md font-montserrat font-semibold hover:text-sage transition-colors ${
                 location.pathname === '/contact' ? 'text-sage' : 'text-gray-700'
               }`}
             >
@@ -145,7 +148,7 @@ const Header: React.FC = () => {
           {/* Book Appointment CTA */}
           <button
             onClick={openBooking}
-            className="hidden lg:flex items-center space-x-2 bg-sage hover:bg-sage-dark text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg"
+            className="hidden lg:flex items-center space-x-2 bg-sage hover:bg-sage-dark text-white px-6 py-3 rounded-full font-montserrat transition-all duration-300 hover:shadow-lg"
           >
             <Calendar className="h-4 w-4" />
             <span>Book An Appointment</span>
@@ -166,52 +169,52 @@ const Header: React.FC = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link 
                 to="/" 
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+                className="block px-3 py-2 text-base font-montserrat text-gray-700 hover:text-sage hover:bg-cream rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
               </Link>
-              <a 
-                href="/#about" 
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+              <Link 
+                to="/about" 
+                className="block px-3 py-2 text-base font-montserrat text-gray-700 hover:text-sage hover:bg-cream rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About
-              </a>
+              </Link>
               <Link 
                 to="/services" 
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+                className="block px-3 py-2 text-base font-montserrat text-gray-700 hover:text-sage hover:bg-cream rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Services
               </Link>
               <Link 
                 to="/membership" 
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+                className="block px-3 py-2 text-base font-montserrat text-gray-700 hover:text-sage hover:bg-cream rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Membership
               </Link>
               <Link 
                 to="/contact" 
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+                className="block px-3 py-2 text-base font-montserrat text-gray-700 hover:text-sage hover:bg-cream rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
               </Link>
-                <Link 
+                {/* <Link 
                 to="/gallery" 
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-sage hover:bg-cream rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Gallery
-              </Link>
+              </Link> */}
               <button
                 onClick={() => {
                   openBooking();
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full mt-4 flex items-center justify-center space-x-2 bg-sage hover:bg-sage-dark text-white px-6 py-3 rounded-full font-medium transition-colors"
+                className="w-full mt-4 flex items-center justify-center space-x-2 bg-sage hover:bg-sage-dark text-white px-6 py-3 rounded-full font-montserrat transition-colors"
               >
                 <Calendar className="h-4 w-4" />
                 <span>Book An Appointment</span>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { X, Calendar, Clock, User, Phone, Mail, Check } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
 
+const BUSINESS_PHONE = '918249470948'; // <-- REPLACE with your business number (country code + number, no + or spaces)
+
 const BookingModal: React.FC = () => {
   const { isBookingOpen, closeBooking } = useBooking();
   const [step, setStep] = useState(1);
@@ -13,7 +15,8 @@ const BookingModal: React.FC = () => {
     lastName: '',
     email: '',
     phone: '',
-    notes: ''
+    notes: '',
+    consent: false, // added consent flag
   });
 
   const services = [
@@ -33,15 +36,64 @@ const BookingModal: React.FC = () => {
     '5:00 PM', '6:00 PM', '7:00 PM'
   ];
 
+  const buildWhatsAppMessage = (data: typeof formData) => {
+    const readableDate = data.date ? new Date(data.date).toLocaleDateString() : data.date;
+    const lines = [
+      `New booking request from website`,
+      `-------------------------------`,
+      `Service: ${data.service || '-'}`,
+      `Date: ${readableDate || '-'}`,
+      `Time: ${data.time || '-'}`,
+      `Name: ${data.firstName || '-'} ${data.lastName || '-'}`,
+      `Phone: ${data.phone || '-'}`,
+      `Email: ${data.email || '-'}`,
+      `Notes: ${data.notes || '-'}`,
+      `Consent to contact: ${data.consent ? 'Yes' : 'No'}`,
+      `-------------------------------`,
+      `Please confirm availability.`
+    ];
+    return lines.join('\n');
+  };
+
+  const sendWhatsApp = async (data: typeof formData) => {
+    const message = buildWhatsAppMessage(data);
+
+    // Try copy to clipboard first (best-effort)
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(message);
+        // optional: you can replace this with a nicer toast in your app
+        console.log('Booking message copied to clipboard.');
+      }
+    } catch (err) {
+      console.warn('Clipboard copy failed:', err);
+    }
+
+    // Open wa.me with prefilled message. This will open WhatsApp Web or the app on mobile.
+    const waUrl = `https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Move through steps 1 -> 2 -> 3
     if (step < 3) {
       setStep(step + 1);
-    } else {
-      // Handle form submission
-      console.log('Booking submitted:', formData);
-      setStep(4); // Success step
+      return;
     }
+
+    // Final confirmation (step === 3)
+    // Check consent (recommended). If you don't want this, you can remove this check.
+    if (!formData.consent) {
+      alert('Please consent to be contacted via WhatsApp/email about this booking.');
+      return;
+    }
+
+    // Send to WhatsApp via click-to-chat and show success UI
+    console.log('Booking submitted (opening WhatsApp):', formData);
+    sendWhatsApp(formData);
+    setStep(4); // show success
   };
 
   const handleClose = () => {
@@ -55,7 +107,8 @@ const BookingModal: React.FC = () => {
       lastName: '',
       email: '',
       phone: '',
-      notes: ''
+      notes: '',
+      consent: false
     });
   };
 
@@ -216,6 +269,19 @@ const BookingModal: React.FC = () => {
                       required
                     />
                   </div>
+
+                  <div className="flex items-start space-x-2">
+                    <input
+                      id="consent"
+                      type="checkbox"
+                      checked={formData.consent}
+                      onChange={(e) => setFormData({...formData, consent: e.target.checked})}
+                      className="mt-1"
+                    />
+                    <label htmlFor="consent" className="text-sm text-gray-600">
+                      I consent to be contacted via WhatsApp and email regarding this booking.
+                    </label>
+                  </div>
                 </div>
               )}
 
@@ -241,7 +307,7 @@ const BookingModal: React.FC = () => {
                     <h5 className="font-semibold text-gray-900 mb-2">Booking Summary</h5>
                     <div className="space-y-1 text-sm text-gray-600">
                       <p><span className="font-medium">Service:</span> {formData.service}</p>
-                      <p><span className="font-medium">Date:</span> {new Date(formData.date).toLocaleDateString()}</p>
+                      <p><span className="font-medium">Date:</span> {formData.date ? new Date(formData.date).toLocaleDateString() : '-'}</p>
                       <p><span className="font-medium">Time:</span> {formData.time}</p>
                       <p><span className="font-medium">Name:</span> {formData.firstName} {formData.lastName}</p>
                       <p><span className="font-medium">Contact:</span> {formData.email}</p>
@@ -255,9 +321,9 @@ const BookingModal: React.FC = () => {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check className="h-8 w-8 text-green-600" />
                   </div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">Booking Confirmed!</h4>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-2">Booking Initiated!</h4>
                   <p className="text-gray-600 mb-6">
-                    We've sent a confirmation email to {formData.email}. Our team will contact you shortly to confirm your appointment.
+                    A WhatsApp message with the booking details has been prepared and opened on your device. Please press <strong>Send</strong> in WhatsApp to notify us. We've also copied the message to the clipboard as a backup.
                   </p>
                   <button
                     onClick={handleClose}

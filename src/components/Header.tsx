@@ -169,35 +169,35 @@ const Header: React.FC = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link 
                 to="/" 
-                className="block px-3 py-2 text-base font-montserrat text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+                className="block px-3 py-2 text-base font-montserrat font-semibold text-gray-700 hover:text-sage hover:bg-cream rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 to="/about" 
-                className="block px-3 py-2 text-base font-montserrat text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+                className="block px-3 py-2 text-base font-montserrat font-semibold text-gray-700 hover:text-sage hover:bg-cream rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link 
                 to="/services" 
-                className="block px-3 py-2 text-base font-montserrat text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+                className="block px-3 py-2 text-base font-montserrat font-semibold text-gray-700 hover:text-sage hover:bg-cream rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Services
               </Link>
               <Link 
                 to="/membership" 
-                className="block px-3 py-2 text-base font-montserrat text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+                className="block px-3 py-2 text-base font-montserrat font-semibold text-gray-700 hover:text-sage hover:bg-cream rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Membership
               </Link>
               <Link 
                 to="/contact" 
-                className="block px-3 py-2 text-base font-montserrat text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+                className="block px-3 py-2 text-base font-montserrat font-semibold text-gray-700 hover:text-sage hover:bg-cream rounded-md"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact

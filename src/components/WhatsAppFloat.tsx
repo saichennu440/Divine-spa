@@ -4,7 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 const WhatsAppFloat: React.FC = () => {
   const handleWhatsAppClick = () => {
     // Replace with your actual WhatsApp number (include country code without + or spaces)
-    const phoneNumber = '1234567890'; // Example: US number
+    const phoneNumber = '918249470948'; // Example: US number
     const message = encodeURIComponent('Hello! I would like to book an appointment at Divine Spa.');
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');

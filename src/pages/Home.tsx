@@ -101,7 +101,7 @@ const Home: React.FC = () => {
       <section id="about" className="py-20 bg-cream">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-8">
+            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-8">
               Divine means <em>God</em> — and that essence flows through everything we do.
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">

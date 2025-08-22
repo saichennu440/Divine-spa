@@ -26,6 +26,8 @@ const Header: React.FC = () => {
     'Facial & Clean-Up Treatments'
   ];
 
+ let closeTimeout: ReturnType<typeof setTimeout>;
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white shadow-lg' : 'bg-white/90 backdrop-blur-md'
@@ -67,8 +69,8 @@ const Header: React.FC = () => {
             {/* Services Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setIsServicesDropdownOpen(true)}
-              onMouseLeave={() => setIsServicesDropdownOpen(false)}
+              onMouseEnter={() => {clearTimeout(closeTimeout); setIsServicesDropdownOpen(true);}}
+              onMouseLeave={() =>{ closeTimeout = setTimeout(() => setIsServicesDropdownOpen(false), 150); }}
             >
               <Link 
                 to="/services"
@@ -181,13 +183,34 @@ const Header: React.FC = () => {
               >
                 About
               </Link>
-              <Link 
-                to="/services" 
-                className="block px-3 py-2 text-base font-montserrat font-semibold text-gray-700 hover:text-sage hover:bg-cream rounded-md"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Services
-              </Link>
+            <div className="relative">
+  <button
+    onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+    className="w-full text-left block px-3 py-2 text-base font-montserrat font-semibold text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+  >
+    Services
+    <ChevronDown className="ml-2 inline-block h-4 w-4" />
+  </button>
+
+  {isServicesDropdownOpen && (
+    <div className="mt-2 bg-white rounded-lg shadow-xl border border-gray-100 py-2">
+      {serviceCategories.map((category, index) => (
+        <Link
+          key={index}
+          to="/services"
+          className="block px-4 py-2 text-sm text-gray-700 hover:bg-cream hover:text-sage transition-colors"
+          onClick={() => {
+            setIsServicesDropdownOpen(false);
+            setIsMobileMenuOpen(false);
+          }}
+        >
+          {category}
+        </Link>
+      ))}
+    </div>
+  )}
+</div>
+
               <Link 
                 to="/membership" 
                 className="block px-3 py-2 text-base font-montserrat font-semibold text-gray-700 hover:text-sage hover:bg-cream rounded-md"

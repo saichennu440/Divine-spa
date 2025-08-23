@@ -9,7 +9,14 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand & Contact */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-vonique font-semibold mb-6">aroma spa</h3>
+    
+            <h3 className="text-2xl font-vonique font-semibold mb-6">
+                      {/* <img
+    src="/Aroma_Spa_Footer.jpg"            // <-- put the file name you used in /public here
+    alt="Aroma Spa"
+    className="h-10 md:h-16 w-auto object-contain"
+  /> */}
+              aroma spa</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Inspired by the aroma. Created for You. Experience transformative wellness through 
               mindful therapies and luxurious self-care.
@@ -145,10 +152,10 @@ const Footer: React.FC = () => {
             <div className="flex items-center space-x-6 mb-6 lg:mb-0">
               <span className="text-gray-300">Follow Us:</span>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-sage transition-colors">
+                <a href="https://www.facebook.com/profile.php?id=61579315186801" className="text-gray-400 hover:text-sage transition-colors">
                   <Facebook className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-sage transition-colors">
+                <a href="https://www.instagram.com/aromaspaofficial?igsh=c3RnbGhxdnVmMjBq" className="text-gray-400 hover:text-sage transition-colors">
                   <Instagram className="h-5 w-5" />
                 </a>
                 <a href="#" className="text-gray-400 hover:text-sage transition-colors">

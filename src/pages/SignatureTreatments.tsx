@@ -1,8 +1,10 @@
 import React from 'react';
 import { Clock, Star, ArrowRight, Sparkles } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
+import { useBooking } from '../context/BookingContext';
 
 const SignatureTreatments: React.FC = () => {
+    const { openBooking } = useBooking();
   const treatments = [
     { name: 'Signature Therapy', duration: '90 mins', price: '₹5,300', description: 'A harmonious fusion of traditional and contemporary techniques designed for complete relaxation and renewal.' , features: ['Personalized oils','Deep relaxation']},
     { name: 'Signature Therapy', duration: '120 mins', price: '₹6,000', description: 'Extended signature ritual for deep renewal.' , features: ['Extended journey']},
@@ -74,7 +76,9 @@ const SignatureTreatments: React.FC = () => {
                       </div>
                     </div>
 
-                    <button className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2">
+                    <button 
+                    onClick= {() => openBooking()}
+                    className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2">
                       <span>Book This Treatment</span>
                       <ArrowRight className="h-4 w-4" />
                     </button>
@@ -95,7 +99,9 @@ const SignatureTreatments: React.FC = () => {
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
               Book your signature or tandem session today.
             </p>
-            <button className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">
+            <button 
+            onClick= {() => openBooking()}
+            className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">
               Book An Appointment
             </button>
           </AnimatedSection>

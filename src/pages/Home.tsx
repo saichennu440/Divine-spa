@@ -151,7 +151,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              what Our Guests Say
+              what our guests say
             </h2>
             <p className="text-lg text-gray-600">
               hear from those who have experienced the aroma spa difference.

@@ -1,8 +1,11 @@
 import React from 'react';
 import { Clock, Droplets, Star, ArrowRight } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
+import { useBooking } from '../context/BookingContext';
 
 const Services: React.FC = () => {
+        const { openBooking } = useBooking();
+  
   const serviceCategories = [
     {
       category: 'Full Body Massage',
@@ -179,7 +182,9 @@ const Services: React.FC = () => {
                           </ul>
                         </div>
 
-                        <button className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2">
+                        <button 
+                        onClick= {() => openBooking()}
+                        className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2">
                           <span>Book This Service</span>
                           <ArrowRight className="h-4 w-4" />
                         </button>
@@ -203,7 +208,9 @@ const Services: React.FC = () => {
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
               Book your appointment today and discover why Aroma Spa is the ultimate destination for relaxation.
             </p>
-            <button className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">
+            <button 
+            onClick= {() => openBooking()} 
+            className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">
               Book An Appointment
             </button>
           </AnimatedSection>

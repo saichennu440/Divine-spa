@@ -1,8 +1,11 @@
 import React from 'react';
 import { Clock, Star, ArrowRight, Flower2 } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
+import { useBooking } from '../context/BookingContext';
 
 const FacialTreatments: React.FC = () => {
+        const { openBooking } = useBooking();
+  
   const treatments = [
     { name: 'Therapeutic Head Massage', duration: '60 mins', price: '₹1,200', description: 'Focused massage targeting scalp and facial muscles to relieve tension and headaches.' , features: ['Scalp massage','Tension relief']},
     { name: 'Neck & Shoulder Therapy', duration: '75 mins', price: '₹1,600', description: 'Intensive treatment for neck and shoulder tension from daily stress and desk work.' , features: ['Posture improvement','Pain reduction']},
@@ -74,7 +77,9 @@ const FacialTreatments: React.FC = () => {
                       </div>
                     </div>
 
-                    <button className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2">
+                    <button 
+                    onClick= {() => openBooking()}
+                    className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2">
                       <span>Book This Treatment</span>
                       <ArrowRight className="h-4 w-4" />
                     </button>
@@ -100,7 +105,7 @@ const FacialTreatments: React.FC = () => {
           <AnimatedSection>
             <h2 className="text-4xl font-vonique font-light mb-6">reveal your natural radiance</h2>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">Book your customized facial treatment and discover glowing, healthy skin.</p>
-            <button className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">Book An Appointment</button>
+            <button onClick= {() => openBooking()} className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">Book An Appointment</button>
           </AnimatedSection>
         </div>
       </section>

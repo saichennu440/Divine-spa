@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
       {/* Hero Content */}
       <div className="relative z-10 h-full flex items-center justify-center px-4">
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className={`text-5xl md:text-7xl lg:text-8xl font-montserrat font-light text-white mb-6 transition-all duration-1000 ${
+          <h1 className={`text-5xl md:text-7xl lg:text-8xl font-vonique font-light text-white mb-6 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             inspired by the aroma.

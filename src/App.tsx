@@ -10,6 +10,10 @@ import Membership from './pages/Membership';
 // import Blog from './pages/Blog';
 // import Franchise from './pages/Franchise';
 // import GiftCards from './pages/GiftCards';
+import SignatureTreatments from './pages/SignatureTreatments';
+import FootSpa from './pages/FootSpa';
+import SkinTreatments from './pages/SkinTreatments';
+import FacialTreatments from './pages/FacialTreatments';
 import Contact from './pages/Contact';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import ReviewButton from './components/ReviewButton';
@@ -30,10 +34,15 @@ function App() {
         <div className="App">
           <Header />
           <main>
+            
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/services/signature-massage-therapies" element={<SignatureTreatments />} />
+              <Route path="/services/reflexology-foot-treatments" element={<FootSpa />} />
+              <Route path="/services/therapeutic-body-treatments" element={<SkinTreatments />} />
+              <Route path="/services/head-neck-shoulder-treatments" element={<FacialTreatments />} />
               <Route path="/membership" element={<Membership />} />
               {/* <Route path="/gallery" element={<Gallery />} />
               <Route path="/blog" element={<Blog />} />

@@ -1,10 +1,8 @@
 import React from 'react';
-import { Clock, Star, ArrowRight } from 'lucide-react';
+import { Clock, Droplets, Star, ArrowRight } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
-import { useBooking } from '../context/BookingContext';
 
 const Services: React.FC = () => {
-    const { openBooking } = useBooking();
   const serviceCategories = [
     {
       category: 'Full Body Massage',
@@ -114,6 +112,9 @@ const Services: React.FC = () => {
       <section className="py-20 bg-gradient-to-b from-cream to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-sage/10 rounded-full mb-8">
+              <Droplets className="h-10 w-10 text-sage" />
+            </div>
             <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
               our Sacred Services
             </h1>
@@ -140,7 +141,7 @@ const Services: React.FC = () => {
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {category.services.map((service, serviceIndex) => (
-                  <AnimatedSection
+                  <AnimatedSection 
                     key={serviceIndex}
                     delay={serviceIndex * 80}
                     animation="fade-in-up"
@@ -178,9 +179,7 @@ const Services: React.FC = () => {
                           </ul>
                         </div>
 
-                        <button
-                        onClick={() => openBooking({ service: `${service.name} — ${service.duration}` })}
-                         className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2">
+                        <button className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2">
                           <span>Book This Service</span>
                           <ArrowRight className="h-4 w-4" />
                         </button>
@@ -194,42 +193,11 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Add-On Services */}
-      <section className="py-20 bg-beige">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
-              enhance Your Experience
-            </h2>
-            <p className="text-lg text-gray-600">
-              Complement any service with our luxurious add-ons.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: 'Aromatherapy Upgrade', price: '+₹2,000', description: 'Premium essential oil blend' },
-              { name: 'Hot Stone Addition', price: '+₹2,800', description: 'Heated basalt stones' },
-              { name: 'CBD Infusion', price: '+₹3,600', description: 'Therapeutic CBD products' },
-              { name: 'Extended Session (30 mins)', price: '+₹4,800', description: 'Additional 30 minutes' }
-            ].map((addon, index) => (
-              <AnimatedSection key={index} delay={index * 100}>
-                <div className="bg-white rounded-lg p-6 text-center shadow hover:shadow-lg transition-shadow">
-                  <h3 className="font-montserrat text-lg font-semibold mb-2">{addon.name}</h3>
-                  <p className="text-2xl font-light text-sage mb-2">{addon.price}</p>
-                  <p className="text-sm text-gray-600">{addon.description}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 bg-sage text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl font-montserrat font-light mb-6">
+            <h2 className="text-4xl font-vonique font-light mb-6">
               ready to Begin Your Wellness Journey?
             </h2>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">

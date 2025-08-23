@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Sparkles, Heart, Users, Droplets, Flower2, Leaf, MapPin, Clock } from 'lucide-react';
 import Hero from '../components/Hero';
 import AnimatedSection from '../components/AnimatedSection';
@@ -8,30 +9,35 @@ import TestimonialCard from '../components/TestimonialCard';
 const Home: React.FC = () => {
   const services = [
     {
-      title: 'Signature Therapy Treatments',
-      description: 'Experience our exclusive signature treatments designed to restore balance and rejuvenate your mind, body, and spirit.',
+      title: 'Signature Massage Therapies',
+      description: 'Professional massage treatments including Swedish, Deep Tissue, Hot Stone, and Aromatherapy massages for ultimate relaxation.',
       icon: <Sparkles className="h-8 w-8" />,
+      path: '/services/signature-massage-therapies',
       image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     },
     {
-      title: 'Foot Spa & Pedicure Treatments',
-      description: 'Pamper your feet with our luxurious foot spa treatments and professional pedicures in a serene environment.',
+      title: 'Reflexology & Foot Treatments',
+      description: 'Therapeutic foot treatments using reflexology and specialized techniques to promote overall wellness and healing.',
       icon: <Heart className="h-8 w-8" />,
+       path: '/services/reflexology-foot-treatments',
       image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     },
     {
-      title: 'Skin Treatments & Body Polishing',
-      description: 'Reveal radiant skin with our advanced facial treatments and luxurious body polishing services.',
+      title: 'Therapeutic Body Treatments',
+      description: 'Specialized treatments including Prenatal, Lymphatic Drainage, Sports Massage, and Trigger Point Therapy.',
+          path: '/services/therapeutic-body-treatments',
       icon: <Droplets className="h-8 w-8" />,
       image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     },
     {
-      title: 'Facial & Clean-Up Treatments',
-      description: 'Transform your complexion with our customized facial treatments and deep cleansing therapies.',
+      title: 'Head, Neck & Shoulder Treatments',
+      description: 'Focused treatments for head, neck, and shoulder tension including TMJ therapy and Craniosacral work.',
       icon: <Flower2 className="h-8 w-8" />,
+          path: '/services/head-neck-shoulder-treatments',
       image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     }
   ];
+
 
   const testimonials = [
     {
@@ -223,9 +229,11 @@ const Home: React.FC = () => {
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-3xl font-montserrat font-light">Starting at $199<span className="text-lg">/month</span></span>
+                  <Link to="/membership">
                   <button className="bg-white text-sage px-6 py-3 rounded-full font-medium hover:bg-white/90 transition-colors">
                     Learn More
                   </button>
+                  </Link>
                 </div>
               </div>
             </AnimatedSection>
@@ -240,9 +248,11 @@ const Home: React.FC = () => {
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-3xl font-montserrat font-light">$50 - $500</span>
+                  <Link to="/membership">
                   <button className="bg-white text-sage px-6 py-3 rounded-full font-medium hover:bg-white/90 transition-colors">
                     Purchase
                   </button>
+                  </Link>
                 </div>
               </div>
             </AnimatedSection>

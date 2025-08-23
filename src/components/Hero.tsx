@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Calendar, Eye, Gift } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
+import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   const { openBooking } = useBooking();
@@ -40,7 +41,7 @@ const Hero: React.FC = () => {
           </p>
 
           <button
-            onClick={openBooking}
+            onClick = {() => openBooking()}
             className={`inline-flex items-center space-x-3 bg-sage hover:bg-sage-dark text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-2xl hover:scale-105 mb-12 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
@@ -54,21 +55,22 @@ const Hero: React.FC = () => {
           <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            <a
-              href="#services"
+            <Link
+              to="/services"
               className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md hover:bg-white/30 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105"
             >
               <Eye className="h-4 w-4" />
               <span>View Services</span>
-            </a>
+            </Link>
             
-            <a
-              href="#membership"
+            <Link
+          
+              to="/membership"
               className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md hover:bg-white/30 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105"
             >
               <Gift className="h-4 w-4" />
               <span>Membership</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

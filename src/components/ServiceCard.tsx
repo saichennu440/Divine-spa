@@ -1,14 +1,17 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface ServiceCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
   image: string;
+  path: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, image }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, image, path }) => {
+  const navigate = useNavigate();
   return (
     <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden scale-on-hover">
       <div className="relative h-48 overflow-hidden">
@@ -30,7 +33,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, ima
         <p className="text-gray-600 mb-4 line-clamp-2">
           {description}
         </p>
-        <button className="group/btn inline-flex items-center space-x-2 text-sage hover:text-sage-dark font-medium transition-colors">
+        <button 
+        onClick={() => navigate(path)}
+        className="group/btn inline-flex items-center space-x-2 text-sage hover:text-sage-dark font-medium transition-colors">
           <span>Learn More</span>
           <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
         </button>

@@ -7,7 +7,7 @@ const Services: React.FC = () => {
     const { openBooking } = useBooking();
   const serviceCategories = [
     {
-      category: 'Full Body Massage',
+      category: 'full body massage',
       description: 'Relaxing full body massage therapies — choose duration to suit your time and needs.',
       services: [
         { name: 'Swedish Therapy', duration: '90 mins', price: '₹3,800', description: 'Classic Art of Relaxation — long gliding strokes to melt tension and stimulate lymphatic flow.' , features: ['Long gliding strokes','Lymphatic stimulation','Relaxation']},
@@ -28,7 +28,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Signature & Tandem Therapies',
+      category: 'signature & tandem therapies',
       description: 'Our curated signature rituals for an elevated spa experience.',
       services: [
         { name: 'Signature Therapy', duration: '90 mins', price: '₹5,300', description: 'A Journey Tailored to You — fusion of traditional and contemporary techniques.' , features: ['Personalized','Luxury oils']},
@@ -38,7 +38,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Herbal & Hot Stone Therapies',
+      category: 'herbal & hot stone therapies',
       description: 'Herbal potli and hot stone rituals that use heat and herbs to heal and restore.',
       services: [
         { name: 'Herbal Potli Therapy', duration: '90 mins', price: '₹5,300', description: 'A soothing symphony of heated herbal poultices to melt tension.' , features: ['Herbal compress','Heat therapy']},
@@ -49,7 +49,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Thai Therapy',
+      category: 'thai therapy',
       description: 'Assisted-stretch therapies that restore mobility and energy flow.',
       services: [
         { name: 'Dry Thai Therapy', duration: '60 mins', price: '₹3,000', description: 'Ancient dance of healing — deep pressure points and assisted stretches (no oils).' , features: ['Assisted stretches','Energy flow']},
@@ -58,7 +58,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Full Body Polishing & Scrubs',
+      category: 'full body polishing & scrubs',
       description: 'Exfoliation rituals to reveal soft, radiant skin.',
       services: [
         { name: 'Black Currant Polish (Dry Skin)', duration: '60 mins', price: '₹4,500', description: 'Hydration meets antioxidant indulgence.' , features: ['Hydration','Antioxidants']},
@@ -68,7 +68,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Clean-ups & Facial Essentials',
+      category: 'clean-ups & facial essentials',
       description: 'Gentle clean-ups and essential facials for glowing skin.',
       services: [
         { name: 'Clean-up (Watermelon / Strawberry)', duration: '30 mins', price: '₹1,200', description: 'Hydration / antioxidant-rich cleanse for tired skin.' , features: ['Antioxidant cleanse']},
@@ -78,7 +78,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Facial — Premium & Signature',
+      category: 'facial — premium & signature',
       description: 'Curated premium facials for targeted results.',
       services: [
         { name: 'Deep Pore Cleansing (Oily Skin)', duration: '60 mins', price: '₹3,300', description: 'Refresh oily skin, smooth and nourish.' , features: ['Pore cleansing']},
@@ -87,7 +87,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Quick Massage & Target Areas',
+      category: 'quick massage & target areas',
       description: 'Short, focused therapies for instant relief.',
       services: [
         { name: 'Foot Reflexology', duration: '30 mins', price: '₹1,000', description: 'Calming leg & foot massage targeting reflex points.' , features: ['Reflex points']},
@@ -96,7 +96,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Foot Pedicure',
+      category: 'foot pedicure',
       description: 'Pampering pedicures to nourish, smooth and refresh feet.',
       services: [
         { name: 'Moisturising Exotic Pedicure (Kiwi & Strawberry)', duration: '60 mins', price: '₹1,200', description: 'Hydrating exotic pedicure for velvet-smooth feet.' , features: ['Hydration','Exotic fruit extracts']},
@@ -235,7 +235,8 @@ const Services: React.FC = () => {
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
               Book your appointment today and discover why Aroma Spa is the ultimate destination for relaxation.
             </p>
-            <button className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">
+            <button 
+            onClick={() => openBooking({ service: 'Book An Appointment' })} className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">
               Book An Appointment
             </button>
           </AnimatedSection>

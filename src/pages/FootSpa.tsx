@@ -25,7 +25,7 @@ const FootSpa: React.FC = () => {
               <Heart className="h-10 w-10 text-sage" />
             </div>
             <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
-              reflexology & Foot Treatments
+              reflexology & foot treatments
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Therapeutic foot treatments and pedicures updated from the menu.
@@ -80,7 +80,9 @@ const FootSpa: React.FC = () => {
                       </div>
                     </div>
 
-                    <button className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2">
+                    <button 
+                    
+                    className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2">
                       <span>Book This Treatment</span>
                       <ArrowRight className="h-4 w-4" />
                     </button>
@@ -95,7 +97,7 @@ const FootSpa: React.FC = () => {
       <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">benefits of Foot Spa Treatments</h2>
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">benefits of foot spa treatments</h2>
             <p className="text-lg text-gray-600">Discover the wellness benefits of regular foot care and pedicure treatments.</p>
           </AnimatedSection>
         </div>
@@ -104,7 +106,7 @@ const FootSpa: React.FC = () => {
       <section className="py-20 bg-sage text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl font-vonique font-light mb-6">treat Your Feet to Luxury</h2>
+            <h2 className="text-4xl font-vonique font-light mb-6">treat your feet to luxury</h2>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">Book your foot spa treatment today and experience the ultimate in relaxation and foot care.</p>
             <button className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">Book An Appointment</button>
           </AnimatedSection>

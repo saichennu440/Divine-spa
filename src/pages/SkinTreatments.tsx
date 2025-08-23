@@ -116,7 +116,7 @@ const Services: React.FC = () => {
               <Droplets className="h-10 w-10 text-sage" />
             </div>
             <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
-              our Sacred Services
+              our sacred services
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               All treatments, durations and prices are updated from the Aroma Spa menu.
@@ -198,7 +198,7 @@ const Services: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-4xl font-vonique font-light mb-6">
-              ready to Begin Your Wellness Journey?
+              ready to begin your wellness journey?
             </h2>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
               Book your appointment today and discover why Aroma Spa is the ultimate destination for relaxation.

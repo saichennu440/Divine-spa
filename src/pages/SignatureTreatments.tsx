@@ -19,7 +19,7 @@ const SignatureTreatments: React.FC = () => {
               <Sparkles className="h-10 w-10 text-sage" />
             </div>
             <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
-              signature Massage Therapies
+              signature massage therapies
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Indulge in our signature rituals curated for deep relaxation and renewal.
@@ -90,7 +90,7 @@ const SignatureTreatments: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-4xl font-vonique font-light mb-6">
-              ready for Your Therapeutic Massage?
+              ready for your therapeutic massage?
             </h2>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
               Book your signature or tandem session today.

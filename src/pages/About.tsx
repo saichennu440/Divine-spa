@@ -19,8 +19,8 @@ const About: React.FC = () => {
     },
     {
       icon: <Sparkles className="h-8 w-8" />,
-      title: 'Divine Excellence',
-      description: 'Every treatment is crafted with divine attention to detail, ensuring an exceptional experience.'
+      title: 'aroma Excellence',
+      description: 'Every treatment is crafted with aroma attention to detail, ensuring an exceptional experience.'
     },
     {
       icon: <Users className="h-8 w-8" />,
@@ -72,10 +72,10 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
-              About Divine Spa
+              about aroma spa
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
-              Inspired by the Divine. Created for You. We are more than just a spa – we are a sanctuary 
+              Inspired by the aroma. Created for You. We are more than just a spa – we are a sanctuary 
               where ancient wisdom meets modern wellness, creating transformative experiences that nurture 
               your complete well-being.
             </p>
@@ -88,10 +88,10 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-8">
-              Divine means <em>God</em> — and that essence flows through everything we do.
+              aroma means <em> God</em> — and that essence flows through everything we do.
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
-              At Divine Spa, we believe in the transformative power of mindful therapies and conscious self-care. 
+              At aroma spa, we believe in the transformative power of mindful therapies and conscious self-care. 
               Our sanctuary provides a space where you can disconnect from the world's chaos and reconnect with 
               your inner peace. Every treatment is designed to restore your natural balance, awaken your inner 
               radiance, and nurture your body, mind, and spirit.
@@ -109,11 +109,11 @@ const About: React.FC = () => {
       <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
-              Our Core Values
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
+              our core values
             </h2>
             <p className="text-lg text-gray-600">
-              The principles that guide everything we do at Divine Spa.
+              The principles that guide everything we do at aroma spa.
             </p>
           </AnimatedSection>
 
@@ -150,11 +150,11 @@ const About: React.FC = () => {
             <AnimatedSection animation="fade-in-left">
               <div>
                 <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
-                  Our Journey
+                  our journey
                 </h2>
                 <div className="space-y-6 text-gray-700 leading-relaxed">
                   <p>
-                    Divine Spa was born from a simple yet profound belief: that everyone deserves 
+                    aroma spa was born from a simple yet profound belief: that everyone deserves 
                     access to transformative wellness experiences that honor both body and spirit. 
                     Our founder, inspired by travels through ancient healing traditions across the 
                     world, envisioned a space where these timeless practices could flourish in a 
@@ -179,7 +179,7 @@ const About: React.FC = () => {
               <div className="relative">
                 <img
                   src="https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
-                  alt="Divine Spa interior"
+                  alt="aroma spa interior"
                   className="rounded-2xl shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl" />
@@ -194,7 +194,7 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
-              Meet Our Wellness Experts
+              meet our wellness experts
             </h2>
             <p className="text-lg text-gray-600">
               Our skilled team of therapists and wellness professionals are dedicated to your transformation.
@@ -255,7 +255,7 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
-              Awards & Recognition
+              awards & recognition
             </h2>
             <p className="text-lg text-gray-600">
               We're honored to be recognized for our commitment to wellness excellence.
@@ -289,7 +289,7 @@ const About: React.FC = () => {
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-sage/10 rounded-full mb-4">
                     <Award className="h-8 w-8 text-sage" />
                   </div>
-                  <div className="text-3xl font-serif font-light text-sage mb-2">
+                  <div className="text-3xl font-montserrat font-light text-sage mb-2">
                     {award.year}
                   </div>
                   <h3 className="font-montserrat text-lg font-semibold text-gray-900 mb-2">
@@ -310,30 +310,30 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-vonique font-light mb-6">
-              Our Locations
+              our locations
             </h2>
             <p className="text-xl text-white/90">
               Visit us at any of our luxurious spa locations across the country.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                name: 'Manhattan Flagship',
-                address: '123 Fifth Avenue, New York, NY 10010',
-                phone: '(212) 555-0123'
-              },
+              // {
+              //   name: 'Manhattan Flagship',
+              //   address: '123 Fifth Avenue, New York, NY 10010',
+              //   phone: '(212) 555-0123'
+              // },
               {
                 name: 'Beverly Hills',
                 address: '456 Rodeo Drive, Beverly Hills, CA 90210',
                 phone: '(310) 555-0123'
               },
-              {
-                name: 'South Beach',
-                address: '789 Ocean Drive, Miami Beach, FL 33139',
-                phone: '(305) 555-0123'
-              }
+              // {
+              //   name: 'South Beach',
+              //   address: '789 Ocean Drive, Miami Beach, FL 33139',
+              //   phone: '(305) 555-0123'
+              // }
             ].map((location, index) => (
               <AnimatedSection 
                 key={index}
@@ -356,7 +356,55 @@ const About: React.FC = () => {
                 </div>
               </AnimatedSection>
             ))}
-          </div>
+          </div> */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <AnimatedSection className="lg:col-span-2">
+  <div className="bg-gray-200 rounded-2xl h-96 overflow-hidden">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3805.9206589911087!2d78.30539617097662!3d17.463511180268647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s5th%20Floor%2C%20Above%20Fabindia%20Nallagandla%20Rd%2C%20Opp.Aparna%20sarovar%20Hyderabad%2C%20Telangana%2C%20500046!5e0!3m2!1sen!2sin!4v1755949936772!5m2!1sen!2sin"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</AnimatedSection>
+        <AnimatedSection>
+              <div className="space-y-6">
+                <div className="bg-white rounded-xl shadow-lg p-6">
+                  <h3 className="font-montserrat text-xl font-semibold mb-3 text-gray-500">5th Floor, Above Fabindia</h3>
+                  <p className="text-gray-600 mb-3">Nallagandla Rd, Opp.Aparna sarovar<br />Hyderabad, Telangana, 500046</p>
+                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <Clock className="h-4 w-4 mr-2" />
+                    Mon-Sun: 9:00 AM - 9:00 PM
+                  </div>
+                  <p className="text-sage font-medium">9318629318</p>
+                </div>
+
+                {/* <div className="bg-white rounded-xl shadow-lg p-6">
+                  <h3 className="font-vonique text-xl font-semibold mb-3">Beverly Hills</h3>
+                  <p className="text-gray-600 mb-3">456 Rodeo Drive<br />Beverly Hills, CA 90210</p>
+                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <Clock className="h-4 w-4 mr-2" />
+                    Mon-Sun: 8:00 AM - 10:00 PM
+                  </div>
+                  <p className="text-sage font-medium">(310) 555-0123</p>
+                </div> */}
+
+                {/* <div className="bg-white rounded-xl shadow-lg p-6">
+                  <h3 className="font-vonique text-xl font-semibold mb-3">South Beach</h3>
+                  <p className="text-gray-600 mb-3">789 Ocean Drive<br />Miami Beach, FL 33139</p>
+                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <Clock className="h-4 w-4 mr-2" />
+                    Mon-Sun: 9:00 AM - 9:00 PM
+                  </div>
+                  <p className="text-sage font-medium">(305) 555-0123</p>
+                </div> */}
+              </div>
+            </AnimatedSection>  
+        </div>
         </div>
       </section>
 
@@ -365,10 +413,10 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
-              Begin Your Wellness Journey
+              begin your wellness journey
             </h2>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Experience the Divine Spa difference and discover what it means to be truly cared for.
+              Experience the aroma spa difference and discover what it means to be truly cared for.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                        <button 

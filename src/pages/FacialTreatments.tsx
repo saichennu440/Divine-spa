@@ -19,7 +19,7 @@ const FacialTreatments: React.FC = () => {
               <Flower2 className="h-10 w-10 text-sage" />
             </div>
             <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
-              head, Neck & Shoulder Treatments
+              head, neck & shoulder treatments
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Specialized treatments for areas where tension commonly accumulates.
@@ -89,7 +89,7 @@ const FacialTreatments: React.FC = () => {
       <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">facial Benefits for Every Skin Type</h2>
+            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">facial benefits for every skin type</h2>
             <p className="text-lg text-gray-600">Our customized facials address specific skin concerns and types.</p>
           </AnimatedSection>
         </div>
@@ -98,7 +98,7 @@ const FacialTreatments: React.FC = () => {
       <section className="py-20 bg-sage text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl font-vonique font-light mb-6">reveal Your Natural Radiance</h2>
+            <h2 className="text-4xl font-vonique font-light mb-6">reveal your natural radiance</h2>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">Book your customized facial treatment and discover glowing, healthy skin.</p>
             <button className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-xl">Book An Appointment</button>
           </AnimatedSection>

@@ -108,8 +108,7 @@ const Home: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-8">
-              Divine means <em>God</em> — and that essence flows through everything we do.
-            </h2>
+             aroma, the spirit in everything we do.            </h2>
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
               At aroma spa, we believe in the transformative power of mindful therapies and conscious self-care. 
               Our sanctuary provides a space where ancient wisdom meets modern wellness, creating an experience 
@@ -125,7 +124,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              Our Sacred Services
+              our Sacred Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover our carefully curated collection of treatments, each designed to nurture your wellbeing 
@@ -152,10 +151,10 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              What Our Guests Say
+              what Our Guests Say
             </h2>
             <p className="text-lg text-gray-600">
-              Hear from those who have experienced the aroma spa difference.
+              hear from those who have experienced the aroma spa difference.
             </p>
           </AnimatedSection>
 
@@ -178,7 +177,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              Our Sanctuary
+              our sanctuary
             </h2>
             <p className="text-lg text-gray-600">
               Step into a world of tranquility and elegance.
@@ -211,7 +210,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light mb-6">
-              Exclusive Memberships & Gift Cards
+              exclusive memberships & gift cards
             </h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto">
               Join our wellness community or share the gift of relaxation with someone special.
@@ -222,7 +221,7 @@ const Home: React.FC = () => {
             <AnimatedSection animation="fade-in-left">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
                 <Users className="h-12 w-12 mb-6 text-white" />
-                <h3 className="text-2xl font-vonique font-semibold mb-4">Wellness Membership</h3>
+                <h3 className="text-2xl font-vonique font-semibold mb-4">wellness membership</h3>
                 <p className="text-white/90 mb-6 leading-relaxed">
                   Enjoy unlimited access to our facilities, priority booking, exclusive member rates, 
                   and personalized wellness consultations.
@@ -261,40 +260,46 @@ const Home: React.FC = () => {
       </section>
 
       {/* Spa Locator Section */}
-      <section id="spa-locator" className="py-20">
+      <section id="spa-locator" className="py-20" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              Find Your Nearest Sanctuary
+              find our Sanctuary
             </h2>
             <p className="text-lg text-gray-600">
-              Discover aroma spa locations in your area.
+              Discover aroma spa location.
             </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <AnimatedSection className="lg:col-span-2">
-              <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-500">Interactive Map Coming Soon</p>
-                </div>
-              </div>
-            </AnimatedSection>
+          <AnimatedSection className="lg:col-span-2">
+  <div className="bg-gray-200 rounded-2xl h-96 overflow-hidden">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3805.9206589911087!2d78.30539617097662!3d17.463511180268647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s5th%20Floor%2C%20Above%20Fabindia%20Nallagandla%20Rd%2C%20Opp.Aparna%20sarovar%20Hyderabad%2C%20Telangana%2C%20500046!5e0!3m2!1sen!2sin!4v1755949936772!5m2!1sen!2sin"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</AnimatedSection>
+
 
             <AnimatedSection>
               <div className="space-y-6">
                 <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-vonique text-xl font-semibold mb-3">Manhattan Flagship</h3>
-                  <p className="text-gray-600 mb-3">123 Fifth Avenue<br />New York, NY 10010</p>
+                  <h3 className="font-montserrat text-xl font-semibold mb-3">5th Floor, Above Fabindia</h3>
+                  <p className="text-gray-600 mb-3">Nallagandla Rd, Opp.Aparna sarovar<br />Hyderabad, Telangana, 500046</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />
                     Mon-Sun: 9:00 AM - 9:00 PM
                   </div>
-                  <p className="text-sage font-medium">(212) 555-0123</p>
+                  <p className="text-sage font-medium">9318629318</p>
                 </div>
 
-                <div className="bg-white rounded-xl shadow-lg p-6">
+                {/* <div className="bg-white rounded-xl shadow-lg p-6">
                   <h3 className="font-vonique text-xl font-semibold mb-3">Beverly Hills</h3>
                   <p className="text-gray-600 mb-3">456 Rodeo Drive<br />Beverly Hills, CA 90210</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
@@ -302,9 +307,9 @@ const Home: React.FC = () => {
                     Mon-Sun: 8:00 AM - 10:00 PM
                   </div>
                   <p className="text-sage font-medium">(310) 555-0123</p>
-                </div>
+                </div> */}
 
-                <div className="bg-white rounded-xl shadow-lg p-6">
+                {/* <div className="bg-white rounded-xl shadow-lg p-6">
                   <h3 className="font-vonique text-xl font-semibold mb-3">South Beach</h3>
                   <p className="text-gray-600 mb-3">789 Ocean Drive<br />Miami Beach, FL 33139</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
@@ -312,7 +317,7 @@ const Home: React.FC = () => {
                     Mon-Sun: 9:00 AM - 9:00 PM
                   </div>
                   <p className="text-sage font-medium">(305) 555-0123</p>
-                </div>
+                </div> */}
               </div>
             </AnimatedSection>
           </div>
@@ -324,7 +329,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              Wellness Wisdom
+              wellness wisdom
             </h2>
             <p className="text-lg text-gray-600">
               Insights, tips, and inspiration for your wellness journey.

@@ -171,7 +171,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
                     value={reviewData.review}
                     onChange={(e) => setReviewData({...reviewData, review: e.target.value})}
                     rows={4}
-                    placeholder="Tell us about your experience at Divine Spa..."
+                    placeholder="Tell us about your experience at aroma spa..."
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent"
                     required
                   />

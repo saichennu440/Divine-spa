@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-export type FormDataShape = {
+type FormDataShape = {
   service?: string;
   date?: string;
   time?: string;
@@ -15,42 +15,24 @@ export type FormDataShape = {
 type BookingContextType = {
   isBookingOpen: boolean;
   initialFormData: FormDataShape | null;
-  /**
-   * Open booking modal. Pass an optional partial FormDataShape to prefill the form.
-   * Example: openBooking({ service: "Swedish Therapy — 90 mins" })
-   */
-  openBooking: (initial?: FormDataShape | null) => void;
+  openBooking: (initial?: FormDataShape) => void;
   closeBooking: () => void;
 };
 
 const BookingContext = createContext<BookingContextType | undefined>(undefined);
 
-export const useBooking = () => {
-  const context = useContext(BookingContext);
-  if (!context) {
-    throw new Error('useBooking must be used within a BookingProvider');
-  }
-  return context;
-};
-
-interface BookingProviderProps {
-  children: ReactNode;
-}
-
-export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) => {
+export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [initialFormData, setInitialFormData] = useState<FormDataShape | null>(null);
 
-  const openBooking = (initial?: FormDataShape | null) => {
-    // keep backwards compatibility: openBooking() still works
-    if (initial) setInitialFormData(initial);
-    else setInitialFormData(null);
+  const openBooking = (initial?: FormDataShape) => {
+    setInitialFormData(initial ?? null);
     setIsBookingOpen(true);
   };
 
   const closeBooking = () => {
     setIsBookingOpen(false);
-    // clear initial data so next open isn't stale
+    // keep initialFormData for a short while? we clear it immediately to avoid stale state
     setInitialFormData(null);
   };
 
@@ -61,3 +43,8 @@ export const BookingProvider: React.FC<BookingProviderProps> = ({ children }) =>
   );
 };
 
+export const useBooking = () => {
+  const ctx = useContext(BookingContext);
+  if (!ctx) throw new Error('useBooking must be used within BookingProvider');
+  return ctx;
+};

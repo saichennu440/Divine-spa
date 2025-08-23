@@ -149,7 +149,7 @@ const Header: React.FC = () => {
 
           {/* Book Appointment CTA */}
           <button
-            onClick={openBooking}
+            onClick = {() => openBooking()}
             className="hidden lg:flex items-center space-x-2 bg-sage hover:bg-sage-dark text-white px-6 py-3 rounded-full font-montserrat transition-all duration-300 hover:shadow-lg"
           >
             <Calendar className="h-4 w-4" />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Youtube, Heart } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Instagram, SquareParking  , Heart } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -8,26 +8,28 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand & Contact */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <h3 className="text-2xl font-vonique font-semibold mb-6">aroma spa</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Inspired by the Divine. Created for You. Experience transformative wellness through 
+              Inspired by the aroma. Created for You. Experience transformative wellness through 
               mindful therapies and luxurious self-care.
             </p>
             <div className="space-y-3">
               <div className="flex items-center">
                 <Phone className="h-4 w-4 mr-3 text-sage" />
-                <span className="text-gray-300" >1-800-DIVINE-SPA</span>
+                <span className="text-gray-300" >5th Floor, Above Fabindia <br></br>Nallagandla Rd, Opp.Aparna sarovar<br></br>Hyderabad, Telangana, 500046</span>
+                
+
               </div>
               <div className="flex items-center">
-                <Mail className="h-4 w-4 mr-3 text-sage" />
-                <span className="text-gray-300">hello@divinespa.com</span>
+                <Phone className="h-4 w-4 mr-3 text-sage" />
+                <span className="text-gray-300">9318629318</span>
               </div>
               <div className="flex items-start">
                 <MapPin className="h-4 w-4 mr-3 mt-1 text-sage flex-shrink-0" />
                 <span className="text-gray-300">
                   Multiple locations across<br />
-                  New York, California & Florida
+                  Hyderabad, Telanaga & Ap
                 </span>
               </div>
             </div>
@@ -57,11 +59,7 @@ const Footer: React.FC = () => {
                   Membership
                 </Link>
               </li>
-              <li>
-                <Link to="/gallery" className="text-gray-300 hover:text-sage transition-colors">
-                  Gallery
-                </Link>
-              </li>
+             
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-sage transition-colors">
                   Contact
@@ -99,16 +97,12 @@ const Footer: React.FC = () => {
                   Foot Spa & Pedicure
                 </Link>
               </li>
-              <li>
-                <a href="/#gift-cards" className="text-gray-300 hover:text-sage transition-colors">
-                  Gift Cards
-                </a>
-              </li>
+             
             </ul>
           </div>
 
           {/* Business */}
-          <div>
+          {/* <div>
             <h4 className="font-vonique text-2xl font-semibold mb-6">Business</h4>
             <ul className="space-y-3">
               <li>
@@ -142,7 +136,7 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
         {/* Social & Newsletter */}
@@ -158,15 +152,13 @@ const Footer: React.FC = () => {
                   <Instagram className="h-5 w-5" />
                 </a>
                 <a href="#" className="text-gray-400 hover:text-sage transition-colors">
-                  <Twitter className="h-5 w-5" />
+                  <SquareParking  className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-sage transition-colors">
-                  <Youtube className="h-5 w-5" />
-                </a>
+                
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+            {/* <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
               <span className="text-gray-300 text-sm">Subscribe to our newsletter:</span>
               <div className="flex">
                 <input
@@ -178,7 +170,7 @@ const Footer: React.FC = () => {
                   Subscribe
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 

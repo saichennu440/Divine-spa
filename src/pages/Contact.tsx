@@ -14,29 +14,16 @@ const Contact: React.FC = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const locations = [
-    {
-      name: 'Manhattan Flagship',
-      address: '123 Fifth Avenue, New York, NY 10010',
-      phone: '(212) 555-0123',
-      email: 'manhattan@divinespa.com',
-      hours: 'Mon-Sun: 9:00 AM - 9:00 PM'
-    },
-    {
-      name: 'Beverly Hills',
-      address: '456 Rodeo Drive, Beverly Hills, CA 90210',
-      phone: '(310) 555-0123',
-      email: 'beverlyhills@divinespa.com',
-      hours: 'Mon-Sun: 8:00 AM - 10:00 PM'
-    },
-    {
-      name: 'South Beach',
-      address: '789 Ocean Drive, Miami Beach, FL 33139',
-      phone: '(305) 555-0123',
-      email: 'southbeach@divinespa.com',
-      hours: 'Mon-Sun: 9:00 AM - 9:00 PM'
-    }
-  ];
+  // const locations = [
+  //   {
+  //     name: 'Manhattan Flagship',
+  //     address: '123 Fifth Avenue, New York, NY 10010',
+  //     phone: '(212) 555-0123',
+  //     email: 'manhattan@aromaspa.com',
+  //     hours: 'Mon-Sun: 9:00 AM - 9:00 PM'
+  //   },
+   
+  // ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,7 +46,7 @@ const Contact: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
-              Get in Touch
+              get in touch
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               We're here to help you begin your wellness journey. Reach out to us for appointments, 
@@ -79,7 +66,7 @@ const Contact: React.FC = () => {
                 {!isSubmitted ? (
                   <>
                     <h2 className="text-3xl font-montserrat font-semibold text-gray-900 mb-8">
-                      Send us a Message
+                      send us a message
                     </h2>
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -133,9 +120,8 @@ const Contact: React.FC = () => {
                           required
                         >
                           <option value="">Preferred Location</option>
-                          <option value="manhattan">Manhattan Flagship</option>
-                          <option value="beverly-hills">Beverly Hills</option>
-                          <option value="south-beach">South Beach</option>
+                          <option value="manhattan">Hyderabad</option>
+                          
                           <option value="other">Other/General Inquiry</option>
                         </select>
                         <select
@@ -218,21 +204,21 @@ const Contact: React.FC = () => {
                       <Phone className="h-5 w-5 mr-3 text-white/80" />
                       <div>
                         <p className="font-bold text-white">Call Us</p>
-                        <p className="text-white/90">1-800-DIVINE-SPA</p>
+                        <p className="text-white/90">9318629318</p>
                       </div>
                     </div>
                     <div className="flex items-center">
                       <Mail className="h-5 w-5 mr-3 text-white/80" />
                       <div>
                         <p className="font-bold text-white">Email Us</p>
-                        <p className="text-white/90">hello@divinespa.com</p>
+                        <p className="text-white/90">hello@aromaspa.com</p>
                       </div>
                     </div>
                     <div className="flex items-center">
                       <Clock className="h-5 w-5 mr-3 text-white/80" />
                       <div>
                         <p className="font-bold text-white">Customer Service</p>
-                        <p className="text-white/90">Mon-Fri: 8:00 AM - 8:00 PM EST</p>
+                        <p className="text-white/90">Mon-Fri: 8:00 AM - 8:00 PM IST</p>
                       </div>
                     </div>
                   </div>
@@ -269,81 +255,77 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Locations */}
-      <section className="py-20 bg-cream">
+  <section id="spa-locator" className="py-20 bg-cream" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
-              Our Locations
+            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
+              find our sanctuary
             </h2>
             <p className="text-lg text-gray-600">
-              Visit us at any of our luxurious spa locations.
+              Discover aroma spa location.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {locations.map((location, index) => (
-              <AnimatedSection 
-                key={index}
-                delay={index * 100}
-                animation="fade-in-up"
-              >
-                <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 scale-on-hover">
-                  <h3 className="font-montserrat text-xl font-semibold text-gray-900 mb-4">
-                    {location.name}
-                  </h3>
-                  <div className="space-y-3 text-gray-600">
-                    <div className="flex items-start">
-                      <MapPin className="h-5 w-5 mr-3 mt-0.5 text-sage flex-shrink-0" />
-                      <span>{location.address}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Phone className="h-5 w-5 mr-3 text-sage" />
-                      <span>{location.phone}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Mail className="h-5 w-5 mr-3 text-sage" />
-                      <span>{location.email}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="h-5 w-5 mr-3 text-sage" />
-                      <span>{location.hours}</span>
-                    </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <AnimatedSection className="lg:col-span-2">
+  <div className="bg-gray-200 rounded-2xl h-96 overflow-hidden">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3805.9206589911087!2d78.30539617097662!3d17.463511180268647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s5th%20Floor%2C%20Above%20Fabindia%20Nallagandla%20Rd%2C%20Opp.Aparna%20sarovar%20Hyderabad%2C%20Telangana%2C%20500046!5e0!3m2!1sen!2sin!4v1755949936772!5m2!1sen!2sin"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</AnimatedSection>
+
+
+            <AnimatedSection>
+              <div className="space-y-6">
+                <div className="bg-white rounded-xl shadow-lg p-6">
+                  <h3 className="font-montserrat text-xl font-semibold mb-3">5th Floor, Above Fabindia</h3>
+                  <p className="text-gray-600 mb-3">Nallagandla Rd, Opp.Aparna sarovar<br />Hyderabad, Telangana, 500046</p>
+                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <Clock className="h-4 w-4 mr-2" />
+                    Mon-Sun: 9:00 AM - 9:00 PM
                   </div>
-                  <div className="mt-6 flex space-x-3">
-                    <button className="flex-1 bg-sage hover:bg-sage-dark text-white py-2 px-4 rounded-lg font-medium transition-colors">
-                      Book Now
-                    </button>
-                    <button className="border border-sage text-sage hover:bg-sage hover:text-white py-2 px-4 rounded-lg font-medium transition-all duration-300">
-                      Directions
-                    </button>
-                  </div>
+                  <p className="text-sage font-medium">9318629318</p>
                 </div>
-              </AnimatedSection>
-            ))}
+
+                {/* <div className="bg-white rounded-xl shadow-lg p-6">
+                  <h3 className="font-vonique text-xl font-semibold mb-3">Beverly Hills</h3>
+                  <p className="text-gray-600 mb-3">456 Rodeo Drive<br />Beverly Hills, CA 90210</p>
+                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <Clock className="h-4 w-4 mr-2" />
+                    Mon-Sun: 8:00 AM - 10:00 PM
+                  </div>
+                  <p className="text-sage font-medium">(310) 555-0123</p>
+                </div> */}
+
+                {/* <div className="bg-white rounded-xl shadow-lg p-6">
+                  <h3 className="font-vonique text-xl font-semibold mb-3">South Beach</h3>
+                  <p className="text-gray-600 mb-3">789 Ocean Drive<br />Miami Beach, FL 33139</p>
+                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <Clock className="h-4 w-4 mr-2" />
+                    Mon-Sun: 9:00 AM - 9:00 PM
+                  </div>
+                  <p className="text-sage font-medium">(305) 555-0123</p>
+                </div> */}
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-500 text-lg">Interactive Map Integration</p>
-                <p className="text-gray-400 text-sm">Google Maps will be embedded here</p>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+   
 
       {/* Emergency Contact */}
       <section className="py-12 bg-sage text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
-            <h3 className="text-2xl font-vonique font-semibold mb-4">
+            <h3 className="text-2xl font-montserrat font-semibold mb-4">
               Need Immediate Assistance?
             </h3>
             <p className="text-white/90 mb-6">
@@ -354,7 +336,7 @@ const Contact: React.FC = () => {
               className="inline-flex items-center space-x-2 bg-white text-sage hover:bg-white/90 px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg"
             >
               <Phone className="h-5 w-5" />
-              <span>1-800-URGENT-SPA</span>
+              <span>9318629318</span>
             </a>
           </AnimatedSection>
         </div>

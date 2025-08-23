@@ -103,7 +103,7 @@ const GiftCards: React.FC = () => {
               <Gift className="h-10 w-10 text-sage" />
             </div>
             <h1 className="text-5xl md:text-6xl font-serif font-light text-gray-900 mb-8">
-              Divine Gift Cards
+              aroma Gift Cards
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Share the gift of wellness and transformation. Our beautifully designed gift cards 
@@ -134,7 +134,7 @@ const GiftCards: React.FC = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                         <div className="absolute bottom-6 left-6 right-6 text-white">
-                          <h3 className="text-2xl font-serif font-light mb-2">Divine Spa</h3>
+                          <h3 className="text-2xl font-serif font-light mb-2">aroma spa</h3>
                           <p className="text-sm opacity-90">Gift Card</p>
                         </div>
                         <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2">
@@ -464,7 +464,7 @@ const GiftCards: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-serif font-light text-gray-900 mb-6">
-              Why Choose Divine Spa Gift Cards?
+              Why Choose aroma spa Gift Cards?
             </h2>
             <p className="text-lg text-gray-600">
               The perfect gift for any occasion, offering flexibility and luxury.

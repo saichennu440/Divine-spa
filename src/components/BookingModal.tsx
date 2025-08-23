@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { X, Calendar, Clock, User, Phone, Mail, Check } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
 
-const BUSINESS_PHONE = '918249470948'; // unchanged
+const BUSINESS_PHONE = '919318629318'; // unchanged
 
 const BookingModal: React.FC = () => {
   const { isBookingOpen, closeBooking, initialFormData } = useBooking();

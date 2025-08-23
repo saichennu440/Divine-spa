@@ -316,11 +316,11 @@ const Franchise: React.FC = () => {
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <Phone className="h-5 w-5 mr-3 text-white/80" />
-                    <span>1-800-DIVINE-SPA</span>
+                    <span>1-800-aroma-SPA</span>
                   </div>
                   <div className="flex items-center">
                     <Mail className="h-5 w-5 mr-3 text-white/80" />
-                    <span>franchise@divinespa.com</span>
+                    <span>franchise@aromaspa.com</span>
                   </div>
                   <div className="flex items-center">
                     <MapPin className="h-5 w-5 mr-3 text-white/80" />

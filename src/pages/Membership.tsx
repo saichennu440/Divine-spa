@@ -39,7 +39,7 @@ const Membership: React.FC = () => {
       popular: true
     },
     {
-      name: 'Divine Unlimited',
+      name: 'aroma Unlimited',
       price: 599,
       period: 'month',
       icon: <Sparkles className="h-8 w-8" />,
@@ -89,7 +89,7 @@ const Membership: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
-              Wellness Memberships
+              wellness memberships
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Join our exclusive wellness community and enjoy unlimited access to transformative treatments, 
@@ -105,10 +105,10 @@ const Membership: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
-              Choose Your Wellness Journey
+              choose your wellness journey
             </h2>
             <p className="text-lg text-gray-600">
-              Select the membership plan that best fits your wellness goals and lifestyle.
+              select the membership plan that best fits your wellness goals and lifestyle.
             </p>
           </AnimatedSection>
 
@@ -180,7 +180,7 @@ const Membership: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
-              Member Exclusive Benefits
+              member exclusive benefits
             </h2>
             <p className="text-lg text-gray-600">
               Enjoy these special perks as a valued member of our wellness community.
@@ -222,7 +222,7 @@ const Membership: React.FC = () => {
                 <AnimatedSection animation="fade-in-left">
                   <div>
                     <h2 className="text-4xl font-voniaue font-light mb-6">
-                      Gift a Wellness Membership
+                      gift a wellness membership
                     </h2>
                     <p className="text-xl text-white/90 mb-8 leading-relaxed">
                       Share the gift of wellness with someone special. Our gift memberships 
@@ -247,7 +247,7 @@ const Membership: React.FC = () => {
                       </div>
                     </div>
                     <button className="bg-white text-sage hover:bg-white/90 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:shadow-lg">
-                      Purchase Gift Membership
+                      purchase Gift Membership
                     </button>
                   </div>
                 </AnimatedSection>
@@ -273,7 +273,7 @@ const Membership: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
-              Frequently Asked Questions
+              frequently asked questions
             </h2>
             <p className="text-lg text-gray-600">
               Everything you need to know about our membership program.
@@ -323,7 +323,7 @@ const Membership: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
-              Ready to Join Our Wellness Community?
+              ready to join our wellness community?
             </h2>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Start your transformative wellness journey today with a membership plan designed for your lifestyle.

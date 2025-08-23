@@ -19,7 +19,7 @@ const Contact: React.FC = () => {
   //     name: 'Manhattan Flagship',
   //     address: '123 Fifth Avenue, New York, NY 10010',
   //     phone: '(212) 555-0123',
-  //     email: 'manhattan@aromaspa.com',
+  //     email: 'manhattan@aromaspa.in',
   //     hours: 'Mon-Sun: 9:00 AM - 9:00 PM'
   //   },
    
@@ -211,7 +211,7 @@ const Contact: React.FC = () => {
                       <Mail className="h-5 w-5 mr-3 text-white/80" />
                       <div>
                         <p className="font-bold text-white">Email Us</p>
-                        <p className="text-white/90">hello@aromaspa.com</p>
+                        <p className="text-white/90">hello@aromaspa.in</p>
                       </div>
                     </div>
                     <div className="flex items-center">

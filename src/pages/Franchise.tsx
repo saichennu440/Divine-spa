@@ -320,7 +320,7 @@ const Franchise: React.FC = () => {
                   </div>
                   <div className="flex items-center">
                     <Mail className="h-5 w-5 mr-3 text-white/80" />
-                    <span>franchise@aromaspa.com</span>
+                    <span>franchise@aromaspa.in</span>
                   </div>
                   <div className="flex items-center">
                     <MapPin className="h-5 w-5 mr-3 text-white/80" />

@@ -38,7 +38,7 @@ const Header: React.FC = () => {
          
 <Link to="/" className="flex-shrink-0 inline-flex items-center">
   <img
-    src="/Aroma_Spa_Logo_web.png"            // <-- put the file name you used in /public here
+    src="/Aroma_Spa_Logo_Web.png"            // <-- put the file name you used in /public here
     alt="Aroma Spa"
     className="h-10 md:h-16 w-auto object-contain"
   />

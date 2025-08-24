@@ -4,10 +4,12 @@ import { Sparkles, Heart, Users, Droplets, Flower2, Leaf, MapPin, Clock } from '
 import Hero from '../components/Hero';
 import AnimatedSection from '../components/AnimatedSection';
 import ServiceCard from '../components/ServiceCard';
-//import TestimonialCard from '../components/TestimonialCard';
-import TestimonialsCarousel from '../components/TestimonialsCarousel';
+import TestimonialCard from '../components/TestimonialCard';
+import { useReviews } from '../context/ReviewContext';
+//import TestimonialsCarousel from '../components/TestimonialsCarousel';
 
 const Home: React.FC = () => {
+  const { reviews } = useReviews();
   const services = [
     {
       title: 'Signature Massage Therapies',
@@ -31,7 +33,7 @@ const Home: React.FC = () => {
       image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     },
     {
-      title: 'Head, Neck & Shoulder Treatments',
+      title: 'Head,Neck,Shoulder Treatments',
       description: 'Focused treatments for head, neck, and shoulder tension including TMJ therapy and Craniosacral work.',
       icon: <Flower2 className="h-8 w-8" />,
           path: '/services/head-neck-shoulder-treatments',
@@ -40,32 +42,13 @@ const Home: React.FC = () => {
   ];
 
 
-  // const testimonials = [
-  //   {
-  //     name: 'Sarah Johnson',
-  //     city: 'New York',
-  //     rating: 5,
-  //     text: 'The most relaxing and rejuvenating experience I\'ve ever had. The therapists are incredibly skilled and the ambiance is perfect.'
-  //   },
-  //   {
-  //     name: 'Michael Chen',
-  //     city: 'Los Angeles',
-  //     rating: 5,
-  //     text: 'aroma spa truly lives up to its name. Every visit feels like a journey to inner peace and wellness.'
-  //   },
-  //   {
-  //     name: 'Emily Rodriguez',
-  //     city: 'Miami',
-  //     rating: 5,
-  //     text: 'The signature treatments are exceptional. I always leave feeling completely refreshed and renewed.'
-  //   },
-  //   {
-  //     name: 'David Thompson',
-  //     city: 'Chicago',
-  //     rating: 5,
-  //     text: 'Outstanding service and attention to detail. This spa has become my sanctuary for stress relief.'
-  //   }
-  // ];
+  // Get the latest 4 reviews for testimonials
+  const testimonials = reviews.slice(0, 4).map(review => ({
+    name: review.name,
+    city: review.city,
+    rating: review.rating,
+    text: review.review
+  }));
 
   const galleryImages = [
     'https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=500&h=600&fit=crop',
@@ -93,7 +76,7 @@ const Home: React.FC = () => {
     },
     {
       title: 'Seasonal Wellness Rituals',
-      excerpt: 'Adapt your wellness routine to the changing seasons for optimal health and vitality.',
+      excerpt: 'Adapt your wellness routine to the changing seasons for optimal health and vitality will change your life.',
       image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
       date: '2024-01-05',
       readTime: '6 min read'
@@ -148,15 +131,14 @@ const Home: React.FC = () => {
       </section>
 
       {/* Testimonials Section */}
-      <TestimonialsCarousel />
-      {/* <section className="py-20 bg-beige">
+        <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              what our guests say
+            <h2 className="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-6">
+              What Our Guests Say
             </h2>
             <p className="text-lg text-gray-600">
-              hear from those who have experienced the aroma spa difference.
+              Hear from those who have experienced the Divine Spa difference.
             </p>
           </AnimatedSection>
 
@@ -172,7 +154,7 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Gallery Section */}
       <section className="py-20">

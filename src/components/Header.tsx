@@ -192,19 +192,16 @@ const Header: React.FC = () => {
     <ChevronDown className="ml-2 inline-block h-4 w-4" />
   </button>
 
-  {isServicesDropdownOpen && (
-    <div className="mt-2 bg-white rounded-lg shadow-xl border border-gray-100 py-2">
-      {serviceCategories.map((category, index) => (
-        <Link
-          key={index}
-          to="/services"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-cream hover:text-sage transition-colors"
-          onClick={() => {
-            setIsServicesDropdownOpen(false);
-            setIsMobileMenuOpen(false);
-          }}
-        >
-          {category}
+     {isServicesDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2">
+                  {serviceCategories.map((category, index) => (
+                    <Link
+                      key={index}
+                      to={`/services/${category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '').replace(/--/g, '-')}`}
+                                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-cream hover:text-sage transition-colors"
+                    >
+                      {category}
         </Link>
       ))}
     </div>

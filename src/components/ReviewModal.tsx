@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Star, Send, Check } from 'lucide-react';
+import { useReviews } from '../context/ReviewsContext'; // <- new import
 
 interface ReviewModalProps {
   isOpen: boolean;
@@ -7,6 +8,7 @@ interface ReviewModalProps {
 }
 
 const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
+  const { addReview } = useReviews(); // use the review store
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -29,13 +31,32 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle review submission
+
+    // minimal validation (rating required; fields already required in form)
+    if (!rating) {
+      alert('Please provide a rating.');
+      return;
+    }
+
+    // Add to reviews store (this also persists to localStorage)
+    addReview({
+      name: reviewData.name,
+      email: reviewData.email,
+      city: reviewData.city,
+      service: reviewData.service,
+      review: reviewData.review,
+      rating,
+      avatar: null
+    });
+
+    // Keep existing behaviour: show success UI
+    setIsSubmitted(true);
+    // optionally: you might want to auto-close after a timeout. For now keep manual close.
     console.log('Review submitted:', {
       ...reviewData,
       rating,
       submittedAt: new Date().toISOString()
     });
-    setIsSubmitted(true);
   };
 
   const handleClose = () => {
@@ -105,9 +126,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
                 {/* Personal Information */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Your Name *
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Your Name *</label>
                     <input
                       type="text"
                       value={reviewData.name}
@@ -118,9 +137,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email *
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
                     <input
                       type="email"
                       value={reviewData.email}
@@ -133,9 +150,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      City
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">City</label>
                     <input
                       type="text"
                       value={reviewData.city}
@@ -146,9 +161,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Service Experienced
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Service Experienced</label>
                     <select
                       value={reviewData.service}
                       onChange={(e) => setReviewData({...reviewData, service: e.target.value})}
@@ -164,9 +177,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
 
                 {/* Review Text */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Review *
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Your Review *</label>
                   <textarea
                     value={reviewData.review}
                     onChange={(e) => setReviewData({...reviewData, review: e.target.value})}

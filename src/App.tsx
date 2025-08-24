@@ -17,8 +17,10 @@ import FacialTreatments from './pages/FacialTreatments';
 import Contact from './pages/Contact';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import ReviewButton from './components/ReviewButton';
+import AdminReviews from './components/AdminReviews';
 import BookingModal from './components/BookingModal';
 import { BookingProvider } from './context/BookingContext';
+import { ReviewsProvider } from './context/ReviewsContext';
 import useScrollToTop from './hooks/useScrollToTop';
 import './App.css';
 
@@ -29,6 +31,7 @@ const ScrollToTop: React.FC = () => {
 function App() {
   return (
     <BookingProvider>
+      <ReviewsProvider>
       <Router>
           <ScrollToTop />
         <div className="App">
@@ -39,6 +42,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/admin-reviews" element={<AdminReviews />} />
               <Route path="/services/signature-massage-therapies" element={<SignatureTreatments />} />
               <Route path="/services/reflexology-foot-treatments" element={<FootSpa />} />
               <Route path="/services/therapeutic-body-treatments" element={<SkinTreatments />} />
@@ -57,6 +61,7 @@ function App() {
               <ReviewButton />
         </div>
       </Router>
+      </ReviewsProvider>
     </BookingProvider>
   );
 }

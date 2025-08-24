@@ -4,7 +4,8 @@ import { Sparkles, Heart, Users, Droplets, Flower2, Leaf, MapPin, Clock } from '
 import Hero from '../components/Hero';
 import AnimatedSection from '../components/AnimatedSection';
 import ServiceCard from '../components/ServiceCard';
-import TestimonialCard from '../components/TestimonialCard';
+//import TestimonialCard from '../components/TestimonialCard';
+import TestimonialsCarousel from '../components/TestimonialsCarousel';
 
 const Home: React.FC = () => {
   const services = [
@@ -39,32 +40,32 @@ const Home: React.FC = () => {
   ];
 
 
-  const testimonials = [
-    {
-      name: 'Sarah Johnson',
-      city: 'New York',
-      rating: 5,
-      text: 'The most relaxing and rejuvenating experience I\'ve ever had. The therapists are incredibly skilled and the ambiance is perfect.'
-    },
-    {
-      name: 'Michael Chen',
-      city: 'Los Angeles',
-      rating: 5,
-      text: 'aroma spa truly lives up to its name. Every visit feels like a journey to inner peace and wellness.'
-    },
-    {
-      name: 'Emily Rodriguez',
-      city: 'Miami',
-      rating: 5,
-      text: 'The signature treatments are exceptional. I always leave feeling completely refreshed and renewed.'
-    },
-    {
-      name: 'David Thompson',
-      city: 'Chicago',
-      rating: 5,
-      text: 'Outstanding service and attention to detail. This spa has become my sanctuary for stress relief.'
-    }
-  ];
+  // const testimonials = [
+  //   {
+  //     name: 'Sarah Johnson',
+  //     city: 'New York',
+  //     rating: 5,
+  //     text: 'The most relaxing and rejuvenating experience I\'ve ever had. The therapists are incredibly skilled and the ambiance is perfect.'
+  //   },
+  //   {
+  //     name: 'Michael Chen',
+  //     city: 'Los Angeles',
+  //     rating: 5,
+  //     text: 'aroma spa truly lives up to its name. Every visit feels like a journey to inner peace and wellness.'
+  //   },
+  //   {
+  //     name: 'Emily Rodriguez',
+  //     city: 'Miami',
+  //     rating: 5,
+  //     text: 'The signature treatments are exceptional. I always leave feeling completely refreshed and renewed.'
+  //   },
+  //   {
+  //     name: 'David Thompson',
+  //     city: 'Chicago',
+  //     rating: 5,
+  //     text: 'Outstanding service and attention to detail. This spa has become my sanctuary for stress relief.'
+  //   }
+  // ];
 
   const galleryImages = [
     'https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=500&h=600&fit=crop',
@@ -147,7 +148,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-beige">
+      <TestimonialsCarousel />
+      {/* <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
@@ -170,7 +172,7 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Gallery Section */}
       <section className="py-20">

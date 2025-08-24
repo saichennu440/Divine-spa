@@ -7,16 +7,16 @@ const FootSpa: React.FC = () => {
         const { openBooking } = useBooking();
   
   const treatments = [
-    { name: 'Foot Reflexology', duration: '30 mins', price: '₹1,000', description: 'Calming leg & foot massage targeting reflex points to promote whole-body wellness.', features: ['Pressure point therapy','Improved circulation']},
-    { name: 'Hot Stone Foot Treatment', duration: '45 mins', price: '₹950', description: 'Heated stones to soothe tired feet and improve circulation.' , features: ['Heated stones','Soothing warmth']},
-    { name: 'Aromatherapy Foot Massage', duration: '90 mins', price: '₹1,400', description: 'Foot massage with essential oils, includes soak, exfoliation and moisturising.' , features: ['Essential oils','Foot soak & exfoliation']},
-    { name: 'Sports Massage for Feet', duration: '45 mins', price: '₹1,100', description: 'Targeted techniques for athletes to improve recovery and performance.' , features: ['Sports-specific techniques','Recovery support']},
+    { name: 'Foot Reflexology', duration: '30 mins', price: '₹1,000', description: 'Calming leg & foot massage targeting reflex points to promote whole-body wellness.', features: ['Pressure point therapy','Improved circulation'], image:'/FootSpa_images/Foot_Reflexology.jpg' },
+    { name: 'Hot Stone Foot Treatment', duration: '45 mins', price: '₹950', description: 'Heated stones to soothe tired feet and improve circulation.' , features: ['Heated stones','Soothing warmth'], image:'/FootSpa_images/Hot_Stone_Foot_Treatment.jpg' },
+    { name: 'Aromatherapy Foot Massage', duration: '90 mins', price: '₹1,400', description: 'Foot massage with essential oils, includes soak, exfoliation and moisturising.' , features: ['Essential oils','Foot soak & exfoliation'], image:'/FootSpa_images/Aromatherapy_Foot_Massage.jpg' },
+    { name: 'Sports Massage for Feet', duration: '45 mins', price: '₹1,100', description: 'Targeted techniques for athletes to improve recovery and performance.' , features: ['Sports-specific techniques','Recovery support'],  image:'/FootSpa_images/Sports_Massage_Feet.jpg' },
     // Pedicures
-    { name: 'Moisturising Exotic Pedicure (Kiwi & Strawberry)', duration: '60 mins', price: '₹1,200', description: 'Hydrating exotic pedicure for silky smooth feet.' , features: ['Hydration','Fruit extracts']},
-    { name: 'Classic Pedicure (Watermelon & Litchi)', duration: '60 mins', price: '₹1,400', description: 'Classic fruit-based pedicure to restore suppleness.' , features: ['Classic care']},
-    { name: 'Anti-Oxidant Pedicure (Orange & Chocolate)', duration: '60 mins', price: '₹1,700', description: 'Detoxifying pedicure crafted to invigorate and relieve swelling.' , features: ['Detox','Invigoration']},
-    { name: 'Brightening & De-Tan Pedicure', duration: '60 mins', price: '₹1,500', description: 'Brightening pedicure to reduce tan and reveal softer skin.' , features: ['Brightening','De-tan']},
-    { name: 'De-Stress Refreshment Pedicure (Cucumber & Peppermint)', duration: '60 mins', price: '₹1,500', description: 'Cooling pedicure to soothe and refresh.' , features: ['Cooling','Soothing']}
+    { name: 'Moisturising Exotic Pedicure (Kiwi & Strawberry)', duration: '60 mins', price: '₹1,200', description: 'Hydrating exotic pedicure for silky smooth feet.' , features: ['Hydration','Fruit extracts'], image:'/FootSpa_images/Moisturising_Exotic_Pedicure_Kiwi_Strawberry.jpg' },
+    { name: 'Classic Pedicure (Watermelon & Litchi)', duration: '60 mins', price: '₹1,400', description: 'Classic fruit-based pedicure to restore suppleness.' , features: ['Classic care'], image:'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'},
+    { name: 'Anti-Oxidant Pedicure (Orange & Chocolate)', duration: '60 mins', price: '₹1,700', description: 'Detoxifying pedicure crafted to invigorate and relieve swelling.' , features: ['Detox','Invigoration'], image:'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'},
+    { name: 'Brightening & De-Tan Pedicure', duration: '60 mins', price: '₹1,500', description: 'Brightening pedicure to reduce tan and reveal softer skin.' , features: ['Brightening','De-tan'], image:'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'},
+    { name: 'De-Stress Refreshment Pedicure (Cucumber & Peppermint)', duration: '60 mins', price: '₹1,500', description: 'Cooling pedicure to soothe and refresh.' , features: ['Cooling','Soothing'], image:'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'},
   ];
 
   return (
@@ -45,7 +45,8 @@ const FootSpa: React.FC = () => {
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
                   <div className="relative h-64">
                     <img
-                      src="https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                      src = {treatment.image}
+                      //src="https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
                       alt={treatment.name}
                       className="w-full h-full object-cover"
                     />

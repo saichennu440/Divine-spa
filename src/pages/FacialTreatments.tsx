@@ -7,10 +7,10 @@ const FacialTreatments: React.FC = () => {
         const { openBooking } = useBooking();
   
   const treatments = [
-    { name: 'Therapeutic Head Massage', duration: '60 mins', price: '₹1,200', description: 'Focused massage targeting scalp and facial muscles to relieve tension and headaches.' , features: ['Scalp massage','Tension relief']},
-    { name: 'Neck & Shoulder Therapy', duration: '75 mins', price: '₹1,600', description: 'Intensive treatment for neck and shoulder tension from daily stress and desk work.' , features: ['Posture improvement','Pain reduction']},
-    { name: 'TMJ & Jaw Therapy', duration: '90 mins', price: '₹1,800', description: 'Specialized treatment for jaw tension and TMJ issues.' , features: ['Jaw mobility','Headache relief']},
-    { name: 'Craniosacral Therapy', duration: '90 mins', price: '₹2,000', description: 'Gentle hands-on technique to support nervous system function and relaxation.' , features: ['Nervous system support','Gentle approach']}
+    { name: 'Therapeutic Head Massage', duration: '60 mins', price: '₹1,200', description: 'Focused massage targeting scalp and facial muscles to relieve tension and headaches.' , features: ['Scalp massage','Tension relief'], image:'/FacialTreatment_images/Therapeutic_Head_Massage.jpg'},
+    { name: 'Neck & Shoulder Therapy', duration: '75 mins', price: '₹1,600', description: 'Intensive treatment for neck and shoulder tension from daily stress and desk work.' , features: ['Posture improvement','Pain reduction'], image:'/FacialTreatment_images/Neck_Shoulder_Therapy.jpg'},
+    { name: 'TMJ & Jaw Therapy', duration: '90 mins', price: '₹1,800', description: 'Specialized treatment for jaw tension and TMJ issues.' , features: ['Jaw mobility','Headache relief'], image:'/FacialTreatment_images/TMJ_Jaw_Therapy.jpg'},
+    { name: 'Craniosacral Therapy', duration: '90 mins', price: '₹2,000', description: 'Gentle hands-on technique to support nervous system function and relaxation.' , features: ['Nervous system support','Gentle approach'], image:'/FacialTreatment_images/Craniosacral_Therapy.jpg'}
   ];
 
   return (
@@ -39,7 +39,7 @@ const FacialTreatments: React.FC = () => {
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
                   <div className="relative h-64">
                     <img
-                      src="https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+                      src={treatment.image}
                       alt={treatment.name}
                       className="w-full h-full object-cover"
                     />

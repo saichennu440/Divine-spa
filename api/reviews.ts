@@ -1,4 +1,4 @@
-import { createAdminClient } from '../src/lib/supabase';
+import { createAdminClient } from '../src/lib/SupabaseClient';
 import type { CreateReviewRequest, ReviewsResponse } from '../src/types/review';
 
 // Rate limiting store (in production, use Redis or similar)
@@ -29,27 +29,27 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
-async function verifyRecaptcha(token: string): Promise<boolean> {
-  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-  if (!secretKey) {
-    console.warn('reCAPTCHA secret key not configured');
-    return true; // Allow in development
-  }
+// async function verifyRecaptcha(token: string): Promise<boolean> {
+//   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+//   if (!secretKey) {
+//     console.warn('reCAPTCHA secret key not configured');
+//     return true; // Allow in development
+//   }
 
-  try {
-    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `secret=${secretKey}&response=${token}`
-    });
+//   try {
+//     const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+//       body: `secret=${secretKey}&response=${token}`
+//     });
 
-    const data = await response.json();
-    return data.success && data.score > 0.5; // For reCAPTCHA v3
-  } catch (error) {
-    console.error('reCAPTCHA verification failed:', error);
-    return false;
-  }
-}
+//     const data = await response.json();
+//     return data.success && data.score > 0.5; // For reCAPTCHA v3
+//   } catch (error) {
+//     console.error('reCAPTCHA verification failed:', error);
+//     return false;
+//   }
+// }
 
 function sanitizeText(text: string): string {
   return text
@@ -83,10 +83,10 @@ export default async function handler(req: any, res: any) {
       }
 
       const body: CreateReviewRequest = req.body;
-      const { name, email, city, service, review, rating, avatar_url, recaptcha_token } = body;
+      const { name, email, city, service, review, rating, avatar_url} = body;
 
       // Validation
-      if (!name || !email || !review || !rating) {
+      if (!name  || !review || !rating) {
         return res.status(400).json({ error: 'Missing required fields: name, email, review, rating' });
       }
 
@@ -94,7 +94,7 @@ export default async function handler(req: any, res: any) {
         return res.status(400).json({ error: 'Invalid email format' });
       }
 
-      if (review.length < 20 || review.length > 2000) {
+      if (review.length < 2 || review.length > 2000) {
         return res.status(400).json({ error: 'Review must be between 20 and 2000 characters' });
       }
 
@@ -103,9 +103,9 @@ export default async function handler(req: any, res: any) {
       }
 
       // Verify reCAPTCHA
-      if (!(await verifyRecaptcha(recaptcha_token))) {
-        return res.status(400).json({ error: 'reCAPTCHA verification failed' });
-      }
+      // if (!(await verifyRecaptcha(recaptcha_token))) {
+      //   return res.status(400).json({ error: 'reCAPTCHA verification failed' });
+      // }
 
       // Check for spam (same email submitting multiple reviews recently)
       const { data: recentReviews } = await supabase

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Star, Send, Check } from 'lucide-react';
-import type { CreateReviewRequest } from '../types/review';
+//import type { CreateReviewRequest } from '../types/review';
+import { supabase } from '../lib/SupabaseClient';
 
 interface ReviewModalProps {
   isOpen: boolean;
@@ -8,13 +9,13 @@ interface ReviewModalProps {
 }
 
 // Load reCAPTCHA script
-const loadRecaptcha = () => {
-  if (typeof window !== 'undefined' && !window.grecaptcha) {
-    const script = document.createElement('script');
-    script.src = `https://www.google.com/recaptcha/api.js?render=${import.meta.env.VITE_RECAPTCHA_SITE_KEY}`;
-    document.head.appendChild(script);
-  }
-};
+// const loadRecaptcha = () => {
+//   if (typeof window !== 'undefined' && !window.grecaptcha) {
+//     const script = document.createElement('script');
+//     script.src = `https://www.google.com/recaptcha/api.js?render=${import.meta.env.VITE_RECAPTCHA_SITE_KEY}`;
+//     document.head.appendChild(script);
+//   }
+// };
 
 const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
   const [rating, setRating] = useState(0);
@@ -39,9 +40,9 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
     'Other'
   ];
 
-  React.useEffect(() => {
-    loadRecaptcha();
-  }, []);
+  // React.useEffect(() => {
+  //   loadRecaptcha();
+  // }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,46 +55,47 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
     setSubmitError(null);
 
-    try {
-      // Get reCAPTCHA token
-      let recaptchaToken = '';
-      if (window.grecaptcha && import.meta.env.VITE_RECAPTCHA_SITE_KEY) {
-        recaptchaToken = await window.grecaptcha.execute(import.meta.env.VITE_RECAPTCHA_SITE_KEY, {
-          action: 'submit_review'
-        });
-      }
+    // try {
+    //   // Get reCAPTCHA token
+    //   let recaptchaToken = '';
+    //   if (window.grecaptcha && import.meta.env.VITE_RECAPTCHA_SITE_KEY) {
+    //     recaptchaToken = await window.grecaptcha.execute(import.meta.env.VITE_RECAPTCHA_SITE_KEY, {
+    //       action: 'submit_review'
+    //     });
+    //   }
 
-      const reviewRequest: CreateReviewRequest = {
+      // const reviewRequest: CreateReviewRequest = {
+    try {
+    // validation
+    if (!reviewData.name || !reviewData.email || !reviewData.review || !rating) {
+      throw new Error('Please fill required fields before submitting.');
+    }
+
+    const { data, error } = await supabase
+      .from('reviews')
+      .insert({
         name: reviewData.name.trim(),
-        email: reviewData.email.trim(),
-        city: reviewData.city?.trim() || undefined,
-        service: reviewData.service || undefined,
+        email: reviewData.email.trim().toLowerCase(),
+        city: reviewData.city?.trim() || null,
+        service: reviewData.service || null,
         review: reviewData.review.trim(),
         rating,
-        recaptcha_token: recaptchaToken
-      };
+        published: false,
+        deleted: false
+      })
+      .select('id, name, city, service, review, rating, created_at')
+      .single();
 
-      const response = await fetch('/api/reviews', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(reviewRequest)
-      });
+    if (error) throw error;
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to submit review');
-      }
-
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error('Error submitting review:', error);
-      setSubmitError(error instanceof Error ? error.message : 'Failed to submit review. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+    setIsSubmitted(true);
+  } catch (err) {
+    console.error('Error submitting review:', err);
+    setSubmitError(err instanceof Error ? err.message : 'Failed to submit review. Please try again.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const handleClose = () => {
     onClose();

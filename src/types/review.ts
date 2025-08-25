@@ -33,7 +33,7 @@ export interface CreateReviewRequest {
   review: string;
   rating: number;
   avatar_url?: string;
-  recaptcha_token: string;
+
 }
 
 export interface ReviewsResponse {

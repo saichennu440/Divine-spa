@@ -34,36 +34,36 @@ const About: React.FC = () => {
     }
   ];
 
-  const team = [
-    {
-      name: 'Sarah Williams',
-      role: 'Spa Director & Master Therapist',
-      experience: '15+ years',
-      image: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-      specialties: ['Signature Treatments', 'Aromatherapy', 'Wellness Coaching']
-    },
-    {
-      name: 'Maria Rodriguez',
-      role: 'Senior Massage Therapist',
-      experience: '12+ years',
-      image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-      specialties: ['Deep Tissue', 'Hot Stone', 'Prenatal Massage']
-    },
-    {
-      name: 'Emily Chen',
-      role: 'Lead Esthetician',
-      experience: '10+ years',
-      image: 'https://images.pexels.com/photos/3785081/pexels-photo-3785081.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-      specialties: ['Anti-Aging Facials', 'HydraFacial', 'Skin Analysis']
-    },
-    {
-      name: 'James Thompson',
-      role: 'Wellness Consultant',
-      experience: '8+ years',
-      image: 'https://images.pexels.com/photos/3785083/pexels-photo-3785083.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-      specialties: ['Reflexology', 'Meditation', 'Holistic Wellness']
-    }
-  ];
+  // const team = [
+  //   {
+  //     name: 'Sarah Williams',
+  //     role: 'Spa Director & Master Therapist',
+  //     experience: '15+ years',
+  //     image: 'https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+  //     specialties: ['Signature Treatments', 'Aromatherapy', 'Wellness Coaching']
+  //   },
+  //   {
+  //     name: 'Maria Rodriguez',
+  //     role: 'Senior Massage Therapist',
+  //     experience: '12+ years',
+  //     image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+  //     specialties: ['Deep Tissue', 'Hot Stone', 'Prenatal Massage']
+  //   },
+  //   {
+  //     name: 'Emily Chen',
+  //     role: 'Lead Esthetician',
+  //     experience: '10+ years',
+  //     image: 'https://images.pexels.com/photos/3785081/pexels-photo-3785081.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+  //     specialties: ['Anti-Aging Facials', 'HydraFacial', 'Skin Analysis']
+  //   },
+  //   {
+  //     name: 'James Thompson',
+  //     role: 'Wellness Consultant',
+  //     experience: '8+ years',
+  //     image: 'https://images.pexels.com/photos/3785083/pexels-photo-3785083.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
+  //     specialties: ['Reflexology', 'Meditation', 'Holistic Wellness']
+  //   }
+  // ];
 
   return (
     <div className="pt-20">
@@ -190,7 +190,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Our Team */}
-      <section className="py-20 bg-cream">
+      {/* <section className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
@@ -248,10 +248,10 @@ const About: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Awards & Recognition */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
@@ -303,17 +303,17 @@ const About: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Locations */}
       <section className="py-20 bg-sage text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-vonique font-light mb-6">
-              our locations
+              our location
             </h2>
             <p className="text-xl text-white/90">
-              Visit us at any of our luxurious spa locations across the country.
+              Visit us at our luxurious spa location in Hyderabad.
             </p>
           </AnimatedSection>
 

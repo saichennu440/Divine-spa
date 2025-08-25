@@ -8,49 +8,49 @@ const Services: React.FC = () => {
   
   const serviceCategories = [
     {
-      category: 'Full Body Massage',
+      category: 'full body massage',
       description: 'Relaxing full body massage therapies — choose duration to suit your time and needs.',
       services: [
+        { name: 'Swedish Therapy', duration: '60 mins', price: '₹2,800', description: 'Quick relaxation session — ideal for busy schedules.' , features: ['Quick unwind','Stress relief']},
         { name: 'Swedish Therapy', duration: '90 mins', price: '₹3,800', description: 'Classic Art of Relaxation — long gliding strokes to melt tension and stimulate lymphatic flow.' , features: ['Long gliding strokes','Lymphatic stimulation','Relaxation']},
         { name: 'Swedish Therapy', duration: '120 mins', price: '₹4,500', description: 'Classic Art of Relaxation — extended session for deeper relaxation.' , features: ['Extended relaxation','Improved circulation']},
-        { name: 'Swedish Therapy', duration: '60 mins', price: '₹2,800', description: 'Quick relaxation session — ideal for busy schedules.' , features: ['Quick unwind','Stress relief']},
 
+        { name: 'Deep Tissue Therapy', duration: '60 mins', price: '₹3,600', description: 'Focused deep work for specific problem areas.' , features: ['Targeted relief','Muscle release']},
         { name: 'Deep Tissue Therapy', duration: '90 mins', price: '₹4,800', description: 'Intense Relief, Lasting Comfort — targets deep muscle and connective tissue.' , features: ['Deep pressure','Chronic pain relief']},
         { name: 'Deep Tissue Therapy', duration: '120 mins', price: '₹5,800', description: 'Extended deep tissue session for intensive recovery.' , features: ['Extended therapy','Improved flexibility']},
-        { name: 'Deep Tissue Therapy', duration: '60 mins', price: '₹3,600', description: 'Focused deep work for specific problem areas.' , features: ['Targeted relief','Muscle release']},
 
+        { name: 'Aromatic Therapy', duration: '60 mins', price: '₹3,000', description: 'Short aromatic session to recharge and calm.' , features: ['Quick aroma boost']},
         { name: 'Aromatic Therapy', duration: '90 mins', price: '₹4,300', description: 'Pathway to Inner Bliss — massage with pure essential oils to calm mind & body.' , features: ['Essential oil blends','Emotional balance']},
         { name: 'Aromatic Therapy', duration: '120 mins', price: '₹5,300', description: 'Long aromatic journey for deep relaxation.' , features: ['Extended aromatic experience']},
-        { name: 'Aromatic Therapy', duration: '60 mins', price: '₹3,000', description: 'Short aromatic session to recharge and calm.' , features: ['Quick aroma boost']},
 
+        { name: 'Balinese Therapy', duration: '60 mins', price: '₹3,600', description: 'Short Balinese treatment to release tension quickly.' , features: ['Quick stretch & release']},
         { name: 'Balinese Therapy', duration: '90 mins', price: '₹4,800', description: 'An Island Escape — acupressure, gentle stretches and rhythmic movements for balance.' , features: ['Acupressure','Rhythmic movements']},
-        { name: 'Balinese Therapy', duration: '120 mins', price: '₹5,800', description: 'Extended Balinese ritual for full body renewal.' , features: ['Extended ritual','Deep balance']},
-        { name: 'Balinese Therapy', duration: '60 mins', price: '₹3,600', description: 'Short Balinese treatment to release tension quickly.' , features: ['Quick stretch & release']}
+        { name: 'Balinese Therapy', duration: '120 mins', price: '₹5,800', description: 'Extended Balinese ritual for full body renewal.' , features: ['Extended ritual','Deep balance']}
       ]
     },
     {
-      category: 'Signature & Tandem Therapies',
+      category: 'signature & tandem therapies',
       description: 'Our curated signature rituals for an elevated spa experience.',
       services: [
+        { name: 'Tandem (Four Hands) Therapy', duration: '60 mins', price: '₹5,300', description: 'Short tandem session for intense relaxation.' , features: ['Short synchrony experience']},
+        { name: 'Tandem (Four Hands) Therapy', duration: '90 mins', price: '₹6,000', description: 'Where rhythm meets serenity — two therapists working in synchrony.' , features: ['Dual therapists','Harmonized strokes']},
         { name: 'Signature Therapy', duration: '90 mins', price: '₹5,300', description: 'A Journey Tailored to You — fusion of traditional and contemporary techniques.' , features: ['Personalized','Luxury oils']},
         { name: 'Signature Therapy', duration: '120 mins', price: '₹6,000', description: 'Extended signature journey for deep renewal.' , features: ['Extended personalization']},
-        { name: 'Tandem (Four Hands) Therapy', duration: '90 mins', price: '₹6,000', description: 'Where rhythm meets serenity — two therapists working in synchrony.' , features: ['Dual therapists','Harmonized strokes']},
-        { name: 'Tandem (Four Hands) Therapy', duration: '60 mins', price: '₹5,300', description: 'Short tandem session for intense relaxation.' , features: ['Short synchrony experience']}
       ]
     },
     {
-      category: 'Herbal & Hot Stone Therapies',
+      category: 'herbal & hot stone therapies',
       description: 'Herbal potli and hot stone rituals that use heat and herbs to heal and restore.',
       services: [
-        { name: 'Herbal Potli Therapy', duration: '90 mins', price: '₹5,300', description: 'A soothing symphony of heated herbal poultices to melt tension.' , features: ['Herbal compress','Heat therapy']},
         { name: 'Herbal Potli Therapy', duration: '60 mins', price: '₹4,100', description: 'Short herbal potli session to relax and refresh.' , features: ['Quick herbal relief']},
+        { name: 'Herbal Potli Therapy', duration: '90 mins', price: '₹5,300', description: 'A soothing symphony of heated herbal poultices to melt tension.' , features: ['Herbal compress','Heat therapy']},
 
+        { name: 'Hot Stone Therapy', duration: '60 mins', price: '₹4,100', description: 'Short hot-stone ritual for targeted warmth & release.' , features: ['Targeted heat therapy']},
         { name: 'Hot Stone Therapy', duration: '90 mins', price: '₹5,300', description: 'Heat, Harmony & Healing — heated stones to penetrate deep into muscles.' , features: ['Heated stones','Deep muscle relaxation']},
-        { name: 'Hot Stone Therapy', duration: '60 mins', price: '₹4,100', description: 'Short hot-stone ritual for targeted warmth & release.' , features: ['Targeted heat therapy']}
       ]
     },
     {
-      category: 'Thai Therapy',
+      category: 'thai therapy',
       description: 'Assisted-stretch therapies that restore mobility and energy flow.',
       services: [
         { name: 'Dry Thai Therapy', duration: '60 mins', price: '₹3,000', description: 'Ancient dance of healing — deep pressure points and assisted stretches (no oils).' , features: ['Assisted stretches','Energy flow']},
@@ -59,7 +59,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Full Body Polishing & Scrubs',
+      category: 'full body polishing & scrubs',
       description: 'Exfoliation rituals to reveal soft, radiant skin.',
       services: [
         { name: 'Black Currant Polish (Dry Skin)', duration: '60 mins', price: '₹4,500', description: 'Hydration meets antioxidant indulgence.' , features: ['Hydration','Antioxidants']},
@@ -69,7 +69,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Clean-ups & Facial Essentials',
+      category: 'clean-ups & facial essentials',
       description: 'Gentle clean-ups and essential facials for glowing skin.',
       services: [
         { name: 'Clean-up (Watermelon / Strawberry)', duration: '30 mins', price: '₹1,200', description: 'Hydration / antioxidant-rich cleanse for tired skin.' , features: ['Antioxidant cleanse']},
@@ -79,7 +79,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Facial — Premium & Signature',
+      category: 'facial — premium & signature',
       description: 'Curated premium facials for targeted results.',
       services: [
         { name: 'Deep Pore Cleansing (Oily Skin)', duration: '60 mins', price: '₹3,300', description: 'Refresh oily skin, smooth and nourish.' , features: ['Pore cleansing']},
@@ -88,7 +88,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Quick Massage & Target Areas',
+      category: 'quick massage & target areas',
       description: 'Short, focused therapies for instant relief.',
       services: [
         { name: 'Foot Reflexology', duration: '30 mins', price: '₹1,000', description: 'Calming leg & foot massage targeting reflex points.' , features: ['Reflex points']},
@@ -97,7 +97,7 @@ const Services: React.FC = () => {
       ]
     },
     {
-      category: 'Foot Pedicure',
+      category: 'foot pedicure',
       description: 'Pampering pedicures to nourish, smooth and refresh feet.',
       services: [
         { name: 'Moisturising Exotic Pedicure (Kiwi & Strawberry)', duration: '60 mins', price: '₹1,200', description: 'Hydrating exotic pedicure for velvet-smooth feet.' , features: ['Hydration','Exotic fruit extracts']},

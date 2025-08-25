@@ -73,7 +73,7 @@ const Header: React.FC = () => {
               onMouseLeave={() =>{ closeTimeout = setTimeout(() => setIsServicesDropdownOpen(false), 150); }}
             >
               <Link 
-                to="/services"
+                to="#"
                 className={`flex items-center text-md font-montserrat font-semibold hover:text-sage transition-colors ${
                   location.pathname === '/services' ? 'text-sage' : 'text-gray-700'
                 }`}

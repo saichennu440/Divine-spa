@@ -5,11 +5,11 @@ import Hero from '../components/Hero';
 import AnimatedSection from '../components/AnimatedSection';
 import ServiceCard from '../components/ServiceCard';
 import TestimonialCard from '../components/TestimonialCard';
-import { useReviews } from '../context/ReviewContext';
+import { useReviews } from '../hooks/useReviews';
 //import TestimonialsCarousel from '../components/TestimonialsCarousel';
 
 const Home: React.FC = () => {
-  const { reviews } = useReviews();
+  const { reviews, loading: reviewsLoading } = useReviews(4);
   const services = [
     {
       title: 'Signature Massage Therapies',
@@ -43,45 +43,45 @@ const Home: React.FC = () => {
 
 
   // Get the latest 4 reviews for testimonials
-  const testimonials = reviews.slice(0, 4).map(review => ({
-    name: review.name,
-    city: review.city,
-    rating: review.rating,
-    text: review.review
-  }));
+  // const testimonials = reviews.slice(0, 4).map(review => ({
+  //   name: review.name,
+  //   city: review.city,
+  //   rating: review.rating,
+  //   text: review.review
+  // }));
 
-  const galleryImages = [
-    'https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=500&h=600&fit=crop',
-    'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&fit=crop',
-    'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg?auto=compress&cs=tinysrgb&w=500&h=700&fit=crop',
-    'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
-    'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg?auto=compress&cs=tinysrgb&w=500&h=600&fit=crop',
-    'https://images.pexels.com/photos/6663461/pexels-photo-6663461.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&fit=crop'
-  ];
+  // const galleryImages = [
+  //   'https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=500&h=600&fit=crop',
+  //   'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&fit=crop',
+  //   'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg?auto=compress&cs=tinysrgb&w=500&h=700&fit=crop',
+  //   'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
+  //   'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg?auto=compress&cs=tinysrgb&w=500&h=600&fit=crop',
+  //   'https://images.pexels.com/photos/6663461/pexels-photo-6663461.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&fit=crop'
+  // ];
 
-  const blogPosts = [
-    {
-      title: 'The Art of Mindful Self-Care',
-      excerpt: 'Discover how mindfulness can transform your wellness routine and enhance your spa experience.',
-      image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      date: '2024-01-15',
-      readTime: '5 min read'
-    },
-    {
-      title: 'Benefits of Regular Spa Treatments',
-      excerpt: 'Learn about the physical and mental health benefits of incorporating spa treatments into your lifestyle.',
-      image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      date: '2024-01-10',
-      readTime: '7 min read'
-    },
-    {
-      title: 'Seasonal Wellness Rituals',
-      excerpt: 'Adapt your wellness routine to the changing seasons for optimal health and vitality will change your life.',
-      image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
-      date: '2024-01-05',
-      readTime: '6 min read'
-    }
-  ];
+  // const blogPosts = [
+  //   {
+  //     title: 'The Art of Mindful Self-Care',
+  //     excerpt: 'Discover how mindfulness can transform your wellness routine and enhance your spa experience.',
+  //     image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
+  //     date: '2024-01-15',
+  //     readTime: '5 min read'
+  //   },
+  //   {
+  //     title: 'Benefits of Regular Spa Treatments',
+  //     excerpt: 'Learn about the physical and mental health benefits of incorporating spa treatments into your lifestyle.',
+  //     image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
+  //     date: '2024-01-10',
+  //     readTime: '7 min read'
+  //   },
+  //   {
+  //     title: 'Seasonal Wellness Rituals',
+  //     excerpt: 'Adapt your wellness routine to the changing seasons for optimal health and vitality will change your life.',
+  //     image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop',
+  //     date: '2024-01-05',
+  //     readTime: '6 min read'
+  //   }
+  // ];
 
   return (
     <div className="pt-20">
@@ -131,33 +131,53 @@ const Home: React.FC = () => {
       </section>
 
       {/* Testimonials Section */}
-        <section className="py-20 bg-beige">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-gray-900 mb-6">
-              What Our Guests Say
-            </h2>
-            <p className="text-lg text-gray-600">
-              Hear from those who have experienced the Divine Spa difference.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <AnimatedSection 
-                key={index} 
-                delay={index * 100}
-                animation="fade-in-up"
-              >
-                <TestimonialCard {...testimonial} />
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
+         <section className="py-20 bg-beige">
+               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <AnimatedSection className="text-center mb-16">
+                   <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
+                     what our guests say
+                   </h2>
+                   <p className="text-lg text-gray-600">
+                     Hear from those who have experienced the Divine Spa difference.
+                   </p>
+                 </AnimatedSection>
+       
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                   {reviewsLoading ? (
+                     // Loading skeleton
+                     [...Array(4)].map((_, index) => (
+                       <div key={index} className="bg-white rounded-2xl shadow-lg p-6 animate-pulse">
+                         <div className="h-4 bg-gray-200 rounded mb-4"></div>
+                         <div className="h-16 bg-gray-200 rounded mb-4"></div>
+                         <div className="flex items-center">
+                           <div className="w-10 h-10 bg-gray-200 rounded-full mr-3"></div>
+                           <div className="h-4 bg-gray-200 rounded flex-1"></div>
+                         </div>
+                       </div>
+                     ))
+                   ) : (
+                     reviews.map((review, index) => (
+                     <AnimatedSection 
+                       key={index} 
+                       delay={index * 100}
+                       animation="fade-in-up"
+                     >
+                       <TestimonialCard 
+                         name={review.name}
+                         city={review.city || 'Guest'}
+                         rating={review.rating}
+                         text={review.review}
+                         avatar={review.avatar_url}
+                       />
+                     </AnimatedSection>
+                     ))
+                   )}
+                 </div>
+               </div>
+             </section>
 
       {/* Gallery Section */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
@@ -187,7 +207,7 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Membership & Gift Cards Section */}
       <section id="membership" className="py-20 bg-sage text-white">
@@ -201,7 +221,7 @@ const Home: React.FC = () => {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-1 ">
             <AnimatedSection animation="fade-in-left">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
                 <Users className="h-12 w-12 mb-6 text-white" />
@@ -211,7 +231,7 @@ const Home: React.FC = () => {
                   and personalized wellness consultations.
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-3xl font-montserrat font-light">Starting at $199<span className="text-lg">/month</span></span>
+                  <span className="text-3xl font-montserrat font-light">Starting at ₹12,000<span className="text-lg">/month</span></span>
                   <Link to="/membership">
                   <button className="bg-white text-sage px-6 py-3 rounded-full font-medium hover:bg-white/90 transition-colors">
                     Learn More
@@ -220,7 +240,7 @@ const Home: React.FC = () => {
                 </div>
               </div>
             </AnimatedSection>
-
+{/* 
             <AnimatedSection animation="fade-in-right">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
                 <Leaf className="h-12 w-12 mb-6 text-white" />
@@ -238,7 +258,7 @@ const Home: React.FC = () => {
                   </Link>
                 </div>
               </div>
-            </AnimatedSection>
+            </AnimatedSection> */}
           </div>
         </div>
       </section>
@@ -309,7 +329,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Blog Preview Section */}
-      <section className="py-20 bg-cream">
+      {/* <section className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
@@ -360,7 +380,7 @@ const Home: React.FC = () => {
             </button>
           </AnimatedSection>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

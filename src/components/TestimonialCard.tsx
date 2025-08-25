@@ -6,7 +6,7 @@ interface TestimonialProps {
   city: string;
   rating: number;
   text: string;
-  avatar?: string;
+  avatar?: string | null;
 }
 
 const TestimonialCard: React.FC<TestimonialProps> = ({ name, city, rating, text, avatar }) => {

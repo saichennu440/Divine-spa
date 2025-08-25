@@ -12,8 +12,8 @@ export default {
       colors: {
         'cream': '#FDF6E3',
         'beige': '#F5E6D3',
-        'sage': '#a45f49',
-        'sage-dark': '#af593e',
+        'sage': '#cc8e70',
+        'sage-dark': '#db8d63',
         'brown': '#8B6B47',
         'brown-dark': '#6B4423',
       },

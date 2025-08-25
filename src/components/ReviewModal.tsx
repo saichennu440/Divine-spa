@@ -1,17 +1,27 @@
 import React, { useState } from 'react';
 import { X, Star, Send, Check } from 'lucide-react';
-import { useReviews } from '../context/ReviewContext';
+import type { CreateReviewRequest } from '../types/review';
 
 interface ReviewModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+// Load reCAPTCHA script
+const loadRecaptcha = () => {
+  if (typeof window !== 'undefined' && !window.grecaptcha) {
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/api.js?render=${import.meta.env.VITE_RECAPTCHA_SITE_KEY}`;
+    document.head.appendChild(script);
+  }
+};
+
 const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
-  const { addReview } = useReviews();
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [reviewData, setReviewData] = useState({
     name: '',
     email: '',
@@ -29,25 +39,60 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
     'Other'
   ];
 
+  React.useEffect(() => {
+    loadRecaptcha();
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle review submission
-    const newReview = {
-      name: reviewData.name,
-      city: reviewData.city || 'Guest',
-      rating,
-      review: reviewData.review,
-      service: reviewData.service || 'General'
-    };
-    
-    addReview(newReview);
-    console.log('Review submitted:', {
-      ...reviewData,
-      rating,
-      submittedAt: new Date().toISOString()
-    });
-    
-    setIsSubmitted(true);
+    submitReview();
+  };
+
+  const submitReview = async () => {
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      // Get reCAPTCHA token
+      let recaptchaToken = '';
+      if (window.grecaptcha && import.meta.env.VITE_RECAPTCHA_SITE_KEY) {
+        recaptchaToken = await window.grecaptcha.execute(import.meta.env.VITE_RECAPTCHA_SITE_KEY, {
+          action: 'submit_review'
+        });
+      }
+
+      const reviewRequest: CreateReviewRequest = {
+        name: reviewData.name.trim(),
+        email: reviewData.email.trim(),
+        city: reviewData.city?.trim() || undefined,
+        service: reviewData.service || undefined,
+        review: reviewData.review.trim(),
+        rating,
+        recaptcha_token: recaptchaToken
+      };
+
+      const response = await fetch('/api/reviews', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reviewRequest)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to submit review');
+      }
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      setSubmitError(error instanceof Error ? error.message : 'Failed to submit review. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {
@@ -55,6 +100,8 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
     setIsSubmitted(false);
     setRating(0);
     setHoveredRating(0);
+    setIsSubmitting(false);
+    setSubmitError(null);
     setReviewData({
       name: '',
       email: '',
@@ -189,6 +236,12 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
                   />
                 </div>
 
+                {submitError && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <p className="text-red-700 text-sm">{submitError}</p>
+                  </div>
+                )}
+
                 {/* Privacy Notice */}
                 <div className="bg-gray-50 rounded-lg p-4">
                   <p className="text-xs text-gray-600">
@@ -201,12 +254,13 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  disabled={!rating || !reviewData.name || !reviewData.email || !reviewData.review}
+                  disabled={!rating || !reviewData.name || !reviewData.email || !reviewData.review || isSubmitting}
                   className="w-full bg-sage hover:bg-sage-dark disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-3 px-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2"
                 >
                   <Send className="h-4 w-4" />
-                  <span>Submit Review</span>
+                  <span>{isSubmitting ? 'Submitting...' : 'Submit Review'}</span>
                 </button>
+                <p className="text-xs text-gray-500 text-center mt-2">Your review will be published after moderation.</p>
               </form>
             ) : (
               <div className="text-center py-8">
@@ -216,7 +270,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
                 <h4 className="text-xl font-semibold text-gray-900 mb-2">Thank You!</h4>
                 <p className="text-gray-600 mb-6">
                   Your review has been submitted successfully. We appreciate your feedback and will 
-                  review it before publishing.
+                  publish it after moderation. Thank you for choosing Divine Spa!
                 </p>
                 <button
                   onClick={handleClose}
@@ -232,5 +286,12 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
     </div>
   );
 };
+
+// Extend Window interface for TypeScript
+declare global {
+  interface Window {
+    grecaptcha: any;
+  }
+}
 
 export default ReviewModal;

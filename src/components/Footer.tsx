@@ -10,12 +10,11 @@ const Footer: React.FC = () => {
           {/* Brand & Contact */}
           <div className="lg:col-span-2">
     
-            <h3 className="text-2xl font-vonique font-semibold mb-6">
-                      {/* <img
+            <h3 className="flex items-center text-2xl font-vonique font-semibold mb-6">
+                      <img
     src="/Aroma_Spa_Footer.jpg"            // <-- put the file name you used in /public here
     alt="Aroma Spa"
-    className="h-10 md:h-16 w-auto object-contain"
-  /> */}
+    className="h-10 md:h-14 w-auto object-contain mr-2"/>
               aroma spa</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Inspired by the aroma. Created for You. Experience transformative wellness through 
@@ -23,7 +22,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="space-y-3">
               <div className="flex items-center">
-                <Phone className="h-4 w-4 mr-3 text-sage" />
+                <MapPin className="h-4 w-4 mr-3 text-sage" />
                 <span className="text-gray-300" >5th Floor, Above Fabindia <br></br>Nallagandla Rd, Opp.Aparna sarovar<br></br>Hyderabad, Telangana, 500046</span>
                 
 
@@ -32,13 +31,13 @@ const Footer: React.FC = () => {
                 <Phone className="h-4 w-4 mr-3 text-sage" />
                 <span className="text-gray-300">9318629318</span>
               </div>
-              <div className="flex items-start">
+              {/* <div className="flex items-start">
                 <MapPin className="h-4 w-4 mr-3 mt-1 text-sage flex-shrink-0" />
                 <span className="text-gray-300">
-                  Multiple locations across<br />
-                  Hyderabad, Telanaga & Ap
+                  
+                  Hyderabad, Telanaga 
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
 

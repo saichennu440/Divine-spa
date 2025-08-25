@@ -17,10 +17,10 @@ import FacialTreatments from './pages/FacialTreatments';
 import Contact from './pages/Contact';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import ReviewButton from './components/ReviewButton';
-//import AdminReviews from './components/AdminReviews';
+import AdminReviews from './pages/AdminReviews';
 import BookingModal from './components/BookingModal';
 import { BookingProvider } from './context/BookingContext';
-import { ReviewProvider } from './context/ReviewContext';
+//import { ReviewProvider } from './context/ReviewContext';
 import useScrollToTop from './hooks/useScrollToTop';
 import './App.css';
 
@@ -31,7 +31,6 @@ const ScrollToTop: React.FC = () => {
 function App() {
   return (
     <BookingProvider>
-      <ReviewProvider>
       <Router>
           <ScrollToTop />
         <div className="App">
@@ -42,7 +41,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
-              {/* <Route path="/admin-reviews" element={<AdminReviews />} /> */}
+              <Route path="/admin/reviews" element={<AdminReviews />} />
               <Route path="/services/signature-massage-therapies" element={<SignatureTreatments />} />
               <Route path="/services/reflexology-foot-treatments" element={<FootSpa />} />
               <Route path="/services/therapeutic-body-treatments" element={<SkinTreatments />} />
@@ -53,6 +52,8 @@ function App() {
               <Route path="/franchise" element={<Franchise />} />
               <Route path="/giftcards" element={<GiftCards />} /> */}
               <Route path="/contact" element={<Contact />} />
+              <Route path="/admin/reviews" element={<AdminReviews />} />
+
             </Routes>
           </main>
           <Footer />
@@ -61,7 +62,7 @@ function App() {
               <ReviewButton />
         </div>
       </Router>
-      </ReviewProvider>
+     
     </BookingProvider>
   );
 }

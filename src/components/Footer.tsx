@@ -80,12 +80,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li>
                 <Link to="/services" className="text-gray-300 hover:text-sage transition-colors">
-                  Signature Treatments
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-gray-300 hover:text-sage transition-colors">
-                  Massage Therapy
+                 Therapies
                 </Link>
               </li>
               <li>
@@ -95,7 +90,12 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/services" className="text-gray-300 hover:text-sage transition-colors">
-                  Body Treatments
+                 Body Treatments
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-gray-300 hover:text-sage transition-colors">
+                  Foot Pedicure
                 </Link>
               </li>
               <li>

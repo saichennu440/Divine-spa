@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, X, Calendar } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
@@ -9,6 +9,17 @@ const Header: React.FC = () => {
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const { openBooking } = useBooking();
   const location = useLocation();
+ const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [hoveredTop, setHoveredTop] = useState<string | null>(null); // 'therapies' | 'facials' | 'polishing' | 'foot'
+  const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+const [mobileExpanded, setMobileExpanded] = useState<string | null>(null); 
+
+  const menu = [
+    { id: 'therapies', label: 'Therapies', slug: '/services/therapies', hasPage: false },
+    { id: 'facials', label: 'Facials', slug: '/services/facials', hasPage: false },
+    { id: 'polishing', label: 'Fully Body Polishing', slug: '/services/full-body-polishing', hasPage: true },
+    { id: 'foot', label: 'Foot Pedicure', slug: '/services/foot-pedicure', hasPage: true },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,15 +30,33 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const serviceCategories = [
-    'Signature Massage Therapies',
-    'Reflexology & Foot Treatments', 
-    'Therapeutic Body Treatments',
-    'Head Neck & Shoulder Treatments'
-  ];
+  // const serviceCategories = [
+  //   'Signature Massage Therapies',
+  //   'Reflexology & Foot Treatments', 
+  //   'Therapeutic Body Treatments',
+  //   'Head Neck & Shoulder Treatments'
+  // ];
 
- let closeTimeout: ReturnType<typeof setTimeout>;
+//let closeTimeout: ReturnType<typeof setTimeout>;
+  const openMenu = () => {
+    if (closeTimeout.current) { clearTimeout(closeTimeout.current); closeTimeout.current = null; }
+    setIsServicesOpen(true);
+  };
+  const delayedClose = (delay = 150) => {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    closeTimeout.current = setTimeout(() => {
+      setIsServicesOpen(false);
+      setHoveredTop(null);
+    }, delay);
+  };
 
+  const handleKeyOnTop = (e: React.KeyboardEvent, id: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setHoveredTop(id);
+      setIsServicesOpen(true);
+    }
+  };
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white shadow-lg' : 'bg-white/90 backdrop-blur-md'
@@ -67,35 +96,110 @@ const Header: React.FC = () => {
             </Link>
             
             {/* Services Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => {clearTimeout(closeTimeout); setIsServicesDropdownOpen(true);}}
-              onMouseLeave={() =>{ closeTimeout = setTimeout(() => setIsServicesDropdownOpen(false), 150); }}
-            >
-              <Link 
-                to="#"
-                className={`flex items-center text-md font-montserrat font-semibold hover:text-sage transition-colors ${
-                  location.pathname === '/services' ? 'text-sage' : 'text-gray-700'
-                }`}
-              >
-                Services
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </Link>
-              
-              {isServicesDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2">
-                  {serviceCategories.map((category, index) => (
-                    <Link
-                      key={index}
-                      to={`/services/${category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '').replace(/--/g, '-')}`}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-cream hover:text-sage transition-colors"
+       <nav>
+        <div
+          className="relative inline-block"
+          onMouseEnter={() => openMenu()}
+          onMouseLeave={() => delayedClose(180)}
+        >
+          <button
+            className={`flex items-center text-md font-montserrat font-semibold hover:text-sage transition-colors ${location.pathname.startsWith('/services') ? 'text-sage' : 'text-gray-700'}`}
+            aria-expanded={isServicesOpen}
+            aria-controls="services-menu"
+            onClick={(e) => { e.preventDefault(); /* do nothing: top-level label not navigable */ }}
+          >
+            Services
+            <ChevronDown className="ml-1 h-4 w-4" />
+          </button>
+
+          {isServicesOpen && (
+            <div id="services-menu" className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50 flex">
+              {/* Left column: top-level categories */}
+              <div className="w-1/2 border-r border-gray-100">
+                {menu.map((m) => {
+                  // if hasPage is true -> render Link; otherwise render a non-navigating button-like element
+                  if (m.hasPage) {
+                    return (
+                      <div key={m.id}
+                        onMouseEnter={() => { openMenu(); setHoveredTop(m.id); }}
+                        onMouseLeave={() => { /* keep open when moving to right panel */ }}
+                      >
+                        <Link
+                          to={m.slug}
+                          className={`block px-4 py-3 text-sm font-medium hover:bg-cream hover:text-sage transition-colors ${location.pathname === m.slug ? 'text-sage' : 'text-gray-700'}`}
+                        >
+                          {m.label}
+                        </Link>
+                      </div>
+                    );
+                  }
+
+                  // non-navigating top-level (therapies/facials)
+                  return (
+                    <div
+                      key={m.id}
+                      role="button"
+                      tabIndex={0}
+                      onMouseEnter={() => { openMenu(); setHoveredTop(m.id); }}
+                      onFocus={() => { openMenu(); setHoveredTop(m.id); }}
+                      onMouseLeave={() => { /* keep open while user moves to right panel */ }}
+                      onKeyDown={(e) => handleKeyOnTop(e, m.id)}
+                      className="block px-4 py-3 text-sm font-medium cursor-pointer hover:bg-cream hover:text-sage transition-colors text-gray-700"
+                      aria-pressed={hoveredTop === m.id}
+                      aria-label={`${m.label} menu (no top-level page)`}
                     >
-                      {category}
-                    </Link>
-                  ))}
-                </div>
-              )}
+                      {m.label}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Right column: submenus / info */}
+              <div className="w-1/2 p-2">
+                {/* Therapies submenu */}
+                {hoveredTop === 'therapies' && (
+                  <div>
+                    <Link to="/services/therapies/signature-therapies" className="block px-3 py-2 rounded hover:bg-cream hover:text-sage">Signature Therapies</Link>
+                    <Link to="/services/therapies/classic-therapies" className="block px-3 py-2 rounded hover:bg-cream hover:text-sage">Classic Therapies</Link>
+                    <Link to="/services/therapies/targeted-therapies" className="block px-3 py-2 rounded hover:bg-cream hover:text-sage">Targeted Therapies</Link>
+                  </div>
+                )}
+
+                {/* Facials submenu */}
+                {hoveredTop === 'facials' && (
+                  <div>
+                    <Link to="/services/facials/classic-facials" className="block px-3 py-2 rounded hover:bg-cream hover:text-sage">Classic Facials</Link>
+                    <Link to="/services/facials/premium-facials" className="block px-3 py-2 rounded hover:bg-cream hover:text-sage">Premium Facials</Link>
+                  </div>
+                )}
+
+                {/* Fully Body Polishing (no children listing) */}
+                {hoveredTop === 'polishing' && (
+                  <div>
+                    <Link to="/services/full-body-polishing" className="block px-3 py-2 rounded hover:bg-cream hover:text-sage">Full Body Polishing</Link>
+                    <p className="text-sm text-gray-600 mt-2">Exfoliation rituals & scrubs to reveal radiant skin.</p>
+                  </div>
+                )}
+
+                {/* Foot Pedicure (no children listing) */}
+                {hoveredTop === 'foot' && (
+                  <div>
+                    <Link to="/services/foot-pedicure" className="block px-3 py-2 rounded hover:bg-cream hover:text-sage">Foot Pedicure</Link>
+                    <p className="text-sm text-gray-600 mt-2">Pedicures, reflexology & foot treatments.</p>
+                  </div>
+                )}
+
+                {/* Default: short intro */}
+                {!hoveredTop && (
+                  <div className="px-3 py-2 text-sm text-gray-600">
+                    Explore our curated therapies, facials and foot treatments. Hover a category to view specific options.
+                  </div>
+                )}
+              </div>
             </div>
+          )}
+        </div>
+      </nav>
 
             <Link 
               to="/membership" 
@@ -183,30 +287,129 @@ const Header: React.FC = () => {
               >
                 About
               </Link>
-            <div className="relative">
+              {/* Services Dropdown */}
+
+              {/* Services Dropdown  mobile menu */}
+<div className="relative lg:hidden"> {/* visible on mobile only (hidden on lg and up) */}
   <button
-    onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
-    className="w-full text-left block px-3 py-2 text-base font-montserrat font-semibold text-gray-700 hover:text-sage hover:bg-cream rounded-md"
+    onClick={() => {
+      setIsServicesDropdownOpen((v) => !v);
+      // reset mobileExpanded when closing
+      if (isServicesDropdownOpen) setMobileExpanded(null);
+    }}
+    className="w-full text-left block px-3 py-2 text-base font-montserrat font-semibold text-gray-700 hover:text-sage hover:bg-cream rounded-md flex items-center justify-between"
+    aria-expanded={isServicesDropdownOpen}
+    aria-controls="mobile-services-panel"
   >
-    Services
-    <ChevronDown className="ml-2 inline-block h-4 w-4" />
+    <span>Services</span>
+    <ChevronDown className={`ml-2 h-4 w-4 transition-transform ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
   </button>
 
-     {isServicesDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2">
-                  {serviceCategories.map((category, index) => (
-                    <Link
-                      key={index}
-                      to={`/services/${category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '').replace(/--/g, '-')}`}
-                                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-cream hover:text-sage transition-colors"
-                    >
-                      {category}
-        </Link>
-      ))}
+  {isServicesDropdownOpen && (
+    <div id="mobile-services-panel" className="mt-2 bg-white rounded-lg shadow-lg border border-gray-100 py-2">
+      {/* Top-level items (accordion-like) */}
+      <div className="divide-y divide-gray-100">
+        {/* Therapies (non-navigating, expandable) */}
+        <div>
+          <button
+            type="button"
+            onClick={() => setMobileExpanded(mobileExpanded === 'therapies' ? null : 'therapies')}
+            className="w-full text-left px-4 py-3 flex items-center justify-between hover:bg-cream hover:text-sage transition-colors"
+            aria-expanded={mobileExpanded === 'therapies'}
+            aria-controls="mobile-therapies-list"
+          >
+            <span className="font-medium text-gray-700">Therapies</span>
+            <ChevronDown className={`h-4 w-4 transition-transform ${mobileExpanded === 'therapies' ? 'rotate-180 text-sage' : ''}`} />
+          </button>
+
+          {mobileExpanded === 'therapies' && (
+            <div id="mobile-therapies-list" className="pl-6 pr-4 pb-3 pt-1 text-sm">
+              <Link
+                to="/services/therapies/signature-therapies"
+                onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
+                className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
+              >
+                Signature Therapies
+              </Link>
+              <Link
+                to="/services/therapies/classic-therapies"
+                onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
+                className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
+              >
+                Classic Therapies
+              </Link>
+              <Link
+                to="/services/therapies/targeted-therapies"
+                onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
+                className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
+              >
+                Targeted Therapies
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* Facials (non-navigating, expandable) */}
+        <div>
+          <button
+            type="button"
+            onClick={() => setMobileExpanded(mobileExpanded === 'facials' ? null : 'facials')}
+            className="w-full text-left px-4 py-3 flex items-center justify-between hover:bg-cream hover:text-sage transition-colors"
+            aria-expanded={mobileExpanded === 'facials'}
+            aria-controls="mobile-facials-list"
+          >
+            <span className="font-medium text-gray-700">Facials</span>
+            <ChevronDown className={`h-4 w-4 transition-transform ${mobileExpanded === 'facials' ? 'rotate-180 text-sage' : ''}`} />
+          </button>
+
+          {mobileExpanded === 'facials' && (
+            <div id="mobile-facials-list" className="pl-6 pr-4 pb-3 pt-1 text-sm">
+              <Link
+                to="/services/facials/classic-facials"
+                onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
+                className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
+              >
+                Classic Facials
+              </Link>
+              <Link
+                to="/services/facials/premium-facials"
+                onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
+                className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
+              >
+                Premium Facials
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* Fully Body Polishing (navigates directly) */}
+        <div>
+          <Link
+            to="/services/full-body-polishing"
+            onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
+            className="block px-4 py-3 text-gray-700 hover:text-sage hover:bg-cream transition-colors"
+          >
+            Fully Body Polishing
+          </Link>
+        </div>
+
+        {/* Foot Pedicure (navigates directly) */}
+        <div>
+          <Link
+            to="/services/foot-pedicure"
+            onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
+            className="block px-4 py-3 text-gray-700 hover:text-sage hover:bg-cream transition-colors"
+          >
+            Foot Pedicure
+          </Link>
+        </div>
+      </div>
     </div>
   )}
 </div>
+
+
+
 
               <Link 
                 to="/membership" 

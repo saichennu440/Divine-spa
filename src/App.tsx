@@ -4,16 +4,17 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
-import Services from './pages/Services';
+//import Services from './pages/Services';
 import Membership from './pages/Membership';
 // import Gallery from './pages/Gallery';
 // import Blog from './pages/Blog';
 // import Franchise from './pages/Franchise';
 // import GiftCards from './pages/GiftCards';
-import SignatureTreatments from './pages/SignatureTreatments';
-import FootSpa from './pages/FootSpa';
-import SkinTreatments from './pages/SkinTreatments';
-import FacialTreatments from './pages/FacialTreatments';
+//import Therapies from './pages/Therapies';
+//import Facials from './pages/Facials';
+import FullBodyPolishing from './pages/FullBodyPolishing';
+import FootPedicure from './pages/FootPedicure';
+import CategoryPage from './pages/CategoryPage';
 import Contact from './pages/Contact';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import ReviewButton from './components/ReviewButton';
@@ -40,12 +41,27 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
+             {/*  <Route path="/services" element={<Services />} /> */}
               <Route path="/admin/reviews" element={<AdminReviews />} />
-              <Route path="/services/signature-massage-therapies" element={<SignatureTreatments />} />
-              <Route path="/services/reflexology-foot-treatments" element={<FootSpa />} />
-              <Route path="/services/therapeutic-body-treatments" element={<SkinTreatments />} />
-              <Route path="/services/head-neck-shoulder-treatments" element={<FacialTreatments />} />
+                {/* <Route path="/services/therapies" element={<Therapies />} /> */}
+        {/* <Route path="/services/therapies/signature-therapies" element={<Therapies />} />
+        <Route path="/services/therapies/classic-therapies" element={<Therapies />} />
+        <Route path="/services/therapies/targeted-therapies" element={<Therapies />} />
+
+        <Route path="/services/facials" element={<Facials />} />
+        <Route path="/services/facials/classic-facials" element={<Facials />} />
+        <Route path="/services/facials/premium-facials" element={<Facials />} /> */}
+
+         {/* <Route path="/services" element={<Services />} /> */}
+
+      {/* category overview */}
+      <Route path="/services/:category" element={<CategoryPage />} />
+
+      {/* specific subcategory page, e.g. /services/therapies/signature-therapies */}
+      <Route path="/services/:category/:sub" element={<CategoryPage />} />
+
+        <Route path="/services/full-body-polishing" element={<FullBodyPolishing />} />
+        <Route path="/services/foot-pedicure" element={<FootPedicure />} />
               <Route path="/membership" element={<Membership />} />
               {/* <Route path="/gallery" element={<Gallery />} />
               <Route path="/blog" element={<Blog />} />

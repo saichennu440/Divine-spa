@@ -37,7 +37,7 @@ export const ReviewProvider: React.FC<ReviewProviderProps> = ({ children }) => {
       city: 'New York',
       rating: 5,
       review: 'The most relaxing and rejuvenating experience I\'ve ever had. The therapists are incredibly skilled and the ambiance is perfect.',
-      service: 'Swedish Massage',
+      service: 'Swedish therapy',
       submittedAt: '2024-01-15T10:30:00Z'
     },
     {
@@ -46,7 +46,7 @@ export const ReviewProvider: React.FC<ReviewProviderProps> = ({ children }) => {
       city: 'Los Angeles',
       rating: 5,
       review: 'Divine Spa truly lives up to its name. Every visit feels like a journey to inner peace and wellness.',
-      service: 'Hot Stone Massage',
+      service: 'Hot Stone therapy',
       submittedAt: '2024-01-12T14:20:00Z'
     },
     {
@@ -55,7 +55,7 @@ export const ReviewProvider: React.FC<ReviewProviderProps> = ({ children }) => {
       city: 'Miami',
       rating: 5,
       review: 'The signature treatments are exceptional. I always leave feeling completely refreshed and renewed.',
-      service: 'Aromatherapy Massage',
+      service: 'Aromatherapy therapy',
       submittedAt: '2024-01-10T16:45:00Z'
     },
     {
@@ -64,7 +64,7 @@ export const ReviewProvider: React.FC<ReviewProviderProps> = ({ children }) => {
       city: 'Chicago',
       rating: 5,
       review: 'Outstanding service and attention to detail. This spa has become my sanctuary for stress relief.',
-      service: 'Deep Tissue Massage',
+      service: 'Deep Tissue therapy',
       submittedAt: '2024-01-08T11:15:00Z'
     }
   ]);

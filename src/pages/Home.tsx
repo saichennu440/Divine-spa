@@ -12,31 +12,31 @@ const Home: React.FC = () => {
   const { reviews, loading: reviewsLoading } = useReviews(4);
   const services = [
     {
-      title: 'Signature Massage Therapies',
-      description: 'Professional massage treatments including Swedish, Deep Tissue, Hot Stone, and Aromatherapy massages for ultimate relaxation.',
+      title: 'Therapies',
+      description: 'Professional therapeutic treatments including Swedish, Deep Tissue, Hot Stone, and Aromatherapy therapy for ultimate relaxation.',
       icon: <Sparkles className="h-8 w-8" />,
-      path: '/services/signature-massage-therapies',
+      path: '/services/therapies',
       image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     },
     {
-      title: 'Reflexology & Foot Treatments',
+      title: 'Facials',
       description: 'Therapeutic foot treatments using reflexology and specialized techniques to promote overall wellness and healing.',
       icon: <Heart className="h-8 w-8" />,
-       path: '/services/reflexology-foot-treatments',
+       path: '/services/facials',
       image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     },
     {
-      title: 'Therapeutic Body Treatments',
-      description: 'Specialized treatments including Prenatal, Lymphatic Drainage, Sports Massage, and Trigger Point Therapy.',
-          path: '/services/therapeutic-body-treatments',
+      title: 'Full body Polishing',
+      description: 'Specialized treatments including Prenatal, Lymphatic Drainage, Sports therapy, and Trigger Point Therapy.',
+          path: '/services/full-body-polishing',
       icon: <Droplets className="h-8 w-8" />,
       image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     },
     {
-      title: 'Head,Neck,Shoulder Treatments',
+      title: 'Foot pedicure',
       description: 'Focused treatments for head, neck, and shoulder tension including TMJ therapy and Craniosacral work.',
       icon: <Flower2 className="h-8 w-8" />,
-          path: '/services/head-neck-shoulder-treatments',
+          path: '/services/foot-pedicure',
       image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     }
   ];
@@ -231,7 +231,7 @@ const Home: React.FC = () => {
                   and personalized wellness consultations.
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-3xl font-montserrat font-light">Starting at ₹12,000<span className="text-lg">/month</span></span>
+                  <span className="text-3xl font-montserrat font-light">Starting at ₹12,000</span>
                   <Link to="/membership">
                   <button className="bg-white text-sage px-6 py-3 rounded-full font-medium hover:bg-white/90 transition-colors">
                     Learn More

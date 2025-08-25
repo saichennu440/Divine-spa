@@ -36,7 +36,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
     'Foot Spa & Pedicure',
     'Skin Treatment & Body Polish',
     'Facial & Clean-Up',
-    'Massage Therapy',
+    'Manicure & Pedicure',
     'Other'
   ];
 

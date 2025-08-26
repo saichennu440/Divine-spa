@@ -138,7 +138,7 @@ const Home: React.FC = () => {
               what our guests say
             </h2>
             <p className="text-lg text-gray-600">
-              Hear from those who have experienced the Divine Spa difference.
+              Hear from those who have experienced the aroma Spa difference.
             </p>
           </AnimatedSection>
 

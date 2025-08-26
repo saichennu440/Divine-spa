@@ -51,12 +51,12 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <a href="/#about" className="text-gray-300 hover:text-sage transition-colors">
+                <a href="/about" className="text-gray-300 hover:text-sage transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <Link to="/services" className="text-gray-300 hover:text-sage transition-colors">
+                <Link to="/services/therapies" className="text-gray-300 hover:text-sage transition-colors">
                   Services
                 </Link>
               </li>
@@ -79,30 +79,26 @@ const Footer: React.FC = () => {
             <h4 className="font-vonique text-2xl font-semibold mb-6">Our Services</h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/services" className="text-gray-300 hover:text-sage transition-colors">
+                <Link to="/services/therapies" className="text-gray-300 hover:text-sage transition-colors">
                  Therapies
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gray-300 hover:text-sage transition-colors">
+                <Link to="/services/facials" className="text-gray-300 hover:text-sage transition-colors">
                   Facial Treatments
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gray-300 hover:text-sage transition-colors">
+                <Link to="/services/full-body-polishing" className="text-gray-300 hover:text-sage transition-colors">
                  Body Treatments
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gray-300 hover:text-sage transition-colors">
-                  Foot Pedicure
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-gray-300 hover:text-sage transition-colors">
+                <Link to="/services/foot-pedicure" className="text-gray-300 hover:text-sage transition-colors">
                   Foot Spa & Pedicure
                 </Link>
               </li>
+             
              
             </ul>
           </div>
@@ -157,7 +153,7 @@ const Footer: React.FC = () => {
                 <a href="https://www.instagram.com/aromaspaofficial?igsh=c3RnbGhxdnVmMjBq" className="text-gray-400 hover:text-sage transition-colors">
                   <Instagram className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-sage transition-colors">
+                <a href="https://pin.it/4d2rH2byB" className="text-gray-400 hover:text-sage transition-colors">
                   <SquareParking  className="h-5 w-5" />
                 </a>
                 

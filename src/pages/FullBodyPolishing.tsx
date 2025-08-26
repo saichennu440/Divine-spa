@@ -59,7 +59,7 @@ const FullBodyPolishing: React.FC = () => {
 
     {/* features */}
     <div className="mb-6">
-      <h4 className="font-semibold text-gray-900 mb-3">Includes:</h4>
+      {/* <h4 className="font-semibold text-gray-900 mb-3">Includes:</h4> */}
       <div className="grid grid-cols-2 gap-2">
         {(t.features || []).map((f: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined, idx: React.Key | null | undefined) => (
           <div key={idx} className="flex items-center text-sm text-gray-600">

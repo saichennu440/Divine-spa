@@ -42,7 +42,7 @@ const renderCard = (t: ServiceItem, index: number, openBooking: () => void) => (
         <p className="text-gray-600 mb-6 leading-relaxed">{t.description}</p>
 
         <div className="mb-6">
-          <h4 className="font-semibold text-gray-900 mb-3">Includes:</h4>
+          {/* <h4 className="font-semibold text-gray-900 mb-3">Includes:</h4> */}
           <div className="grid grid-cols-2 gap-2">
             {(t.features || []).map((f, idx) => (
               <div key={idx} className="flex items-center text-sm text-gray-600">

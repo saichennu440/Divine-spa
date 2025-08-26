@@ -232,7 +232,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
                     value={reviewData.review}
                     onChange={(e) => setReviewData({...reviewData, review: e.target.value})}
                     rows={4}
-                    placeholder="Tell us about your experience at Divine Spa..."
+                    placeholder="Tell us about your experience at aroma Spa..."
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent"
                     required
                   />
@@ -272,7 +272,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
                 <h4 className="text-xl font-semibold text-gray-900 mb-2">Thank You!</h4>
                 <p className="text-gray-600 mb-6">
                   Your review has been submitted successfully. We appreciate your feedback and will 
-                  publish it after moderation. Thank you for choosing Divine Spa!
+                  publish it after moderation. Thank you for choosing aroma Spa!
                 </p>
                 <button
                   onClick={handleClose}

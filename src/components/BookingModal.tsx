@@ -211,13 +211,13 @@ const BookingModal: React.FC = () => {
                           <button
                             key={catKey}
                             type="button"
-                            onClick={() => {
-                              setSelectedCategory(catKey);
-                              // pick first sub automatically
-                              // @ts-ignore
-                              const subs = categories[catKey] ? Object.keys(categories[catKey]) : [];
-                              setSelectedSub(subs.length ? subs[0] : null);
-                            }}
+                           onClick={() => {
+                           setSelectedCategory(catKey);
+                           setSelectedSub(null); // do NOT auto-select a sub — user must explicitly choose
+                            setSelectedServiceName(null);
+                              setFormData(prev => ({ ...prev, service: '' }));
+                          }}
+
                             className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors ${selectedCategory === catKey ? 'bg-sage text-white' : 'bg-gray-50 text-gray-700 hover:bg-gray-100'}`}
                           >
                             {CATEGORY_LABELS[catKey] ?? catKey}
@@ -279,62 +279,47 @@ const BookingModal: React.FC = () => {
                     {/* Right column: service cards */}
                     <div className="col-span-1 lg:col-span-2">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {selectedCategory && selectedSub ? (
-                          // @ts-ignore
-                          (categories[selectedCategory][selectedSub] || []).map((svc: ServiceItem, idx: number) => {
-                            const isSelected = selectedServiceName === svc.name;
-                            return (
-                              <button
-                                key={svc.name + idx}
-                                type="button"
-                                onClick={() => handleSelectService(svc, selectedSub, selectedCategory)}
-                                className={`text-left rounded-2xl overflow-hidden shadow-sm transform transition transform hover:scale-[1.01] ${isSelected ? 'ring-2 ring-sage bg-sage/10' : 'bg-white'}`}
-                              >
-                                <div className="relative h-40 w-full">
-                                  <img src={svc.image ?? '/images/default-spa.jpg'} alt={svc.name} className="w-full h-full object-cover" />
-                                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
-                                    <span className="text-sm font-semibold text-sage">{svc.price}</span>
-                                  </div>
-                                </div>
+                 {selectedCategory && selectedSub ? (
+  // show actual service cards only when both category AND subcategory are chosen
+  // @ts-ignore
+  (categories[selectedCategory][selectedSub] || []).map((svc: ServiceItem, idx: number) => {
+    const isSelected = selectedServiceName === svc.name;
+    return (
+      <button
+        key={svc.name + idx}
+        type="button"
+        onClick={() => handleSelectService(svc, selectedSub!, selectedCategory!)}
+        className={`text-left rounded-2xl overflow-hidden shadow-sm transform transition hover:scale-[1.01] ${isSelected ? 'ring-2 ring-sage bg-sage/10' : 'bg-white'}`}
+      >
+        <div className="relative h-40 w-full">
+          <img src={svc.image ?? '/images/default-spa.jpg'} alt={svc.name} className="w-full h-full object-cover" />
+          <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
+            <span className="text-sm font-semibold text-sage">{svc.price}</span>
+          </div>
+        </div>
 
-                                <div className="p-4">
-                                  <div className="flex justify-between items-start">
-                                    <h4 className="text-md font-semibold text-gray-900">{svc.name}</h4>
-                                    <div className="text-xs text-gray-500 flex items-center">
-                                      <Clock className="h-4 w-4 mr-1" /> {svc.duration} mins
-                                    </div>
-                                  </div>
-                                  <p className="text-sm text-gray-600 mt-2 line-clamp-3">{svc.description}</p>
-                                </div>
-                              </button>
-                            );
-                          })
-                        ) : (
-                          // no category/sub selected: show helpful grid of top picks
-                          <>
-                            {Object.keys(categories).flatMap((catKey) => {
-                              // @ts-ignore
-                              const subKeys = Object.keys(categories[catKey]);
-                              return subKeys.flatMap((subKey) => {
-                                // @ts-ignore
-                                return (categories[catKey][subKey] || []).slice(0, 1).map((svc: ServiceItem, idx: number) => (
-                                  <div key={`${catKey}-${subKey}-${idx}`} className="rounded-2xl overflow-hidden shadow-sm bg-white">
-                                    <div className="relative h-40">
-                                      <img src={svc.image ?? '/images/default-spa.jpg'} alt={svc.name} className="w-full h-full object-cover" />
-                                      <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
-                                        <span className="text-sm font-semibold text-sage">{svc.price}</span>
-                                      </div>
-                                    </div>
-                                    <div className="p-4">
-                                      <div className="text-md font-semibold text-gray-900">{svc.name}</div>
-                                      <div className="text-sm text-gray-600 mt-2">{CATEGORY_LABELS[catKey]} • {subKey.split('-').map(s => s[0].toUpperCase() + s.slice(1)).join(' ')}</div>
-                                    </div>
-                                  </div>
-                                ));
-                              });
-                            })}
-                          </>
-                        )}
+        <div className="p-4">
+          <div className="flex justify-between items-start">
+            <h4 className="text-md font-semibold text-gray-900">{svc.name}</h4>
+            <div className="text-xs text-gray-500 flex items-center">
+              <Clock className="h-4 w-4 mr-1" /> {svc.duration} mins
+            </div>
+          </div>
+          <p className="text-sm text-gray-600 mt-2 line-clamp-3">{svc.description}</p>
+        </div>
+      </button>
+    );
+  })
+) : (
+  // placeholder: nothing to show until user chooses a subcategory explicitly
+  <div className="col-span-1 lg:col-span-2 flex items-center justify-center rounded-2xl border-2 border-dashed border-gray-200 bg-white/30 p-8">
+    <div className="text-center">
+      <div className="mb-2 text-sm font-medium text-gray-700">No services displayed yet</div>
+      <div className="text-sm text-gray-500">Please select a category on the left and then choose a subcategory to view services.</div>
+    </div>
+  </div>
+)}
+
                       </div>
                     </div>
                   </div>

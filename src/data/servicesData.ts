@@ -33,12 +33,26 @@ const servicesData: ServicesData = {
     'signature-therapies': [
       {
         name: 'Signature Therapy',
-        duration: '60',
+        duration: '90',
         price: '₹5300',
         description: 'Aroma Signature Therapy',
         image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
       },
       {
+        name: 'Signature Therapy',
+        duration: '120',
+        price: '₹6000',
+        description: 'Aroma Signature Therapy',
+        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
+      },
+       {
+        name: 'Tandem (Four Hands) Therapy',
+        duration: '60',
+        price: '₹5300',
+        description: 'Tandem (Four Hands) Therapy',
+        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
+      },
+            {
         name: 'Tandem (Four Hands) Therapy',
         duration: '90',
         price: '₹6000',
@@ -47,11 +61,26 @@ const servicesData: ServicesData = {
       },
       {
         name: 'Herbal Potli Therapy',
+        duration: '60',
+        price: '₹4100',
+        description: 'Herbal Potli Therapy',
+        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
+      },
+           {
+        name: 'Herbal Potli Therapy',
         duration: '90',
         price: '₹5300',
         description: 'Herbal Potli Therapy',
         image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
       },
+      {
+        name: 'Hot Stone Therapy',
+        duration: '60',
+        price: '₹4100',
+        description: 'Herbal Potli Therapy',
+        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
+      },
+
       {
         name: 'Hot Stone Therapy',
         duration: '90',
@@ -68,10 +97,38 @@ const servicesData: ServicesData = {
         description: 'Classic Swedish Therapy',
         image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
       },
+                  {
+        name: 'Classic Swedish Therapy',
+        duration: '90',
+        price: '₹3800',
+        description: 'Classic Swedish Therapy',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+      },
+                  {
+        name: 'Classic Swedish Therapy',
+        duration: '120',
+        price: '₹4500',
+        description: 'Classic Swedish Therapy',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+      },
       {
         name: 'Aromatic Therapy',
         duration: '60',
         price: '₹3000',
+        description: 'Aromatic Therapy',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+      },
+            {
+        name: 'Aromatic Therapy',
+        duration: '90',
+        price: '₹4300',
+        description: 'Aromatic Therapy',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+      },
+            {
+        name: 'Aromatic Therapy',
+        duration: '120',
+        price: '₹5300',
         description: 'Aromatic Therapy',
         image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
       },
@@ -82,6 +139,20 @@ const servicesData: ServicesData = {
         description: 'Deep Tissue Therapy',
         image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
       },
+           {
+        name: 'Deep Tissue Therapy',
+        duration: '90',
+        price: '₹4800',
+        description: 'Deep Tissue Therapy',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+      },
+            {
+        name: 'Deep Tissue Therapy',
+        duration: '120',
+        price: '₹5800',
+        description: 'Deep Tissue Therapy',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+      },
       {
         name: 'Balinese Therapy',
         duration: '60',
@@ -89,10 +160,40 @@ const servicesData: ServicesData = {
         description: 'Balinese Therapy',
         image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
       },
+            {
+        name: 'Balinese Therapy',
+        duration: '90',
+        price: '₹4800',
+        description: 'Balinese Therapy',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+      },
+       {
+        name: 'Balinese Therapy',
+        duration: '120',
+        price: '₹5800',
+        description: 'Balinese Therapy',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+      },
       {
         name: 'Dry Thai Therapy',
         duration: '60',
         price: '₹3600',
+        description: 'Dry Thai Therapy',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+      },
+
+      {
+        name: 'Dry Thai Therapy',
+        duration: '90',
+        price: '₹3900',
+        description: 'Dry Thai Therapy',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+      },
+
+      {
+        name: 'Dry Thai Therapy',
+        duration: '120',
+        price: '₹4800',
         description: 'Dry Thai Therapy',
         image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
       }
@@ -104,7 +205,21 @@ const servicesData: ServicesData = {
         price: '₹1000',
         description: 'Foot Reflexology',
         image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg'
-      }
+      },
+       {
+        name: 'Back (without shower)',
+        duration: '30',
+        price: '₹1700',
+        description: 'Foot Reflexology',
+        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg'
+      },
+       {
+        name: 'Head Neck & Shoulder',
+        duration: '30',
+        price: '₹1200',
+        description: 'Foot Reflexology',
+        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg'
+      },
     ]
   },
 

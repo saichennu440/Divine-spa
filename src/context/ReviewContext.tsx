@@ -45,7 +45,7 @@ export const ReviewProvider: React.FC<ReviewProviderProps> = ({ children }) => {
       name: 'Michael Chen',
       city: 'Los Angeles',
       rating: 5,
-      review: 'Divine Spa truly lives up to its name. Every visit feels like a journey to inner peace and wellness.',
+      review: 'aroma Spa truly lives up to its name. Every visit feels like a journey to inner peace and wellness.',
       service: 'Hot Stone therapy',
       submittedAt: '2024-01-12T14:20:00Z'
     },

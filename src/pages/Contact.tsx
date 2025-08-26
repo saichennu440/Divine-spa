@@ -183,9 +183,9 @@ const Contact: React.FC = () => {
                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent transition-colors"
                              required
                            >
-                             <option value="">Preferred Location</option>
+                            
                              <option value="Hyderabad">Hyderabad</option>
-                             <option value="Other/General Inquiry">Other/General Inquiry</option>
+                            
                            </select>
                            <select
                              name="subject"
@@ -198,8 +198,8 @@ const Contact: React.FC = () => {
                              <option value="Book an Appointment">Book an Appointment</option>
                              <option value="Services Information">Services Information</option>
                              <option value="Membership Inquiry">Membership Inquiry</option>
-                             <option value="Gift Cards">Gift Cards</option>
-                             <option value="Franchise Opportunity">Franchise Opportunity</option>
+                             {/* <option value="Gift Cards">Gift Cards</option>
+                             <option value="Franchise Opportunity">Franchise Opportunity</option> */}
                              <option value="Feedback">Feedback</option>
                              <option value="Other">Other</option>
                            </select>
@@ -275,7 +275,7 @@ const Contact: React.FC = () => {
                          <Mail className="h-5 w-5 mr-3 text-white/80" />
                          <div>
                            <p className="font-bold text-white">Email Us</p>
-                           <p className="text-white/90">hello@aromaspa.in</p>
+                           <p className="text-white/90">connect@aromaspa.in</p>
                          </div>
                        </div>
                        <div className="flex items-center">
@@ -396,7 +396,7 @@ const Contact: React.FC = () => {
               For urgent appointments or same-day booking requests, call our priority line.
             </p>
             <a 
-              href="tel:1-800-URGENT-SPA"
+              href="tel:+91 9318629318"
               className="inline-flex items-center space-x-2 bg-white text-sage hover:bg-white/90 px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg"
             >
               <Phone className="h-5 w-5" />

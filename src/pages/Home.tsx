@@ -138,7 +138,7 @@ const Home: React.FC = () => {
                      what our guests say
                    </h2>
                    <p className="text-lg text-gray-600">
-                     Hear from those who have experienced the Divine Spa difference.
+                     Hear from those who have experienced the Aroma Spa difference.
                    </p>
                  </AnimatedSection>
        
@@ -214,7 +214,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light mb-6">
-              exclusive memberships & gift cards
+              exclusive memberships 
             </h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto">
               Join our wellness community or share the gift of relaxation with someone special.

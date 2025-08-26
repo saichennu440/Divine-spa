@@ -1,4 +1,4 @@
-import { createAdminClient } from '../../../../src/lib/SupabaseClient';
+import { createAdminClient } from '../../../../src/lib/supabase';
 
 function verifyAdminAuth(req: any): boolean {
   const authHeader = req.headers.authorization;
@@ -44,13 +44,7 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    let supabase;
-try {
-  supabase = createAdminClient();
-} catch (err) {
-  console.error('Admin client initialization failed:', err);
-  return res.status(500).json({ error: 'Server configuration error: missing service key' });
-}
+    const supabase = createAdminClient();
 
     if (hard_delete === 'true' && process.env.ALLOW_HARD_DELETE === 'true') {
       // Hard delete - completely remove from database

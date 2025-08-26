@@ -2,12 +2,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { X, Calendar, Clock, User, Phone, Mail, Check } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
-import servicesData, { ServiceItem } from '../data/servicesData';
+import servicesData, { ServiceItem, Variant } from '../data/servicesData';
 
 const BUSINESS_PHONE = '919318629318';
 
 type FormState = {
   service: string;
+  serviceDuration?: string;
+  servicePrice?: string;
   date: string;
   time: string;
   firstName: string;
@@ -35,6 +37,8 @@ const BookingModal: React.FC = () => {
   const [step, setStep] = useState<number>(1);
   const [formData, setFormData] = useState<FormState>({
     service: '',
+    serviceDuration: undefined,
+    servicePrice: undefined,
     date: '',
     time: '',
     firstName: '',
@@ -50,66 +54,115 @@ const BookingModal: React.FC = () => {
   const [selectedSub, setSelectedSub] = useState<string | null>(null);
   const [selectedServiceName, setSelectedServiceName] = useState<string | null>(null);
 
-  // Build a convenient object for categories -> subs -> list
+  // categories lookup
   const categories = useMemo(() => servicesData, []);
 
-  // Flatten helper to find service by name (for initial preselect)
-  const findServiceLocation = (serviceName: string) => {
+  // find service item and (optionally) variant index by service name and optional duration
+  const findServiceLocation = (serviceName: string, duration?: string) => {
     for (const catKey of Object.keys(categories)) {
       // @ts-ignore
       const subs = categories[catKey] as Record<string, ServiceItem[]>;
       for (const subKey of Object.keys(subs)) {
-        const found = subs[subKey].find((s) => s.name === serviceName);
-        if (found) return { category: catKey, sub: subKey, item: found };
+        const items = subs[subKey] || [];
+        for (const item of items) {
+          if (item.name === serviceName) {
+            // find variant index if duration present
+            const variantIndex = duration && item.variants ? item.variants.findIndex(v => v.duration === duration) : -1;
+            return { category: catKey, sub: subKey, item, variantIndex };
+          }
+        }
       }
     }
     return null;
   };
 
+  // Prefill form when modal opens or when initialFormData changes
   useEffect(() => {
     if (isBookingOpen && initialFormData) {
+      // merge in any fields passed by openBooking
       setFormData((p) => ({ ...p, ...initialFormData }));
+
+      // Reset step to 1
       setStep(1);
 
-      // try to preselect service if provided
+      // preselect service/sub/category if service name provided
       if (initialFormData.service) {
-        const loc = findServiceLocation(initialFormData.service);
+        const loc = findServiceLocation(initialFormData.service as string, (initialFormData as any).serviceDuration);
         if (loc) {
           setSelectedCategory(loc.category);
           setSelectedSub(loc.sub);
           setSelectedServiceName(loc.item.name);
+
+          // if duration provided and variant found, set the price/duration in formData
+          if ((initialFormData as any).serviceDuration && loc.variantIndex >= 0) {
+            const v = loc.item.variants?.[loc.variantIndex];
+            setFormData((p) => ({
+              ...p,
+              service: loc.item.name,
+              serviceDuration: v?.duration ?? (initialFormData as any).serviceDuration,
+              servicePrice: v?.price ?? (initialFormData as any).servicePrice,
+            }));
+          } else {
+            // no explicit duration provided — default to first variant if available (and if formData doesn't already have a duration)
+            const firstVariant = loc.item.variants?.[0];
+            setFormData((p) => ({
+              ...p,
+              service: loc.item.name,
+              serviceDuration: p.serviceDuration ?? firstVariant?.duration,
+              servicePrice: p.servicePrice ?? firstVariant?.price,
+            }));
+          }
+        } else {
+          // service name didn't match data: still set service name in formData so user sees it
+          setFormData((p) => ({ ...p, service: initialFormData.service as string }));
         }
       }
     }
 
     if (isBookingOpen && !initialFormData) {
       setStep(1);
-      // reset selection (but keep previous if you like)
+      // don't auto-select anything
     }
-  }, [isBookingOpen, initialFormData]); // eslint-disable-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isBookingOpen, initialFormData]);
 
-  // When user manually chooses a service card
-  const handleSelectService = (service: ServiceItem, subKey: string, catKey: string) => {
-    setFormData((p) => ({ ...p, service: service.name }));
+  // When user chooses a service (and optionally a variant)
+  const handleSelectService = (service: ServiceItem, subKey: string, catKey: string, variant?: Variant) => {
     setSelectedCategory(catKey);
     setSelectedSub(subKey);
     setSelectedServiceName(service.name);
+
+    setFormData((p) => ({
+      ...p,
+      service: service.name,
+      serviceDuration: variant?.duration ?? service.variants?.[0]?.duration,
+      servicePrice: variant?.price ?? service.variants?.[0]?.price,
+    }));
   };
 
-  // Build WhatsApp message (unchanged)
-  const buildWhatsAppMessage = (data: FormState) => {
+  // Build WhatsApp message including duration & price (prefers explicit fields in formData)
+  const buildWhatsAppMessage = (data: typeof formData) => {
     const readableDate = data.date ? new Date(data.date).toLocaleDateString() : data.date;
-      // try to locate the service object (uses findServiceLocation you already have)
-  const svcLoc = data.service ? findServiceLocation(data.service) : null;
-  const svc = svcLoc?.item;
-  const duration = svc?.duration ? `${svc.duration} mins` : '-';
-  const price = svc?.price ?? '-';
+
+    // prefer explicit fields (passed via initialFormData or set by user)
+    const duration = data.serviceDuration ?? (() => {
+      const svcLoc = data.service ? findServiceLocation(data.service) : null;
+      return svcLoc?.item?.variants?.[0]?.duration ? `${svcLoc.item.variants![0].duration} mins` : '-';
+    })();
+
+    const price = data.servicePrice ?? (() => {
+      const svcLoc = data.service ? findServiceLocation(data.service) : null;
+      return svcLoc?.item?.variants?.[0]?.price ?? '-';
+    })();
+
+    const durationText = typeof duration === 'string' && duration.match(/^\d+$/) ? `${duration} mins` : duration;
+
     const lines = [
       `New booking request from website`,
       `-------------------------------`,
       `Service: ${data.service || '-'}`,
-       `Duration: ${duration}`,
-       `Price: ${price}`,
+      `Duration: ${durationText || '-'}`,
+      `Price: ${price || '-'}`,
       `Date: ${readableDate || '-'}`,
       `Time: ${data.time || '-'}`,
       `Name: ${data.firstName || '-'} ${data.lastName || '-'}`,
@@ -123,7 +176,7 @@ const BookingModal: React.FC = () => {
     return lines.join('\n');
   };
 
-  const sendWhatsApp = async (data: FormState) => {
+  const sendWhatsApp = async (data: typeof formData) => {
     const message = buildWhatsAppMessage(data);
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -155,6 +208,8 @@ const BookingModal: React.FC = () => {
     setStep(1);
     setFormData({
       service: '',
+      serviceDuration: undefined,
+      servicePrice: undefined,
       date: '',
       time: '',
       firstName: '',
@@ -211,13 +266,12 @@ const BookingModal: React.FC = () => {
                           <button
                             key={catKey}
                             type="button"
-                           onClick={() => {
-                           setSelectedCategory(catKey);
-                           setSelectedSub(null); // do NOT auto-select a sub — user must explicitly choose
-                            setSelectedServiceName(null);
-                              setFormData(prev => ({ ...prev, service: '' }));
-                          }}
-
+                            onClick={() => {
+                              setSelectedCategory(catKey);
+                              setSelectedSub(null);
+                              setSelectedServiceName(null);
+                              setFormData(prev => ({ ...prev, service: '', serviceDuration: undefined, servicePrice: undefined }));
+                            }}
                             className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors ${selectedCategory === catKey ? 'bg-sage text-white' : 'bg-gray-50 text-gray-700 hover:bg-gray-100'}`}
                           >
                             {CATEGORY_LABELS[catKey] ?? catKey}
@@ -237,7 +291,12 @@ const BookingModal: React.FC = () => {
                               <button
                                 key={subKey}
                                 type="button"
-                                onClick={() => setSelectedSub(subKey)}
+                                onClick={() => {
+                                  setSelectedSub(subKey);
+                                  // reset selection within sub
+                                  setSelectedServiceName(null);
+                                  setFormData(prev => ({ ...prev, service: '', serviceDuration: undefined, servicePrice: undefined }));
+                                }}
                                 className={`px-3 py-2 rounded-full text-sm border ${selectedSub === subKey ? 'bg-sage text-white border-sage' : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'}`}
                               >
                                 {subKey.split('-').map(s => s[0].toUpperCase() + s.slice(1)).join(' ')}
@@ -257,7 +316,6 @@ const BookingModal: React.FC = () => {
                               <div className="w-12 h-12 rounded-md bg-gray-100 overflow-hidden">
                                 {/* show image of currently selected service */}
                                 <img src={(() => {
-                                  // find currently selected service item for image
                                   if (!selectedCategory || !selectedSub || !selectedServiceName) return '/images/default-spa.jpg';
                                   // @ts-ignore
                                   const found = categories[selectedCategory]?.[selectedSub]?.find((s: ServiceItem) => s.name === selectedServiceName);
@@ -267,6 +325,7 @@ const BookingModal: React.FC = () => {
                               <div>
                                 <div className="font-medium text-gray-900">{selectedServiceName}</div>
                                 <div className="text-xs text-gray-500">{formData.date ? new Date(formData.date).toLocaleDateString() : 'No date'}</div>
+                                <div className="text-xs text-gray-500">{formData.serviceDuration ? `${formData.serviceDuration} mins • ${formData.servicePrice ?? ''}` : ''}</div>
                               </div>
                             </div>
                           ) : (
@@ -279,47 +338,79 @@ const BookingModal: React.FC = () => {
                     {/* Right column: service cards */}
                     <div className="col-span-1 lg:col-span-2">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 {selectedCategory && selectedSub ? (
-  // show actual service cards only when both category AND subcategory are chosen
-  // @ts-ignore
-  (categories[selectedCategory][selectedSub] || []).map((svc: ServiceItem, idx: number) => {
-    const isSelected = selectedServiceName === svc.name;
-    return (
-      <button
-        key={svc.name + idx}
-        type="button"
-        onClick={() => handleSelectService(svc, selectedSub!, selectedCategory!)}
-        className={`text-left rounded-2xl overflow-hidden shadow-sm transform transition hover:scale-[1.01] ${isSelected ? 'ring-2 ring-sage bg-sage/10' : 'bg-white'}`}
-      >
-        <div className="relative h-40 w-full">
-          <img src={svc.image ?? '/images/default-spa.jpg'} alt={svc.name} className="w-full h-full object-cover" />
-          <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
-            <span className="text-sm font-semibold text-sage">{svc.price}</span>
-          </div>
-        </div>
+                        {selectedCategory && selectedSub ? (
+                          // @ts-ignore
+                          (categories[selectedCategory][selectedSub] || []).map((svc: ServiceItem, idx: number) => {
+                            const variants = svc.variants ?? [];
+                            // Determine which variant to show on the badge:
+                            // - if this service is currently selected in the formData, show the selected duration/price
+                            // - otherwise show the first variant
+                            const isThisServiceSelected = selectedServiceName === svc.name;
+                            const badgePrice = isThisServiceSelected ? (formData.servicePrice ?? variants[0]?.price ?? '—') : (variants[0]?.price ?? '—');
+                            const badgeDuration = isThisServiceSelected ? (formData.serviceDuration ?? variants[0]?.duration ?? '') : (variants[0]?.duration ?? '');
 
-        <div className="p-4">
-          <div className="flex justify-between items-start">
-            <h4 className="text-md font-semibold text-gray-900">{svc.name}</h4>
-            <div className="text-xs text-gray-500 flex items-center">
-              <Clock className="h-4 w-4 mr-1" /> {svc.duration} mins
-            </div>
-          </div>
-          <p className="text-sm text-gray-600 mt-2 line-clamp-3">{svc.description}</p>
-        </div>
-      </button>
-    );
-  })
-) : (
-  // placeholder: nothing to show until user chooses a subcategory explicitly
-  <div className="col-span-1 lg:col-span-2 flex items-center justify-center rounded-2xl border-2 border-dashed border-gray-200 bg-white/30 p-8">
-    <div className="text-center">
-      <div className="mb-2 text-sm font-medium text-gray-700">No services displayed yet</div>
-      <div className="text-sm text-gray-500">Please select a category on the left and then choose a subcategory to view services.</div>
-    </div>
-  </div>
-)}
+                            const isSelected = selectedServiceName === svc.name;
 
+                            return (
+                              <div key={svc.name + idx} className={`rounded-2xl overflow-hidden shadow-sm transform transition ${isSelected ? 'ring-2 ring-sage bg-sage/10' : 'bg-white'}`}>
+                                <div className="relative h-40 w-full">
+                                  <img src={svc.image ?? '/images/default-spa.jpg'} alt={svc.name} className="w-full h-full object-cover" />
+                                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                                    <span className="text-sm font-semibold text-sage">{badgePrice}</span>
+                                  </div>
+                                </div>
+
+                                <div className="p-4">
+                                  <div className="flex justify-between items-start">
+                                    <h4 className="text-md font-semibold text-gray-900">{svc.name}</h4>
+                                    <div className="text-xs text-gray-500 flex items-center">
+                                      <Clock className="h-4 w-4 mr-1" /> {badgeDuration ? `${badgeDuration} mins` : '—'}
+                                    </div>
+                                  </div>
+                                  <p className="text-sm text-gray-600 mt-2 line-clamp-3">{svc.description}</p>
+
+                                  {/* Variant pills */}
+                                  {variants.length > 0 && (
+                                    <div className="mt-3 flex flex-wrap gap-2">
+                                      {variants.map((v, vidx) => {
+                                        const pillSelected = isSelected && formData.serviceDuration === v.duration;
+                                        return (
+                                          <button
+                                            key={`${svc.name}-var-${v.duration}-${vidx}`}
+                                            type="button"
+                                            onClick={() => handleSelectService(svc, selectedSub!, selectedCategory!, v)}
+                                            className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${pillSelected ? 'bg-sage text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                                          >
+                                            {v.duration} mins — {v.price}
+                                          </button>
+                                        );
+                                      })}
+                                    </div>
+                                  )}
+
+                                  {/* Select card as whole (selects default variant if user clicks the card body) */}
+                                  <div className="mt-4">
+                                    <button
+                                      type="button"
+                                      onClick={() => handleSelectService(svc, selectedSub!, selectedCategory!)}
+                                      className="w-full bg-sage hover:bg-sage-dark text-white py-2 px-4 rounded-full font-medium transition-colors"
+                                    >
+                                      {isSelected ? 'Selected' : 'Select Service'}
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })
+                        ) : (
+                          // placeholder when no sub selected
+                          <div className="col-span-1 lg:col-span-2 flex items-center justify-center rounded-2xl border-2 border-dashed border-gray-200 bg-white/30 p-8">
+                            <div className="text-center">
+                              <div className="mb-2 text-sm font-medium text-gray-700">No services displayed yet</div>
+                              <div className="text-sm text-gray-500">Please select a category on the left and then choose a subcategory to view services.</div>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -403,6 +494,8 @@ const BookingModal: React.FC = () => {
                     <h5 className="font-semibold text-gray-900 mb-2">Booking Summary</h5>
                     <div className="space-y-1 text-sm text-gray-600">
                       <p><span className="font-medium">Service:</span> {formData.service}</p>
+                      <p><span className="font-medium">Duration:</span> {formData.serviceDuration ? `${formData.serviceDuration} mins` : '-'}</p>
+                      <p><span className="font-medium">Price:</span> {formData.servicePrice ?? '-'}</p>
                       <p><span className="font-medium">Date:</span> {formData.date ? new Date(formData.date).toLocaleDateString() : '-'}</p>
                       <p><span className="font-medium">Time:</span> {formData.time}</p>
                       <p><span className="font-medium">Name:</span> {formData.firstName} {formData.lastName}</p>

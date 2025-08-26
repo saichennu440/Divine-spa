@@ -130,51 +130,51 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-         <section className="py-20 bg-beige">
-               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                 <AnimatedSection className="text-center mb-16">
-                   <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-                     what our guests say
-                   </h2>
-                   <p className="text-lg text-gray-600">
-                     Hear from those who have experienced the Aroma Spa difference.
-                   </p>
-                 </AnimatedSection>
-       
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                   {reviewsLoading ? (
-                     // Loading skeleton
-                     [...Array(4)].map((_, index) => (
-                       <div key={index} className="bg-white rounded-2xl shadow-lg p-6 animate-pulse">
-                         <div className="h-4 bg-gray-200 rounded mb-4"></div>
-                         <div className="h-16 bg-gray-200 rounded mb-4"></div>
-                         <div className="flex items-center">
-                           <div className="w-10 h-10 bg-gray-200 rounded-full mr-3"></div>
-                           <div className="h-4 bg-gray-200 rounded flex-1"></div>
-                         </div>
-                       </div>
-                     ))
-                   ) : (
-                     reviews.map((review, index) => (
-                     <AnimatedSection 
-                       key={index} 
-                       delay={index * 100}
-                       animation="fade-in-up"
-                     >
-                       <TestimonialCard 
-                         name={review.name}
-                         city={review.city || 'Guest'}
-                         rating={review.rating}
-                         text={review.review}
-                         avatar={review.avatar_url}
-                       />
-                     </AnimatedSection>
-                     ))
-                   )}
-                 </div>
-               </div>
-             </section>
+         {/* Testimonials Section */}
+      <section className="py-20 bg-beige">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
+              what our guests say
+            </h2>
+            <p className="text-lg text-gray-600">
+              Hear from those who have experienced the Divine Spa difference.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {reviewsLoading ? (
+              // Loading skeleton
+              [...Array(4)].map((_, index) => (
+                <div key={index} className="bg-white rounded-2xl shadow-lg p-6 animate-pulse">
+                  <div className="h-4 bg-gray-200 rounded mb-4"></div>
+                  <div className="h-16 bg-gray-200 rounded mb-4"></div>
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 bg-gray-200 rounded-full mr-3"></div>
+                    <div className="h-4 bg-gray-200 rounded flex-1"></div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              reviews.map((review, index) => (
+              <AnimatedSection 
+                key={index} 
+                delay={index * 100}
+                animation="fade-in-up"
+              >
+                <TestimonialCard 
+                  name={review.name}
+                  city={review.city || 'Guest'}
+                  rating={review.rating}
+                  text={review.review}
+                  avatar={review.avatar_url}
+                />
+              </AnimatedSection>
+              ))
+            )}
+          </div>
+        </div>
+      </section>
 
       {/* Gallery Section */}
       {/* <section className="py-20">

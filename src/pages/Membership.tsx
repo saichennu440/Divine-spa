@@ -13,11 +13,11 @@ const Membership: React.FC = () => {
   const rawPlans = [
     { name: 'Standard', hours: 7, price: 12000, validityMonths: 4, serviceValue: 20000, perHour: 1715 },
     { name: 'Bronze', hours: 11, price: 18000, validityMonths: 6, serviceValue: 32000, perHour: 1637 },
-    { name: 'Silver', hours: 15, price: 24000, validityMonths: 8, serviceValue: 40000, perHour: 1600 },
+   // { name: 'Silver', hours: 15, price: 24000, validityMonths: 8, serviceValue: 40000, perHour: 1600 },
     { name: 'Gold', hours: 20, price: 30000, validityMonths: 10, serviceValue: 55000, perHour: 1500 },
     { name: 'Treat', hours: 7, price: 17000, validityMonths: 4, serviceValue: 25000, perHour: 2429 },
     { name: 'Relax', hours: 11, price: 25000, validityMonths: 6, serviceValue: 38500, perHour: 2273 },
-    { name: 'Discover', hours: 15, price: 32000, validityMonths: 8, serviceValue: 50000, perHour: 2133 },
+    //{ name: 'Discover', hours: 15, price: 32000, validityMonths: 8, serviceValue: 50000, perHour: 2133 },
     { name: 'Serenity', hours: 20, price: 38000, validityMonths: 10, serviceValue: 70000, perHour: 1900 }
   ];
 
@@ -95,55 +95,93 @@ const Membership: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
-              choose your wellness package
+              choose your wellness family package
             </h2>
             <p className="text-lg text-gray-600">
-These packages are exclusively for Classic Swedish, Aroma, Deep Tissue, Balinese And Traditional thai therapies only            </p>
+These packages are exclusively for Classic Swedish, Aromatic, Deep Tissue, Balinese And Traditional thai therapies only            </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {plans.map((plan, index) => (
-              <AnimatedSection key={plan.name} delay={index * 100} animation="fade-in-up">
-                <div className={`relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${plan.popular ? 'ring-2 ring-sage scale-105' : ''}`}>
-                  {plan.popular && (
-                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                      <span className="bg-sage text-white px-6 py-2 rounded-full text-sm font-medium">Most Popular</span>
-                    </div>
-                  )}
+  {plans.map((plan, index) => (
+    <React.Fragment key={plan.name}>
+      {/* Insert heading & text before the 4th card */}
+      {index === 3 && (
+        <div className="lg:col-span-3 text-center mt-12 mb-6">
+          <h2 className="text-3xl font-vonique font-light text-gray-900 mb-4">
+            enhanced packages for you
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            These packages are exclusively for Classic Swedish, Aroma, Deep Tissue, Balinese, 
+Traditional Thai, AROMA Signature, Tandem (Fours Hands), Herbal Potli, Hot 
+Stone And Body polishing therapies ONLY
+          </p>
+        </div>
+      )}
 
-                  <div className="p-8">
-                    <div className="text-center mb-8">
-                      <div className="inline-flex items-center justify-center w-16 h-16 bg-sage/10 rounded-full mb-4">
-                        <div className="text-sage">{plan.icon}</div>
-                      </div>
-                      <h3 className="text-2xl font-montserrat font-semibold text-gray-900 mb-2">{plan.name}</h3>
-                      <p className="text-gray-600 mb-4">{plan.description}</p>
-                      <div className="text-center">
-                        <span className="text-3xl md:text-4xl font-montserrat font-light text-sage">{rupee(plan.price)}</span>
-                        <div className="text-gray-600 mt-1 text-sm">Valid for {plan.validityMonths} month{plan.validityMonths > 1 ? 's' : ''}</div>
-                      </div>
-                    </div>
+      {/* Existing card */}
+      <AnimatedSection delay={index * 100} animation="fade-in-up">
+        <div
+          className={`relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${
+            plan.popular ? 'ring-2 ring-sage scale-105' : ''
+          }`}
+        >
+          {plan.popular && (
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <span className="bg-sage text-white px-6 py-2 rounded-full text-sm font-medium">
+                Most Popular
+              </span>
+            </div>
+          )}
 
-                    <ul className="space-y-4 mb-8">
-                      {plan.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start">
-                          <Check className="h-5 w-5 text-sage flex-shrink-0 mt-0.5 mr-3" />
-                          <span className="text-gray-700">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+          <div className="p-8">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-sage/10 rounded-full mb-4">
+                <div className="text-sage">{plan.icon}</div>
+              </div>
+              <h3 className="text-2xl font-montserrat font-semibold text-gray-900 mb-2">
+                {plan.name}
+              </h3>
+              <p className="text-gray-600 mb-4">{plan.description}</p>
+              <div className="text-center">
+                <span className="text-3xl md:text-4xl font-montserrat font-light text-sage">
+                  {rupee(plan.price)}
+                </span>
+              </div>
+            </div>
 
-                    <button
-                      onClick={() => openPlanModal({ name: plan.name, price: plan.price, validityMonths: plan.validityMonths, hours: plan.hours })}
-                      className={`w-full py-4 px-6 rounded-full font-medium transition-all duration-300 ${plan.popular ? 'bg-sage hover:bg-sage-dark text-white hover:shadow-lg' : 'border-2 border-sage text-sage hover:bg-sage hover:text-white'}`}
-                    >
-                      {plan.popular ? 'Start Membership' : 'Choose Plan'}
-                    </button>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
+            <ul className="space-y-4 mb-8">
+              {plan.features.map((feature, featureIndex) => (
+                <li key={featureIndex} className="flex items-start">
+                  <Check className="h-5 w-5 text-sage flex-shrink-0 mt-0.5 mr-3" />
+                  <span className="text-gray-700">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <button
+              onClick={() =>
+                openPlanModal({
+                  name: plan.name,
+                  price: plan.price,
+                  validityMonths: plan.validityMonths,
+                  hours: plan.hours
+                })
+              }
+              className={`w-full py-4 px-6 rounded-full font-medium transition-all duration-300 ${
+                plan.popular
+                  ? 'bg-sage hover:bg-sage-dark text-white hover:shadow-lg'
+                  : 'border-2 border-sage text-sage hover:bg-sage hover:text-white'
+              }`}
+            >
+              {plan.popular ? 'Start Membership' : 'Choose Plan'}
+            </button>
           </div>
+        </div>
+      </AnimatedSection>
+    </React.Fragment>
+  ))}
+</div>
+
         </div>
       </section>
 
@@ -248,7 +286,7 @@ These packages are exclusively for Classic Swedish, Aroma, Deep Tissue, Balinese
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">Start your transformative wellness journey today with a membership plan designed for your lifestyle.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={() => openPlanModal(null)} className="bg-sage hover:bg-sage-dark text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-lg">Start Membership</button>
-              <button onClick={() => openPlanModal(null)} className="border-2 border-sage text-sage hover:bg-sage hover:text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300">Schedule Consultation</button>
+              {/* <button onClick={() => openPlanModal(null)} className="border-2 border-sage text-sage hover:bg-sage hover:text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300">Schedule Consultation</button> */}
             </div>
           </AnimatedSection>
         </div>

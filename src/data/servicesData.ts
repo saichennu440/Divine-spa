@@ -1,13 +1,18 @@
 // src/data/servicesData.ts
-// Auto-generated TypeScript data module (images added for every item)
+// Full typed services data (all items converted to `variants` per service).
+// This file was generated from the data you provided — every service entry from your last paste is included.
+
+export type Variant = {
+  duration: string; // minutes as string, e.g. "60"
+  price: string;    // price string including currency symbol, e.g. "₹2,800"
+};
 
 export type ServiceItem = {
   name: string;
-  duration: string;     // kept as string (e.g. "60")
-  price: string;        // price string with currency symbol
   description?: string;
   features?: string[];
   image?: string;
+  variants?: Variant[]; // one or more duration/price options
 };
 
 export interface ServicesData {
@@ -33,248 +38,164 @@ const servicesData: ServicesData = {
     'signature-therapies': [
       {
         name: 'Signature Therapy',
-        duration: '90',
-        price: '₹5300',
-        description: 'Aroma Signature Therapy',
-        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
+        description: 'Our Signature Therapy is the ultimate indulgence, a harmonious fusion of traditional and contemporary techniques designed for complete relaxation and renewal. Every detail, from the choice of oils to the rhythm of touch, is designed for a journey of exquisite relaxation.',
+        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg',
+        variants: [
+          { duration: '90', price: '₹5300' },
+          { duration: '120', price: '₹6000' }
+        ]
       },
       {
-        name: 'Signature Therapy',
-        duration: '120',
-        price: '₹6000',
-        description: 'Aroma Signature Therapy',
-        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
-      },
-       {
         name: 'Tandem (Four Hands) Therapy',
-        duration: '60',
-        price: '₹5300',
-        description: 'Tandem (Four Hands) Therapy',
-        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
-      },
-            {
-        name: 'Tandem (Four Hands) Therapy',
-        duration: '90',
-        price: '₹6000',
-        description: 'Tandem (Four Hands) Therapy',
-        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
+        description: 'Indulge in the pinnacle of relaxation as two expert therapists move in perfect synchrony, melting tension, enhancing circulation, and delivering an unparalleled sense of serenity. Every stroke is harmonized to soothe both body and mind, where time seems to pause, and every sense is delighted.',
+        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg',
+        variants: [
+          { duration: '60', price: '₹5300' },
+          { duration: '90', price: '₹6000' }
+        ]
       },
       {
         name: 'Herbal Potli Therapy',
-        duration: '60',
-        price: '₹4100',
-        description: 'Herbal Potli Therapy',
-        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
-      },
-           {
-        name: 'Herbal Potli Therapy',
-        duration: '90',
-        price: '₹5300',
-        description: 'Herbal Potli Therapy',
-        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
+        description: 'A warm, soothing therapy using herbal poultices infused with medicinal herbs glide over your body, melting tension, uplifting the senses, and infusing your skin with nature’s restorative essence',
+        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg',
+        variants: [
+          { duration: '60', price: '₹4100' },
+          { duration: '90', price: '₹5300' }
+        ]
       },
       {
         name: 'Hot Stone Therapy',
-        duration: '60',
-        price: '₹4100',
-        description: 'Herbal Potli Therapy',
-        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
-      },
-
-      {
-        name: 'Hot Stone Therapy',
-        duration: '90',
-        price: '₹5300',
-        description: 'Herbal Potli Therapy',
-        image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg'
+        description: 'Smooth, heated stones meet skilled hands to glide over your body, penetrating deep into tired muscles. This therapy warms your muscles from within, releasing deep-seated stress and and tension while restoring deep inner harmony.',
+        image: '/FootSpa_images/Hot_Stone_Foot_Treatment.jpg',
+        variants: [
+          { duration: '60', price: '₹4100' },
+          { duration: '90', price: '₹5300' }
+        ]
       }
     ],
+
     'classic-therapies': [
       {
-        name: 'Classic Swedish Therapy',
-        duration: '60',
-        price: '₹2800',
-        description: 'Classic Swedish Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
-      },
-                  {
-        name: 'Classic Swedish Therapy',
-        duration: '90',
-        price: '₹3800',
-        description: 'Classic Swedish Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
-      },
-                  {
-        name: 'Classic Swedish Therapy',
-        duration: '120',
-        price: '₹4500',
-        description: 'Classic Swedish Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+        name: 'Swedish Therapy',
+        description:
+          'Our Swedish Therapy is a timeless European technique that moves like a slow, soothing current across the body - long gliding strokes to melt tension, stimulate lymphatic flow, and refresh the senses.',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg',
+        variants: [
+          { duration: '60', price: '₹2800' },
+          { duration: '90', price: '₹3800' },
+          { duration: '120', price: '₹4500' }
+        ]
       },
       {
         name: 'Aromatic Therapy',
-        duration: '60',
-        price: '₹3000',
-        description: 'Aromatic Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
-      },
-            {
-        name: 'Aromatic Therapy',
-        duration: '90',
-        price: '₹4300',
-        description: 'Aromatic Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
-      },
-            {
-        name: 'Aromatic Therapy',
-        duration: '120',
-        price: '₹5300',
-        description: 'Aromatic Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+        description: 'A sensory journey that combines expert massage techniques with pure essential oils. This indulgent experience calms the mind, nurtures the body, and restores emotional balance. Breathe deep while our therapists deliver sumptuous strokes that relax body and mind.',
+        image: '/FootSpa_images/Aromatherapy_Foot_Massage.jpg',
+        variants: [
+          { duration: '60', price: '₹3000' },
+          { duration: '90', price: '₹4300' },
+          { duration: '120', price: '₹5300' }
+        ]
       },
       {
         name: 'Deep Tissue Therapy',
-        duration: '60',
-        price: '₹3600',
-        description: 'Deep Tissue Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
-      },
-           {
-        name: 'Deep Tissue Therapy',
-        duration: '90',
-        price: '₹4800',
-        description: 'Deep Tissue Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
-      },
-            {
-        name: 'Deep Tissue Therapy',
-        duration: '120',
-        price: '₹5800',
-        description: 'Deep Tissue Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+        description: 'A therapeutic massage that targets deep layers of muscle and connective tissue. This therapy renews your body from within, restoring flexibility, improving posture, and delivering unmatched comfort long after the session ends.',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg',
+        variants: [
+          { duration: '60', price: '₹3600' },
+          { duration: '90', price: '₹4800' },
+          { duration: '120', price: '₹5800' }
+        ]
       },
       {
         name: 'Balinese Therapy',
-        duration: '60',
-        price: '₹3600',
-        description: 'Balinese Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
-      },
-            {
-        name: 'Balinese Therapy',
-        duration: '90',
-        price: '₹4800',
-        description: 'Balinese Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
-      },
-       {
-        name: 'Balinese Therapy',
-        duration: '120',
-        price: '₹5800',
-        description: 'Balinese Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+        description: 'Experience the time-honoured secrets of Balinese therapy, a traditional Indonesian healing with exotic fusion of acupressure, gentle stretches, and rhythmic movements that bring balance and serenity to both body and soul - straight from the healing traditions of Bali.',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg',
+        variants: [
+          { duration: '60', price: '₹3600' },
+          { duration: '90', price: '₹4800' },
+          { duration: '120', price: '₹5800' }
+        ]
       },
       {
         name: 'Dry Thai Therapy',
-        duration: '60',
-        price: '₹3600',
-        description: 'Dry Thai Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
-      },
-
-      {
-        name: 'Dry Thai Therapy',
-        duration: '90',
-        price: '₹3900',
-        description: 'Dry Thai Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
-      },
-
-      {
-        name: 'Dry Thai Therapy',
-        duration: '120',
-        price: '₹4800',
-        description: 'Dry Thai Therapy',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+        description: 'This ancient therapy uses a fusion of deep pressure points and assisted stretches. Our expert therapists guide your body to improve circulation, relieve stiffness, and recharge your vital energy—without the use of oils.',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg',
+        variants: [
+          { duration: '60', price: '₹3600' },
+          { duration: '90', price: '₹3900' },
+          { duration: '120', price: '₹4800' }
+        ]
       }
     ],
+
     'targeted-therapies': [
       {
         name: 'Foot Reflexology',
-        duration: '30',
-        price: '₹1000',
-        description: 'Foot Reflexology',
-        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg'
+        description: 'Calming leg & foot massage targeting reflex points to promote whole-body wellness.',
+        image: '/FootSpa_images/Foot_Reflexology.jpg',
+        variants: [{ duration: '30', price: '₹1000' }]
       },
-       {
+      {
         name: 'Back (without shower)',
-        duration: '30',
-        price: '₹1700',
-        description: 'Foot Reflexology',
-        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg'
+        description: 'Targeted back work to release knots and stiffness.',
+        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg',
+        variants: [{ duration: '30', price: '₹1700' }]
       },
-       {
-        name: 'Head Neck & Shoulder',
-        duration: '30',
-        price: '₹1200',
-        description: 'Foot Reflexology',
-        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg'
-      },
+      {
+        name: 'Head, Neck & Shoulder',
+        description: 'Rejuvenating head, neck and shoulder sequence to ease tension.',
+        image: '/FacialTreatment_images/Neck_Shoulder_Therapy.jpg',
+        variants: [{ duration: '30', price: '₹1200' }]
+      }
     ]
   },
 
   facials: {
     'classic-facials': [
       {
-        name: 'Clean-up (Watermelon / Strawberry)',
-        duration: '30',
-        price: '₹1200',
-        description: 'Clean-up (Watermelon / Strawberry)',
-        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg'
+        name: 'Facial Clean-up (Watermelon / Strawberry)',
+        description: 'A burst of hydration/Antioxidant-rich cleanse for tired, stressed skin.',
+        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg',
+        variants: [{ duration: '30', price: '₹1200' }]
       },
       {
         name: 'Hydra Dew (Dry & Dehydrated)',
-        duration: '60',
-        price: '₹1500',
-        description: 'Hydra Dew (Dry & Dehydrated)',
-        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg'
+        description: 'Immerse your delicate skin in exquisite moisture, calming and protecting it with every touch',
+        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg',
+        variants: [{ duration: '60', price: '₹1500' }]
       },
       {
         name: 'Rejuvenating (All skin types)',
-        duration: '60',
-        price: '₹1700',
-        description: 'Rejuvenating (All skin types)',
-        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg'
+        description: 'Reveal your skin’s natural radiance through meticulous care that enhances texture, tone, and vitality.',
+        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg',
+        variants: [{ duration: '60', price: '₹1700' }]
       },
-         {
+      {
         name: 'Herbal Pearl',
-        duration: '60',
-        price: '₹2700',
-        description: 'Herbal Pearl',
-        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg'
+        description: 'Indulge in the healing touch of nature’s finest herbs, and reveal skin that feels renewed and luminous.',
+        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg',
+        variants: [{ duration: '60', price: '₹2700' }]
       }
     ],
+
     'premium-facials': [
       {
         name: 'Deep Pore Cleansing (Oily Skin)',
-        duration: '60',
-        price: '₹3100',
-        description: 'Deep Pore Cleansing (Oily Skin)',
-        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg'
+        description: 'An expertly crafted extract that refreshes oily skin while maintaining its natural balance. Enriched with skin-loving nutrients to smooth, nourish, and reveal a clear, radiant glow.',
+        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg',
+        variants: [{ duration: '60', price: '₹3100' }]
       },
       {
         name: 'Whitening Facial (Dull & Uneven)',
-        duration: '60',
-        price: '₹3300',
-        description: 'Whitening Facial (Dull & Uneven)',
-        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg'
+        description: 'Harness the power of advanced sun filters to reduce melanin formation, protect against UV rays, and unveil a naturally bright, balanced skin tone.',
+        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg',
+        variants: [{ duration: '60', price: '₹3300' }]
       },
       {
         name: 'Herbal Gold (Signature)',
-        duration: '60',
-        price: '₹4500',
-        description: 'Herbal Gold (Signature)',
-        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg'
+        description: 'Nature’s touch, meticulously crafted from herbal essences, delivering visible transformation from the first touch.',
+        image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg',
+        variants: [{ duration: '60', price: '₹4500' }]
       }
     ]
   },
@@ -283,76 +204,65 @@ const servicesData: ServicesData = {
     'full-body-polishing': [
       {
         name: 'Scrub (with shower)',
-        duration: '60',
-        price: '₹2800',
-        description: 'Scrub with shower',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+        description: 'Energize your skin with the power of Vitamin C. This vibrant polish works to lighten sun damage, boost collagen, and enhance natural luminosity—perfect for reviving dull or tanned skin into a bright, youthful glow. ',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg',
+        variants: [{ duration: '60', price: '₹2800' }]
       },
       {
         name: 'Black Currant Polish (Dry Skin)',
-        duration: '60',
-        price: '₹4500',
-        description: 'Black Currant Polish (Dry Skin)',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+        description: 'A sumptuous blend of black currant extracts rich in antioxidants to deeply nourish and hydrate parched skin. This luxurious polish restores elasticity, replenishes moisture, and helps slow the signs of aging—leaving your skin supple and youthful.',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg',
+        variants: [{ duration: '60', price: '₹4500' }]
       },
       {
         name: 'Chocolate (Brightening & Nourishing)',
-        duration: '60',
-        price: '₹4500',
-        description: 'Chocolate Polish (Brightening)',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+        description: 'Delight in the rich essence of cocoa as this treatment detoxifies, smoothens, and brightens your skin. Packed with antioxidants and essential minerals, it delivers deep hydration and a silky-soft finish for a radiant, healthy glow.',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg',
+        variants: [{ duration: '60', price: '₹4500' }]
       },
       {
         name: 'Orange (De-Tan)',
-        duration: '60',
-        price: '₹4500',
-        description: 'Orange (De-Tan)',
-        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg'
+        description: 'Energize your skin with the power of Vitamin C. This vibrant polish works to lighten sun damage, boost collagen, and enhance natural luminosity—perfect for reviving dull or tanned skin into a bright, youthful glow. ',
+        image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg',
+        variants: [{ duration: '60', price: '₹4500' }]
       }
     ]
   },
 
   'foot-pedicure': {
     'foot-pedicure': [
-      
-       {
+      {
         name: 'Classic Pedicure (Watermelon & Litchi)',
-        duration: '60',
-        price: '₹1200',
-        description: 'Classic Pedicure (Watermelon & Litchi)',
-        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg'
+        description: 'Delight in the sumptuous blend of fruit essences and revitalizing moisture. Each touch restores suppleness, rejuvenates your skin, and leaves behind an aura of natural vitality and freshness',
+        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg',
+        variants: [{ duration: '60', price: '₹1200' }]
       },
       {
         name: 'Anti-Oxidant Pedicure (Orange & Chocolate)',
-        duration: '60',
-        price: '₹1200',
-        description: 'Anti-Oxidant Pedicure (Orange & Chocolate)',
-        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg'
+        description: 'An indulgent foot treatment crafted to detoxify and invigorate, relieving heaviness and swelling while restoring energy and comfort to fatigued feet',
+        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg',
+        variants: [{ duration: '60', price: '₹1200' }]
       },
       {
         name: 'Moisturising Exotic Pedicure (Kiwi & Strawberry)',
-        duration: '60',
-        price: '₹1400',
-        description: 'Moisturising Exotic Pedicure (Kiwi & Strawberry)',
-        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg'
+        description: 'Immerse your feet in a lavish blend of strawberry and kiwi extracts. This exquisite pedicure hydrates, softens, and rejuvenates, leaving your feet velvety smooth and radiant.',
+        image: '/FootSpa_images/Moisturising_Exotic_Pedicure_Kiwi_Strawberry.jpg',
+        variants: [{ duration: '60', price: '₹1400' }]
       },
       {
         name: 'Brightening & De-Tan Pedicure',
-        duration: '60',
-        price: '₹1700',
-        description: 'Brightening & De-Tan Pedicure',
-        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg'
+        description: 'This pampering ritual, enriched with vibrant fruit extracts, gently exfoliates and detoxifies, transforming dull, tired feet into a brighter, softer, and more radiant version of themselves',
+        image: '/FootSpa_images/Sports_Massage_Feet.jpg',
+        variants: [{ duration: '60', price: '₹1700' }]
       },
       {
         name: 'De-Stress Refreshment (Cucumber & Peppermint)',
-        duration: '60',
-        price: '₹1500',
-        description: 'Refreshment & De-stress ',
-        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg'
+        description: 'Escape into a cooling haven as peppermint awakens and cucumber soothes. This detoxifying ritual releases stress, restores balance, and infuses your feet with a crisp, invigorating freshness.',
+        image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg',
+        variants: [{ duration: '60', price: '₹1500' }]
       }
-      
     ]
   }
-};
+} as ServicesData;
 
 export default servicesData;

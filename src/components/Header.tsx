@@ -161,19 +161,19 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
                         onClick={() => { /* keep menu close handled by mouseleave */ }}
                         className="block text-sm px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-sage"
                       >
-                        Signature Therapies
+                        signature therapies
                       </Link>
                       <Link
                         to="/services/therapies/classic-therapies"
                         className="block text-sm px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-sage"
                       >
-                        Classic Therapies
+                        classic therapies
                       </Link>
                       <Link
                         to="/services/therapies/targeted-therapies"
                         className="block text-sm px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-sage"
                       >
-                        Targeted Therapies
+                        targeted therapies
                       </Link>
                     </>
                   )}
@@ -184,13 +184,13 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
                         to="/services/facials/classic-facials"
                         className="block text-sm px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-sage"
                       >
-                        Classic Facials
+                        classic facials
                       </Link>
                       <Link
                         to="/services/facials/premium-facials"
                         className="block text-sm px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-sage"
                       >
-                        Premium Facials
+                        premium facials
                       </Link>
                     </>
                   )}
@@ -335,21 +335,21 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
                 onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
                 className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
               >
-                Signature Therapies
+                signature therapies
               </Link>
               <Link
                 to="/services/therapies/classic-therapies"
                 onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
                 className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
               >
-                Classic Therapies
+                classic therapies
               </Link>
               <Link
                 to="/services/therapies/targeted-therapies"
                 onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
                 className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
               >
-                Targeted Therapies
+                targeted therapies
               </Link>
             </div>
           )}
@@ -375,14 +375,14 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
                 onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
                 className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
               >
-                Classic Facials
+                classic facials
               </Link>
               <Link
                 to="/services/facials/premium-facials"
                 onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
                 className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
               >
-                Premium Facials
+                premium facials
               </Link>
             </div>
           )}

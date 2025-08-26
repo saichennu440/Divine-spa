@@ -33,7 +33,6 @@ export interface CreateReviewRequest {
   review: string;
   rating: number;
   avatar_url?: string;
-
 }
 
 export interface ReviewsResponse {

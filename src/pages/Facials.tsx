@@ -3,65 +3,98 @@ import React from 'react';
 import { Clock, Star, ArrowRight, Flower2 } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
 import { useBooking } from '../context/BookingContext';
-import servicesData from '../data/servicesData';
+import servicesData, { ServiceItem, Variant } from '../data/servicesData';
 
 const Facials: React.FC = () => {
   const { openBooking } = useBooking();
   const classic = servicesData.facials['classic-facials'] || [];
   const premium = servicesData.facials['premium-facials'] || [];
 
-  const renderList = (list: any[]) => (
+  const ServiceCard: React.FC<{ item: ServiceItem }> = ({ item }) => {
+    const variants: Variant[] = item.variants ?? [];
+    const [activeIdx, setActiveIdx] = React.useState<number>(variants.length > 0 ? 0 : -1);
+    React.useEffect(() => {
+      if (variants.length > 0 && (activeIdx < 0 || activeIdx >= variants.length)) setActiveIdx(0);
+      if (variants.length === 0 && activeIdx !== -1) setActiveIdx(-1);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [variants.length]);
+
+    const active = activeIdx >= 0 ? variants[activeIdx] : variants[0];
+
+    const handleBook = () => {
+      openBooking?.({
+        service: item.name,
+        serviceDuration: active?.duration ?? '',
+        servicePrice: active?.price ?? '',
+      } as any);
+    };
+
+    const displayPrice = active?.price ?? '—';
+    const displayDuration = active?.duration ? `${active.duration} mins` : '—';
+
+    return (
+      <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all overflow-hidden">
+        <div className="relative h-64">
+          <img src={item.image ?? '/images/default-spa.jpg'} alt={item.name} className="w-full h-full object-cover" />
+          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2">
+            <span className="text-2xl font-montserrat font-semibold text-sage">{displayPrice}</span>
+          </div>
+        </div>
+
+        <div className="p-8">
+          <div className="flex justify-between items-start mb-4">
+            <h3 className="text-2xl font-montserrat font-semibold text-gray-900">{item.name}</h3>
+            {/* <div className="flex items-center text-sm text-gray-500">
+              <Clock className="h-4 w-4 mr-1" />
+              {displayDuration}
+            </div> */}
+          </div>
+
+          <p className="text-gray-600 mb-6 leading-relaxed">{item.description}</p>
+
+          {/* features */}
+          {item.features && item.features.length > 0 && (
+            <div className="mb-6">
+              <div className="grid grid-cols-2 gap-2">
+                {item.features.map((f, idx) => (
+                  <div key={idx} className="flex items-center text-sm text-gray-600">
+                    <Star className="h-4 w-4 text-sage mr-2 flex-shrink-0" />
+                    {f}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* variant pills */}
+          {variants.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {variants.map((v, idx) => (
+                <button
+                  key={`${item.name}-var-${v.duration}-${idx}`}
+                  type="button"
+                  onClick={() => setActiveIdx(idx)}
+                  className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${idx === activeIdx ? 'bg-sage text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                >
+                  {v.duration} mins — {v.price}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <button onClick={handleBook} className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300">
+            Book This Treatment <ArrowRight className="inline ml-2 h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const renderList = (list: ServiceItem[]) => (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {list.map((t, i) => (
-        <AnimatedSection key={i} delay={i * 80} animation="fade-in-up">
-         {/* Card wrapper */}
-<div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all overflow-hidden">
-  {/* IMAGE area */}
-  <div className="relative h-64">
-    <img
-      src={t.image ?? '/images/default-spa.jpg'}
-      alt={t.name}
-      className="w-full h-full object-cover"
-    />
-    {/* price badge */}
-    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2">
-      <span className="text-2xl font-montserrat font-semibold text-sage">
-        {t.price}
-      </span>
-    </div>
-  </div>
-
-  {/* Card content */}
-  <div className="p-8">
-    <div className="flex justify-between items-start mb-4">
-      <h3 className="text-2xl font-montserrat font-semibold text-gray-900">{t.name}</h3>
-      <div className="flex items-center text-sm text-gray-500">
-        <Clock className="h-4 w-4 mr-1" />
-        {t.duration} mins
-      </div>
-    </div>
-
-    <p className="text-gray-600 mb-6 leading-relaxed">{t.description}</p>
-
-    {/* features */}
-    <div className="mb-6">
-      {/* <h4 className="font-semibold text-gray-900 mb-3">Includes:</h4> */}
-      <div className="grid grid-cols-2 gap-2">
-        {(t.features || []).map((f: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined, idx: React.Key | null | undefined) => (
-          <div key={idx} className="flex items-center text-sm text-gray-600">
-            <Star className="h-4 w-4 text-sage mr-2 flex-shrink-0" />
-            {f}
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <button onClick={() => openBooking()} className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium">
-      Book This Treatment <ArrowRight className="inline ml-2 h-4 w-4" />
-    </button>
-  </div>
-</div>
-
+        <AnimatedSection key={`${t.name}-${i}`} delay={i * 80} animation="fade-in-up">
+          <ServiceCard item={t} />
         </AnimatedSection>
       ))}
     </div>
@@ -84,13 +117,13 @@ const Facials: React.FC = () => {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4">
           <AnimatedSection className="mb-8">
-            <h2 className="text-3xl font-semibold mb-4">Classic Facials</h2>
+            <h2 className="text-3xl font-semibold mb-4">classic facials</h2>
             <p className="text-gray-600 mb-6">Gentle clean-ups and essentials.</p>
             {renderList(classic)}
           </AnimatedSection>
 
           <AnimatedSection className="mb-8">
-            <h2 className="text-3xl font-semibold mb-4">Premium Facials</h2>
+            <h2 className="text-3xl font-semibold mb-4">premium facials</h2>
             <p className="text-gray-600 mb-6">Premium and signature facials for visible results.</p>
             {renderList(premium)}
           </AnimatedSection>

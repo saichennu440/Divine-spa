@@ -23,6 +23,8 @@ import BookingModal from './components/BookingModal';
 import { BookingProvider } from './context/BookingContext';
 //import { ReviewProvider } from './context/ReviewContext';
 import useScrollToTop from './hooks/useScrollToTop';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
 import './App.css';
 
 const ScrollToTop: React.FC = () => {
@@ -69,7 +71,9 @@ function App() {
               <Route path="/giftcards" element={<GiftCards />} /> */}
               <Route path="/contact" element={<Contact />} />
               <Route path="/admin/reviews" element={<AdminReviews />} />
-
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+              
             </Routes>
           </main>
           <Footer />

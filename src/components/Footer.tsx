@@ -180,24 +180,24 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center text-sm text-gray-400">
             <div className="flex flex-wrap justify-center lg:justify-start space-x-6 mb-4 lg:mb-0">
-              <Link to="/contact" className="hover:text-sage transition-colors">
+              <Link to="/privacy-policy" className="hover:text-sage transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/contact" className="hover:text-sage transition-colors">
+              <Link to="/terms-and-conditions" className="hover:text-sage transition-colors">
                 Terms & Conditions
               </Link>
-              <Link to="/contact" className="hover:text-sage transition-colors">
+              {/* <Link to="/contact" className="hover:text-sage transition-colors">
                 Cookie Policy
               </Link>
               <Link to="/contact" className="hover:text-sage transition-colors">
                 Accessibility
-              </Link>
+              </Link> */}
             </div>
             <div className="text-center lg:text-right">
               <p className="flex items-center justify-center lg:justify-end text-sm text-gray-400">
                 © 2025 aroma spa. All rights reserved. Made with 
                 <Heart className="h-4 w-4 mx-1 text-red-500" />
-                by Scalers
+                <a href='#'>by Scalers</a>
               </p>
             </div>
           </div>

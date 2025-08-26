@@ -98,8 +98,7 @@ const Membership: React.FC = () => {
               choose your wellness package
             </h2>
             <p className="text-lg text-gray-600">
-              Packages below are taken directly from our franchise offerings.
-            </p>
+These packages are exclusively for "Classic Swedish", "Aroma", "Deep Tissue", Balinese* And Traditional thai therapies only            </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

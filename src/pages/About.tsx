@@ -88,8 +88,7 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-8">
-              Aroma represents the <em> true essence of wellness,</em> where healing and harmony meet.
-            </h2>
+      aroma embodies wellness where healing meets harmony.            </h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
               At aroma spa, we believe in the transformative power of mindful therapies and conscious self-care. 
               Our sanctuary provides a space where you can disconnect from the world's chaos and reconnect with 
@@ -164,9 +163,7 @@ const About: React.FC = () => {
                     With years of experience, we have grown into a trusted wellness destination for guests seeking more than just relaxation – they seek transformation. Our dedication to excellence has earned us recognition as one of the premier spas in the region.
                   </p>
                   <p>
-                    Today, with multiple locations and a team of skilled wellness professionals, 
-                    we continue to evolve while staying true to our core mission: providing sacred 
-                    space for healing, renewal, and spiritual connection.
+                   Today, with a dedicated team of skilled wellness professionals, we continue to evolve while staying true to our core mission: providing a sacred space for healing, renewal, and spiritual connection.
                   </p>
                 </div>
               </div>

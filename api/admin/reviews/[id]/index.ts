@@ -1,90 +1,89 @@
-import { createAdminClient } from '../../../../src/lib/supabaseAdmin.server';
+// api/admin/reviews/[id]/index.ts
+import { createClient } from '@supabase/supabase-js';
 
 function verifyAdminAuth(req: any): boolean {
   const authHeader = req.headers.authorization;
   const adminKey = process.env.ADMIN_API_KEY;
-
   if (!adminKey) {
-    console.error('ADMIN_API_KEY not configured');
+    console.error('ADMIN_API_KEY not configured in process.env');
     return false;
   }
-
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return false;
-  }
-
+  if (!authHeader || !authHeader.startsWith('Bearer ')) return false;
   const token = authHeader.substring(7);
   return token === adminKey;
 }
 
 export default async function handler(req: any, res: any) {
-  // Enable CORS
+  // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
-  if (req.method !== 'DELETE') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  // Verify admin authentication
-  if (!verifyAdminAuth(req)) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
-
-  const { id } = req.query;
-  const { hard_delete = 'false' } = req.body;
-
-  if (!id) {
-    return res.status(400).json({ error: 'Review ID is required' });
-  }
+  if (req.method === 'OPTIONS') return res.status(200).end();
 
   try {
-    const supabase = createAdminClient();
+    if (req.method !== 'DELETE') {
+      return res.status(405).json({ error: 'Method not allowed' });
+    }
 
-    if (hard_delete === 'true' && process.env.ALLOW_HARD_DELETE === 'true') {
-      // Hard delete - completely remove from database
+    if (!verifyAdminAuth(req)) {
+      console.warn('delete: unauthorized. Authorization header:', req.headers.authorization);
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const SUPABASE_URL = process.env.SUPABASE_URL;
+    const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!SUPABASE_URL) throw new Error('Missing SUPABASE_URL in process.env');
+    if (!SUPABASE_SERVICE_ROLE_KEY) throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY in process.env');
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+
+    const { id } = req.query;
+    const { hard_delete = 'false' } = req.body || {};
+
+    if (!id) return res.status(400).json({ error: 'Review ID is required' });
+
+    if ((hard_delete === 'true' || hard_delete === true) && process.env.ALLOW_HARD_DELETE === 'true') {
+      // Hard delete
       const { error } = await supabase
         .from('reviews')
         .delete()
         .eq('id', id);
 
       if (error) {
-        console.error('Database error:', error);
-        return res.status(500).json({ error: 'Failed to delete review' });
+        console.error('delete (hard) DB error:', error);
+        return res.status(500).json({ error: error.message || 'Failed to delete review', details: error });
       }
+
+      return res.status(200).json({ message: 'Review hard deleted successfully' });
     } else {
-      // Soft delete - mark as deleted
+      // Soft delete
       const { data: review, error } = await supabase
         .from('reviews')
-        .update({ 
+        .update({
           deleted: true,
-          published: false // Also unpublish if it was published
+          published: false
         })
         .eq('id', id)
         .select()
         .single();
 
       if (error) {
-        console.error('Database error:', error);
-        return res.status(500).json({ error: 'Failed to delete review' });
+        console.error('delete (soft) DB error:', error);
+        return res.status(500).json({ error: error.message || 'Failed to delete review', details: error });
       }
 
       if (!review) {
         return res.status(404).json({ error: 'Review not found' });
       }
+
+      return res.status(200).json({ message: 'Review deleted successfully', review });
     }
-
-    return res.status(200).json({
-      message: 'Review deleted successfully'
+  } catch (err: any) {
+    console.error('Unhandled error in delete handler:', err);
+    return res.status(500).json({
+      error: String(err.message || err),
+      stack: err?.stack ? String(err.stack).split('\n').slice(0,10).join('\n') : null
     });
-
-  } catch (error) {
-    console.error('Error deleting review:', error);
-    return res.status(500).json({ error: 'Internal server error' });
   }
 }

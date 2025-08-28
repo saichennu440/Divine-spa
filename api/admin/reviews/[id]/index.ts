@@ -1,4 +1,4 @@
-import { createAdminClient } from '../../../../src/lib/supabase';
+import { createAdminClient } from '../../../../src/lib/supabaseAdmin.server';
 
 function verifyAdminAuth(req: any): boolean {
   const authHeader = req.headers.authorization;

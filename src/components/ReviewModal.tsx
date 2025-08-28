@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, Star, Send, Check } from 'lucide-react';
 import type { CreateReviewRequest } from '../types/review';
-
+import { supabase } from '../lib/supabaseClient';
 interface ReviewModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -37,44 +37,70 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
     submitReview();
   };
 
-  const submitReview = async () => {
-    if (isSubmitting) return;
+// inside ReviewModal.tsx — replace submitReview with this
+const submitReview = async () => {
+  if (isSubmitting) return;
 
-    setIsSubmitting(true);
-    setSubmitError(null);
+  setIsSubmitting(true);
+  setSubmitError(null);
 
-    try {
+  try {
+    // Build request object (trim inputs)
+    const reviewRequest: CreateReviewRequest = {
+      name: reviewData.name.trim(),
+      email: reviewData.email.trim(),
+      city: reviewData.city?.trim() || undefined,
+      service: reviewData.service || undefined,
+      review: reviewData.review.trim(),
+      rating
+    };
 
-      const reviewRequest: CreateReviewRequest = {
-        name: reviewData.name.trim(),
-        email: reviewData.email.trim(),
-        city: reviewData.city?.trim() || undefined,
-        service: reviewData.service || undefined,
-        review: reviewData.review.trim(),
-        rating
-      };
-
-      const response = await fetch('/api/reviews', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(reviewRequest)
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to submit review');
-      }
-
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error('Error submitting review:', error);
-      setSubmitError(error instanceof Error ? error.message : 'Failed to submit review. Please try again.');
-    } finally {
-      setIsSubmitting(false);
+    // CLIENT-SIDE VALIDATION (mirror DB-checks)
+    if (!reviewRequest.name) throw new Error('Please enter your name.');
+    if (!reviewRequest.email) throw new Error('Please enter your email.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(reviewRequest.email)) {
+      throw new Error('Please enter a valid email address.');
     }
-  };
+    if (!reviewRequest.review || reviewRequest.review.length < 20) {
+      throw new Error('Review must be at least 20 characters.');
+    }
+    if (!reviewRequest.rating || reviewRequest.rating < 1 || reviewRequest.rating > 5) {
+      throw new Error('Please provide a rating between 1 and 5.');
+    }
+
+    // Perform insert
+    const { data: newReview, error } = await supabase
+      .from('reviews')
+      .insert([{
+        name: reviewRequest.name,
+        email: reviewRequest.email.toLowerCase(),
+        city: reviewRequest.city ?? null,
+        service: reviewRequest.service ?? null,
+        review: reviewRequest.review,
+        rating: reviewRequest.rating,
+        published: false,
+        avatar_url: null
+      }])
+      .select('id, name, city, service, review, rating, created_at')
+      .single();
+
+    if (error) {
+      // Log full error for debugging (you already print error, but include full object)
+      console.error('Supabase insert error full:', error);
+      // Provide a friendly message to the user (if DB returned message)
+      throw new Error(error.message || 'Failed to submit review');
+    }
+
+    // success
+    setIsSubmitted(true);
+  } catch (err) {
+    console.error('Error submitting review:', err);
+    setSubmitError(err instanceof Error ? err.message : 'Failed to submit review. Please try again.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   const handleClose = () => {
     onClose();

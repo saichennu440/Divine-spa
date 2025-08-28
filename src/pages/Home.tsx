@@ -92,7 +92,7 @@ const Home: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-8">
-             aroma, the spirit in everything we do.            </h2>
+             aroma, /the /spirit /in /everything /we /do.            </h2>
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
               At aroma spa, we believe in the transformative power of mindful therapies and conscious self-care. 
               Our sanctuary provides a space where ancient wisdom meets modern wellness, creating an experience 
@@ -108,7 +108,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              our Sacred Services
+              our /Sacred /Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover our carefully curated collection of treatments, each designed to nurture your wellbeing 
@@ -135,7 +135,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              what our guests say
+              what /our /guests /say
             </h2>
             <p className="text-lg text-gray-600">
               Hear from those who have experienced the aroma Spa difference.
@@ -214,7 +214,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light mb-6">
-              exclusive memberships 
+              exclusive / memberships 
             </h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto">
               Join our wellness community or share the gift of relaxation with someone special.
@@ -268,7 +268,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              find our Sanctuary
+              find  / our /Sanctuary
             </h2>
             <p className="text-lg text-gray-600">
               Discover aroma spa location.

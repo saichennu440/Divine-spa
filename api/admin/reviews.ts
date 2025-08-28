@@ -1,4 +1,4 @@
-import { createAdminClient } from '../../src/lib/supabase';
+import { createAdminClient } from '../../src/lib/supabaseAdmin.server';
 
 function verifyAdminAuth(req: any): boolean {
   const authHeader = req.headers.authorization;
@@ -29,6 +29,7 @@ export default async function handler(req: any, res: any) {
 
   // Verify admin authentication
   if (!verifyAdminAuth(req)) {
+      console.warn('Admin auth failed. Authorization header:', req.headers.authorization);
     return res.status(401).json({ error: 'Unauthorized' });
   }
 

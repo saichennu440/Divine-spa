@@ -41,7 +41,6 @@ const AdminReviews: React.FC = () => {
     };
   };
 
-
   const fetchReviews = async () => {
     try {
       setLoading(true);
@@ -59,6 +58,7 @@ const AdminReviews: React.FC = () => {
       }
 
       if (!response.ok) {
+        
         throw new Error('Failed to fetch reviews');
       }
 

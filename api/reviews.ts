@@ -69,11 +69,11 @@ export default async function handler(req: any, res: any) {
         return res.status(400).json({ error: 'Missing required fields: name, email, review, rating' });
       }
 
-      if (!validateEmail(email)) {
-        return res.status(400).json({ error: 'Invalid email format' });
-      }
+      // if (!validateEmail(email)) {
+      //   return res.status(400).json({ error: 'Invalid email format' });
+      // }
 
-      if (review.length < 20 || review.length > 2000) {
+      if (review.length < 10 || review.length > 2000) {
         return res.status(400).json({ error: 'Review must be between 20 and 2000 characters' });
       }
 
@@ -162,6 +162,7 @@ export default async function handler(req: any, res: any) {
 
       if (error) {
         console.error('Database error:', error);
+        console.log("error is this")
         return res.status(500).json({ error: 'Failed to fetch reviews' });
       }
 

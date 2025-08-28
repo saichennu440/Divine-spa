@@ -1,4 +1,4 @@
-import { createAdminClient } from '../src/lib/supabase';
+import { createAdminClient } from '../src/lib/supabaseAdmin.server';
 import type { CreateReviewRequest, ReviewsResponse } from '../src/types/review';
 
 // Rate limiting store (in production, use Redis or similar)

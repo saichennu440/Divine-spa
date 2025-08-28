@@ -349,8 +349,8 @@ const Contact: React.FC = () => {
             <AnimatedSection>
               <div className="space-y-6">
                 <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-montserrat text-xl font-semibold mb-3">5th Floor, Above Fabindia</h3>
-                  <p className="text-gray-600 mb-3">Nallagandla Rd, Opp.Aparna sarovar<br />Hyderabad, Telangana, 500046</p>
+                  <h3 className="font-montserrat text-xl font-semibold mb-3">7-1/92/C&92/F HIG, Above Fabindia Store,</h3>
+                  <p className="text-gray-600 mb-3">Opp.Aparna Sarovar Apartments, Nallagandla Main Road<br />Hyderabad, Telangana, 500046</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />
                     Mon-Sun: 10:00 AM - 9:00 PM

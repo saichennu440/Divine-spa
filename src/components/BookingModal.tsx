@@ -234,7 +234,7 @@ const BookingModal: React.FC = () => {
         <div className="relative inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
           <div className="bg-white px-6 py-6">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-vonique font-semibold text-gray-900">book your appointment</h3>
+              <h3 className="text-2xl font-montserrat font-semibold text-gray-900">book your appointment</h3>
               <button onClick={handleClose} className="text-gray-400 hover:text-gray-600 transition-colors">
                 <X className="h-6 w-6" />
               </button>

@@ -123,7 +123,7 @@ const ServiceCard: React.FC<{ item: ServiceItem }> = ({ item }) => {
             <div className="inline-flex items-center justify-center w-20 h-20 bg-sage/10 rounded-full mb-8">
               <Sparkles className="h-10 w-10 text-sage" />
             </div>
-            <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-4">Therapies</h1>
+            <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-4">Therapies</h1>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">Signature, classic and targeted therapies curated to your needs.</p>
           </AnimatedSection>
         </div>

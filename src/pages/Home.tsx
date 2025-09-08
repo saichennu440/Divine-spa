@@ -91,8 +91,8 @@ const Home: React.FC = () => {
       <section id="about" className="py-20 bg-cream">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-8">
-             aroma, /the /spirit /in /everything /we /do.            </h2>
+            <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-8">
+             aroma, the spirit in everything we do.            </h2>
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
               At aroma spa, we believe in the transformative power of mindful therapies and conscious self-care. 
               Our sanctuary provides a space where ancient wisdom meets modern wellness, creating an experience 
@@ -107,8 +107,8 @@ const Home: React.FC = () => {
       <section id="services" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              our /Sacred /Services
+            <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
+              our sacred services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover our carefully curated collection of treatments, each designed to nurture your wellbeing 
@@ -134,8 +134,8 @@ const Home: React.FC = () => {
       <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              what /our /guests /say
+            <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
+              what our guests say
             </h2>
             <p className="text-lg text-gray-600">
               Hear from those who have experienced the aroma Spa difference.
@@ -180,7 +180,7 @@ const Home: React.FC = () => {
       {/* <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
               our sanctuary
             </h2>
             <p className="text-lg text-gray-600">
@@ -213,8 +213,8 @@ const Home: React.FC = () => {
       <section id="membership" className="py-20 bg-sage text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-vonique font-light mb-6">
-              exclusive / memberships 
+            <h2 className="text-4xl md:text-5xl font-montserrat font-light mb-6">
+              exclusive  memberships 
             </h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto">
               Join our wellness community or share the gift of relaxation with someone special.
@@ -225,7 +225,7 @@ const Home: React.FC = () => {
             <AnimatedSection animation="fade-in-left">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
                 <Users className="h-12 w-12 mb-6 text-white" />
-                <h3 className="text-2xl font-vonique font-semibold mb-4">wellness membership</h3>
+                <h3 className="text-2xl font-montserrat font-semibold mb-4">wellness membership</h3>
                 <p className="text-white/90 mb-6 leading-relaxed">
                   Enjoy unlimited access to our facilities, priority booking, exclusive member rates, 
                   and personalized wellness consultations.
@@ -244,7 +244,7 @@ const Home: React.FC = () => {
             <AnimatedSection animation="fade-in-right">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
                 <Leaf className="h-12 w-12 mb-6 text-white" />
-                <h3 className="text-2xl font-vonique font-semibold mb-4">Gift Cards</h3>
+                <h3 className="text-2xl font-montserrat font-semibold mb-4">Gift Cards</h3>
                 <p className="text-white/90 mb-6 leading-relaxed">
                   Share the gift of wellness with beautifully designed gift cards available in any amount. 
                   Perfect for birthdays, anniversaries, or any special occasion.
@@ -267,8 +267,8 @@ const Home: React.FC = () => {
       <section id="spa-locator" className="py-20" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
-              find  / our /Sanctuary
+            <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
+              find our Sanctuary
             </h2>
             <p className="text-lg text-gray-600">
               Discover aroma spa location.
@@ -304,7 +304,7 @@ const Home: React.FC = () => {
                 </div>
 
                 {/* <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-vonique text-xl font-semibold mb-3">Beverly Hills</h3>
+                  <h3 className="font-montserrat text-xl font-semibold mb-3">Beverly Hills</h3>
                   <p className="text-gray-600 mb-3">456 Rodeo Drive<br />Beverly Hills, CA 90210</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />
@@ -314,7 +314,7 @@ const Home: React.FC = () => {
                 </div> */}
 
                 {/* <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-vonique text-xl font-semibold mb-3">South Beach</h3>
+                  <h3 className="font-montserrat text-xl font-semibold mb-3">South Beach</h3>
                   <p className="text-gray-600 mb-3">789 Ocean Drive<br />Miami Beach, FL 33139</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />
@@ -332,7 +332,7 @@ const Home: React.FC = () => {
       {/* <section className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
               wellness wisdom
             </h2>
             <p className="text-lg text-gray-600">

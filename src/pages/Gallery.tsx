@@ -101,7 +101,7 @@
 //       <section className="py-20 bg-gradient-to-b from-cream to-white">
 //         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 //           <AnimatedSection>
-//             <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
+//             <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-8">
 //               Our Sanctuary Gallery
 //             </h1>
 //             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
@@ -175,7 +175,7 @@
 //       <section className="py-20 bg-sage text-white">
 //         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 //           <AnimatedSection>
-//             <h2 className="text-4xl font-vonique font-light mb-6">
+//             <h2 className="text-4xl font-montserrat font-light mb-6">
 //               Experience Our Space in Person
 //             </h2>
 //             <p className="text-xl text-white/90 mb-8 leading-relaxed">

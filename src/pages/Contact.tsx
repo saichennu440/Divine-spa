@@ -109,7 +109,7 @@ const Contact: React.FC = () => {
       <section className="py-20 bg-gradient-to-b from-cream to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-8">
+            <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-8">
               get in touch
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
@@ -322,7 +322,7 @@ const Contact: React.FC = () => {
   <section id="spa-locator" className="py-20 bg-cream" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-vonique font-light text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
               find our sanctuary
             </h2>
             <p className="text-lg text-gray-600">
@@ -359,7 +359,7 @@ const Contact: React.FC = () => {
                 </div>
 
                 {/* <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-vonique text-xl font-semibold mb-3">Beverly Hills</h3>
+                  <h3 className="font-montserrat text-xl font-semibold mb-3">Beverly Hills</h3>
                   <p className="text-gray-600 mb-3">456 Rodeo Drive<br />Beverly Hills, CA 90210</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />
@@ -369,7 +369,7 @@ const Contact: React.FC = () => {
                 </div> */}
 
                 {/* <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-vonique text-xl font-semibold mb-3">South Beach</h3>
+                  <h3 className="font-montserrat text-xl font-semibold mb-3">South Beach</h3>
                   <p className="text-gray-600 mb-3">789 Ocean Drive<br />Miami Beach, FL 33139</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />

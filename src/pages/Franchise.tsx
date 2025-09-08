@@ -72,7 +72,7 @@
 //         <div className="" />
 //         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 //           <AnimatedSection>
-//             <h1 className="text-5xl md:text-6xl font-vonique font-light mb-8">
+//             <h1 className="text-5xl md:text-6xl font-montserrat font-light mb-8">
 //               Own a aroma spa Franchise
 //             </h1>
 //             <p className="text-xl leading-relaxed max-w-3xl mx-auto mb-8">
@@ -95,7 +95,7 @@
 //       <section className="py-20">
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //           <AnimatedSection className="text-center mb-16">
-//             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
+//             <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
 //               Why Choose aroma spa Franchise?
 //             </h2>
 //             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -135,7 +135,7 @@
 //           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 //             <AnimatedSection animation="fade-in-left">
 //               <div>
-//                 <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
+//                 <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
 //                   Investment Overview
 //                 </h2>
 //                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
@@ -240,7 +240,7 @@
 //       <section className="py-20 bg-beige">
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //           <AnimatedSection className="text-center mb-16">
-//             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
+//             <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
 //               Franchise Success Stories
 //             </h2>
 //             <p className="text-lg text-gray-600">
@@ -306,7 +306,7 @@
 //           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 //             <AnimatedSection animation="fade-in-left">
 //               <div>
-//                 <h2 className="text-4xl font-vonique font-light mb-6">
+//                 <h2 className="text-4xl font-montserrat font-light mb-6">
 //                   Ready to Start Your Journey?
 //                 </h2>
 //                 <p className="text-xl text-white/90 mb-8 leading-relaxed">

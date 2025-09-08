@@ -2,8 +2,8 @@
 
 /* Self-hosted fonts (placed in public/fonts/) */
 @font-face {
-  font-family: 'Vonique';
-  src: url('/fonts/vonique-43d.otf') format('opentype');
+  font-family: 'montserrat';
+  src: url('/fonts/montserrat-43d.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -41,8 +41,8 @@
   --color-text: #2D3748;
   --color-text-light: #718096;
 
-  /* Headings: Vonique. Body/UI: Montserrat */
-  --font-serif: 'Vonique', Georgia, serif;
+  /* Headings: montserrat. Body/UI: Montserrat */
+  --font-serif: 'montserrat', Georgia, serif;
   --font-sans: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -103,7 +103,7 @@ button, input, textarea, select {
   line-height: 1.2;
 }
 
-/* Headings: use Vonique (display serif) */
+/* Headings: use montserrat (display serif) */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   font-weight: 400; /* decorative fonts often sit at normal weight */

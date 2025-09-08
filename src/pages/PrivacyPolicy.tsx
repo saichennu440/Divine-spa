@@ -8,7 +8,7 @@ const PrivacyPolicy: React.FC = () => {
       <section className="py-20 bg-gradient-to-b from-cream to-white text-center">
         <div className="max-w-4xl mx-auto px-4">
           <AnimatedSection>
-            <h1 className="text-5xl md:text-6xl font-vonique font-light text-gray-900 mb-6">Privacy Policy</h1>
+            <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-6">Privacy Policy</h1>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               We value your privacy. This policy explains what information we collect, why we collect it, and how
               we use and protect it.

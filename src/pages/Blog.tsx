@@ -231,7 +231,7 @@
 //       <section className="py-20 bg-sage text-white">
 //         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 //           <AnimatedSection>
-//             <h2 className="text-4xl font-vonique font-light mb-6">
+//             <h2 className="text-4xl font-montserrat font-light mb-6">
 //               Stay Updated with Wellness Insights
 //             </h2>
 //             <p className="text-xl text-white/90 mb-8 leading-relaxed">
@@ -258,7 +258,7 @@
 //       <section className="py-20">
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //           <AnimatedSection className="text-center mb-16">
-//             <h2 className="text-4xl font-vonique font-light text-gray-900 mb-6">
+//             <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
 //               Popular Wellness Topics
 //             </h2>
 //             <p className="text-lg text-gray-600">

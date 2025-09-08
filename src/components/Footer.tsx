@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           {/* Brand & Contact */}
           <div className="lg:col-span-2">
     
-            <h3 className="flex items-center text-2xl font-vonique font-semibold mb-6">
+            <h3 className="flex items-center text-2xl font-montserrat font-semibold mb-6">
                       <img
     src="/Aroma_Spa_Footer.jpg"            // <-- put the file name you used in /public here
     alt="Aroma Spa"
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-vonique text-2xl font-semibold mb-6">Quick Links</h4>
+            <h4 className="font-montserrat text-2xl font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3">
               <li>
                 <Link to="/" className="text-gray-300 hover:text-sage transition-colors">
@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-vonique text-2xl font-semibold mb-6">Our Services</h4>
+            <h4 className="font-montserrat text-2xl font-semibold mb-6">Our Services</h4>
             <ul className="space-y-3">
               <li>
                 <Link to="/services/therapies" className="text-gray-300 hover:text-sage transition-colors">
@@ -105,7 +105,7 @@ const Footer: React.FC = () => {
 
           {/* Business */}
           {/* <div>
-            <h4 className="font-vonique text-2xl font-semibold mb-6">Business</h4>
+            <h4 className="font-montserrat text-2xl font-semibold mb-6">Business</h4>
             <ul className="space-y-3">
               <li>
                 <Link to="/franchise" className="text-gray-300 hover:text-sage transition-colors">

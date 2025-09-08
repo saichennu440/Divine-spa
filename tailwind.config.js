@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-         'vonique': ['Vonique', 'Georgia', 'serif'],
+         'montserrat': ['montserrat', 'Georgia', 'serif'],
          'montserrat': ['Montserrat', 'system-ui', 'sans-serif'],
         'serif': ['Playfair Display', 'Georgia', 'serif'],
         'sans': ['Inter', 'system-ui', 'sans-serif'],

@@ -27,7 +27,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, ima
       </div>
       
       <div className="p-6">
-        <h3 className="font-vonique text-xl font-semibold text-gray-900 mb-3">
+        <h3 className="font-montserrat text-xl font-semibold text-gray-900 mb-3">
           {title}
         </h3>
         <p className="text-gray-600 mb-4 line-clamp-2">

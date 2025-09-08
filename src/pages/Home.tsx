@@ -16,28 +16,28 @@ const Home: React.FC = () => {
       description: 'Professional therapeutic treatments including Swedish, Deep Tissue, Hot Stone, and Aromatherapy therapy for ultimate relaxation.',
       icon: <Sparkles className="h-8 w-8" />,
       path: '/services/therapies',
-      image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
+      image: '/services/Aromatic Therapy.jpg'
     },
     {
       title: 'Facials',
       description: 'Therapeutic foot treatments using reflexology and specialized techniques to promote overall wellness and healing.',
       icon: <Heart className="h-8 w-8" />,
        path: '/services/facials',
-      image: 'https://images.pexels.com/photos/3985360/pexels-photo-3985360.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
+      image: '/services/Facials – Rejuvenating.jpg'
     },
     {
       title: 'Full body Polishing',
       description: 'Specialized treatments including Prenatal, Lymphatic Drainage, Sports therapy, and Trigger Point Therapy.',
           path: '/services/full-body-polishing',
       icon: <Droplets className="h-8 w-8" />,
-      image: 'https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
+      image: '/services/Polishing – Scrub.jpg'
     },
     {
       title: 'Foot pedicure',
       description: 'Focused treatments for head, neck, and shoulder tension including TMJ therapy and Craniosacral work.',
       icon: <Flower2 className="h-8 w-8" />,
           path: '/services/foot-pedicure',
-      image: 'https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
+      image: '/services/Pedicure – Brightening De-Tan.jpg'
     }
   ];
 

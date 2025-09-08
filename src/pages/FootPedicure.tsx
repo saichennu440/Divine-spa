@@ -96,7 +96,7 @@ const FootPedicure: React.FC = () => {
               <Heart className="h-10 w-10 text-sage" />
             </div>
             <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-4">foot pedicure & reflexology</h1>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">Pampering pedicures and foot treatments.</p>
+            {/* <p className="text-xl text-gray-700 max-w-3xl mx-auto">Pampering pedicures and foot treatments.</p> */}
           </AnimatedSection>
         </div>
       </section>

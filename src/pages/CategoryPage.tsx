@@ -167,7 +167,7 @@ const CategoryPage: React.FC = () => {
               <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-4">
                 {headerTitle}
               </h1>
-              <p className="text-xl text-gray-700 max-w-3xl mx-auto">Select a service below.</p>
+              {/* <p className="text-xl text-gray-700 max-w-3xl mx-auto">Select a service below.</p> */}
             </AnimatedSection>
           </div>
         </section>

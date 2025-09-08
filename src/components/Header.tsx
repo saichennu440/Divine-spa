@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, X, Calendar } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
-
+import servicesData from '../data/servicesData'; // adjust path if necessar
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -14,32 +14,57 @@ const Header: React.FC = () => {
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 const [mobileExpanded, setMobileExpanded] = useState<string | null>(null); 
 
-  const menu = [
-    { id: 'therapies', label: 'Therapies', slug: '/services/therapies', hasPage: false },
-    { id: 'facials', label: 'Facials', slug: '/services/facials', hasPage: false },
-    { id: 'polishing', label: 'Fully Body Polishing', slug: '/services/full-body-polishing', hasPage: true },
-    { id: 'foot', label: 'Foot Pedicure', slug: '/services/foot-pedicure', hasPage: true },
-  ];
+  const menu = React.useMemo(() => {
+    const slugToLabel = (s: string) => s.replace(/-/g, ' ');
+    return [
+      {
+        id: 'therapies',
+        label: 'Therapies',
+        slug: '/services/therapies',
+        hasPage: true,
+        children: Object.keys(servicesData.therapies).map((key) => ({
+          label: slugToLabel(key).toLowerCase(),               // "signature therapies" (lowercase)
+          slug: `/services/therapies/${key}`,
+        })),
+      },
+      {
+        id: 'facials',
+        label: 'Facials',
+        slug: '/services/facials',
+        hasPage: true,
+        children: Object.keys(servicesData.facials).map((key) => ({
+          label: slugToLabel(key).toLowerCase(),
+          slug: `/services/facials/${key}`,
+        })),
+      },
+      {
+        id: 'full-body-polishing',
+        label: 'Fully Body Polishing',
+        slug: '/services/full-body-polishing',
+        hasPage: true,
+        children: [], // no subitems (no right panel)
+      },
+      {
+        id: 'foot-pedicure',
+        label: 'Foot Pedicure',
+        slug: '/services/foot-pedicure',
+        hasPage: true,
+        children: [], // no subitems
+      },
+    ];
+  }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+ useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // const serviceCategories = [
-  //   'Signature Massage Therapies',
-  //   'Reflexology & Foot Treatments', 
-  //   'Therapeutic Body Treatments',
-  //   'Head Neck & Shoulder Treatments'
-  // ];
-
-//let closeTimeout: ReturnType<typeof setTimeout>;
   const openMenu = () => {
-    if (closeTimeout.current) { clearTimeout(closeTimeout.current); closeTimeout.current = null; }
+    if (closeTimeout.current) {
+      clearTimeout(closeTimeout.current);
+      closeTimeout.current = null;
+    }
     setIsServicesOpen(true);
   };
   const delayedClose = (delay = 150) => {
@@ -56,6 +81,7 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
       setHoveredTop(id);
       setIsServicesOpen(true);
     }
+    // optional: arrow navigation can be added later
   };
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -97,114 +123,116 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
             
             {/* Services Dropdown */}
       {/* Services Dropdown desktop */}
-<nav className="hidden lg:block">
-  <div
-    className="relative inline-block"
-    onMouseEnter={() => openMenu()}
-    onMouseLeave={() => delayedClose(180)}
-  >
-    <button
-      className={`flex items-center text-md font-montserrat font-semibold hover:text-sage transition-colors ${location.pathname.startsWith('/services') ? 'text-sage' : 'text-gray-700'}`}
-      aria-expanded={isServicesOpen}
-      aria-controls="services-menu"
-      onClick={(e) => { e.preventDefault(); /* top-level label not navigable */ }}
-    >
-      Services
-      <ChevronDown className="ml-1 h-4 w-4" />
-    </button>
-
-    {isServicesOpen && (
-      <div
-        id="services-menu"
-        className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50"
-      >
-        <div className="px-1 py-1">
-          {menu.map((m) => (
-            <div
-              key={m.id}
-              onMouseEnter={() => { openMenu(); setHoveredTop(m.id); }}
-              onMouseLeave={() => { /* keep open while moving inside menu */ }}
-              className="group"
-            >
-              {/* Top-level (linkable or non-link) */}
-              {m.hasPage ? (
-                <Link
-                  to={m.slug}
-                  className={`block px-4 py-3 text-sm font-medium rounded-md transition-colors ${
-                    location.pathname === m.slug ? 'text-sage bg-cream' : 'text-gray-700 hover:bg-cream hover:text-sage'
+ <nav className="hidden lg:block">
+              <div
+                className="relative inline-block"
+                onMouseEnter={() => {
+                  openMenu();
+                  setHoveredTop(null); // show only main list initially
+                }}
+                onMouseLeave={() => delayedClose(180)}
+              >
+                <button
+                  className={`flex items-center text-md font-montserrat font-semibold hover:text-sage transition-colors ${
+                    location.pathname.startsWith('/services') ? 'text-sage' : 'text-gray-700'
                   }`}
+                  aria-expanded={isServicesOpen}
+                  aria-controls="services-menu"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
                 >
-                  {m.label}
-                </Link>
-              ) : (
-                <div
-                  role="button"
-                  tabIndex={0}
-                  onFocus={() => { openMenu(); setHoveredTop(m.id); }}
-                  onKeyDown={(e) => handleKeyOnTop(e, m.id)}
-                  className={`block px-4 py-3 text-sm font-medium rounded-md cursor-pointer transition-colors ${
-                    hoveredTop === m.id ? 'text-sage bg-cream' : 'text-gray-700 hover:bg-cream hover:text-sage'
-                  }`}
-                  aria-pressed={hoveredTop === m.id}
-                >
-                  {m.label}
-                </div>
-              )}
+                  Services
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </button>
 
-              {/* Inline subitems: shown in-place under the hovered category */}
-              {hoveredTop === m.id && (
-                <div className="pl-6 pr-3 pb-2 pt-1 space-y-1">
-                  {m.id === 'therapies' && (
-                    <>
-                      <Link
-                        to="/services/therapies/signature-therapies"
-                        onClick={() => { /* keep menu close handled by mouseleave */ }}
-                        className="block text-sm px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-sage"
-                      >
-                        signature therapies
-                      </Link>
-                      <Link
-                        to="/services/therapies/classic-therapies"
-                        className="block text-sm px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-sage"
-                      >
-                        classic therapies
-                      </Link>
-                      <Link
-                        to="/services/therapies/targeted-therapies"
-                        className="block text-sm px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-sage"
-                      >
-                        targeted therapies
-                      </Link>
-                    </>
-                  )}
+                {isServicesOpen && (
+                  (() => {
+                    const activeTop = menu.find((m) => m.id === hoveredTop) || null;
+                    const hasActiveChildren = Boolean(activeTop && activeTop.children && activeTop.children.length > 0);
+                    const containerWidthClass = hasActiveChildren ? 'w-[36rem]' : 'w-64';
 
-                  {m.id === 'facials' && (
-                    <>
-                      <Link
-                        to="/services/facials/classic-facials"
-                        className="block text-sm px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-sage"
+                    return (
+                      <div
+                        id="services-menu"
+                        className={`absolute top-full left-0 mt-2 ${containerWidthClass} bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50 transition-all`}
+                        onMouseEnter={() => openMenu()}
+                        onMouseLeave={() => delayedClose(180)}
                       >
-                        classic facials
-                      </Link>
-                      <Link
-                        to="/services/facials/premium-facials"
-                        className="block text-sm px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-sage"
-                      >
-                        premium facials
-                      </Link>
-                    </>
-                  )}
+                        <div className="flex">
+                          {/* LEFT: main categories */}
+                          <div className="w-56 px-2 py-2">
+                            {menu.map((m) => (
+                              <div
+                                key={m.id}
+                                onMouseEnter={() => setHoveredTop(m.id)}
+                                onFocus={() => {
+                                  openMenu();
+                                  setHoveredTop(m.id);
+                                }}
+                                onKeyDown={(e) => handleKeyOnTop(e, m.id)}
+                                className={`mb-1 rounded-md overflow-hidden ${
+                                  hoveredTop === m.id ? 'bg-cream text-sage' : 'hover:bg-cream hover:text-sage'
+                                }`}
+                              >
+                                {m.hasPage ? (
+                                  <Link
+                                    to={m.slug}
+                                    className={`block px-4 py-3 text-sm font-medium ${
+                                      location.pathname === m.slug ? 'text-sage bg-cream' : 'text-gray-700'
+                                    }`}
+                                  >
+                                        <span className="flex items-center justify-between">
+      <span>{m.label}</span>
+      {m.children && m.children.length > 0 && (
+        <ChevronDown className={`ml-3 h-4 w-4 transition-transform ${hoveredTop === m.id ? 'rotate-180' : ''}`} />
+      )}
+    </span>
+                                  </Link>
+                                ) : (
+                                  <div
+                                    role="button"
+                                    tabIndex={0}
+                                    className="block px-4 py-3 text-sm font-medium cursor-pointer text-gray-700"
+                                    aria-pressed={hoveredTop === m.id}
+                                  >
+                                      <span className="flex items-center justify-between">
+      <span>{m.label}</span>
+      {m.children && m.children.length > 0 && (
+        <ChevronDown className={`ml-3 h-4 w-4 transition-transform ${hoveredTop === m.id ? 'rotate-180' : ''}`} />
+      )}
+    </span>
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
 
-                  {/* If the category has no subitems (polishing, foot), nothing extra will render here */}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    )}
-  </div>
-</nav>
+                          {/* RIGHT: subitems only when active top item has children */}
+                          {hasActiveChildren && (
+                            <div className="flex-1 px-6 py-4 border-l border-gray-100">
+                              <h3 className="text-sm font-semibold mb-3">{activeTop!.label}</h3>
+                              <div className="space-y-2">
+                                {activeTop!.children.map((child) => (
+                                  <Link
+                                    key={child.slug}
+                                    to={child.slug}
+                                    className="block text-sm px-2 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-sage"
+                                  >
+                                    {child.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })()
+                )}
+              </div>
+            </nav>
+
 
 
             <Link 
@@ -293,8 +321,7 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
               >
                 About
               </Link>
-              {/* Services Dropdown */}
-
+              
               {/* Services Dropdown  mobile menu */}
 <div className="relative lg:hidden"> {/* visible on mobile only (hidden on lg and up) */}
   <button

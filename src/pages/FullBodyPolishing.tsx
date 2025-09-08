@@ -96,7 +96,7 @@ const FullBodyPolishing: React.FC = () => {
               <Droplets className="h-10 w-10 text-sage" />
             </div>
             <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-4">full body polishing & scrubs</h1>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">Exfoliation rituals to reveal radiant skin.</p>
+            {/* <p className="text-xl text-gray-700 max-w-3xl mx-auto">Exfoliation rituals to reveal radiant skin.</p> */}
           </AnimatedSection>
         </div>
       </section>

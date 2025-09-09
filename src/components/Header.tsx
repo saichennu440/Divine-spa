@@ -211,7 +211,7 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
                           {/* RIGHT: subitems only when active top item has children */}
                           {hasActiveChildren && (
                             <div className="flex-1 px-6 py-4 border-l border-gray-100">
-                              <h3 className="text-sm font-semibold mb-3">{activeTop!.label}</h3>
+                              <h3 className="text-sm font-montserrat mb-3">{activeTop!.label}</h3>
                               <div className="space-y-2">
                                 {activeTop!.children.map((child) => (
                                   <Link

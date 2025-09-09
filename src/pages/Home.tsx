@@ -20,21 +20,21 @@ const Home: React.FC = () => {
     },
     {
       title: 'Facials',
-      description: 'Therapeutic foot treatments using reflexology and specialized techniques to promote overall wellness and healing.',
+      description: 'Rejuvenating skin treatments designed to cleanse, hydrate, and restore your natural glow.',
       icon: <Heart className="h-8 w-8" />,
        path: '/services/facials',
       image: '/services/Facials – Rejuvenating.jpg'
     },
     {
       title: 'Full body Polishing',
-      description: 'Specialized treatments including Prenatal, Lymphatic Drainage, Sports therapy, and Trigger Point Therapy.',
+      description: 'Luxurious exfoliation therapy that smooths, brightens, and revitalizes your entire body.',
           path: '/services/full-body-polishing',
       icon: <Droplets className="h-8 w-8" />,
       image: '/services/Polishing – Scrub.jpg'
     },
     {
       title: 'Foot pedicure',
-      description: 'Focused treatments for head, neck, and shoulder tension including TMJ therapy and Craniosacral work.',
+      description: 'Pampering foot care to refresh, soften, and beautify for perfectly polished toes.',
       icon: <Flower2 className="h-8 w-8" />,
           path: '/services/foot-pedicure',
       image: '/services/Pedicure – Brightening De-Tan.jpg'

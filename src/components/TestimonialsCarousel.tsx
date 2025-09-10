@@ -22,35 +22,9 @@ interface TestimonialsCarouselProps {
 const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({ reviews, loading }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [dotOffset, setDotOffset] = useState<number>(0);
-  const [cardHeight, setCardHeight] = useState<number | undefined>(undefined);
   const sliderRef = useRef<Slider | null>(null);
 
- const settings: Settings = {
-  infinite: true,
-  speed: 500,
-  slidesToShow: 3, // desktop stays the same
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 4000,
-  beforeChange: (_: number, next: number) => setActiveIndex(next),
-  arrows: false,
-  dots: false,
-  responsive: [
-    {
-      breakpoint: 640, // below 640px (mobile)
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
-
-
-  // Measure tallest card after render
-useEffect(() => {
-  if (!reviews.length) return;
-
+  // Shared height calculation function
   const updateHeights = () => {
     const slides = document.querySelectorAll(".testimonial-slide");
     let maxHeight = 0;
@@ -64,18 +38,41 @@ useEffect(() => {
     });
   };
 
-  // Run once after mount
-  updateHeights();
+  const settings: Settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3, // desktop default
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    beforeChange: (_: number, next: number) => setActiveIndex(next),
+    arrows: false,
+    dots: false,
+    responsive: [
+      {
+        breakpoint: 640, // below 640px (mobile)
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+    onInit: () => updateHeights(),
+    onReInit: () => updateHeights(),
+    afterChange: () => updateHeights(),
+  };
 
-  // Run again on window resize
-  window.addEventListener("resize", updateHeights);
-  return () => window.removeEventListener("resize", updateHeights);
-}, [reviews]);
-
+  // Initial + resize recalculation
+  useEffect(() => {
+    if (!reviews.length) return;
+    updateHeights();
+    window.addEventListener("resize", updateHeights);
+    return () => window.removeEventListener("resize", updateHeights);
+  }, [reviews]);
 
   const renderDots = () => {
     const totalSlides = reviews.length;
-    const visibleDots = [0, 1, 2].map(i => (dotOffset + i) % totalSlides);
+    const visibleDots = [0, 1, 2].map((i) => (dotOffset + i) % totalSlides);
 
     return (
       <div className="flex justify-center space-x-2 mt-6">
@@ -117,22 +114,25 @@ useEffect(() => {
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(3)].map((_, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg p-6 animate-pulse h-full"></div>
+              <div
+                key={index}
+                className="bg-white rounded-2xl shadow-lg p-6 animate-pulse h-full"
+              ></div>
             ))}
           </div>
         ) : (
           <>
             <Slider ref={sliderRef} {...settings}>
               {reviews.map((review: Review, index: number) => (
-               <div key={index} className="px-4 testimonial-slide">
-  <TestimonialCard
-    name={review.name}
-    city={review.city || "Guest"}
-    rating={review.rating}
-    text={review.review}
-    avatar={review.avatar_url}
-  />
-</div>
+                <div key={index} className="px-4 testimonial-slide">
+                  <TestimonialCard
+                    name={review.name}
+                    city={review.city || "Guest"}
+                    rating={review.rating}
+                    text={review.review}
+                    avatar={review.avatar_url}
+                  />
+                </div>
               ))}
             </Slider>
             {renderDots()}

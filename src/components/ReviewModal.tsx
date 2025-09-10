@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, Star, Send, Check } from 'lucide-react';
-import type { CreateReviewRequest } from '../pages/types/review';
-import { supabase } from '../pages/lib/supabaseClient';
+import type { CreateReviewRequest } from '../types/review';
+import { supabase } from '../lib/supabaseClient';
 interface ReviewModalProps {
   isOpen: boolean;
   onClose: () => void;

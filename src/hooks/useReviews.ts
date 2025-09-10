@@ -1,7 +1,7 @@
 // hooks/useReviews.ts
 import { useState, useEffect } from 'react';
-import type { PublicReview } from '../types/review';
-import { supabase } from '../lib/supabaseClient';
+import type { PublicReview } from '../pages/types/review';
+import { supabase } from '../pages/lib/supabaseClient';
 
 export function useReviews(limit = 12) {
   const [reviews, setReviews] = useState<PublicReview[]>([]);

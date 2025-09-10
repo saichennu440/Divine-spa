@@ -1,5 +1,5 @@
-import { createAdminClient } from '../src/lib/supabaseAdmin.server';
-import type { CreateReviewRequest, ReviewsResponse } from '../src/types/review';
+import { createAdminClient } from '../lib/supabaseAdmin.server';
+import type { CreateReviewRequest, ReviewsResponse } from '../types/review';
 
 // Rate limiting store (in production, use Redis or similar)
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();

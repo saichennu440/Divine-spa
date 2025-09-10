@@ -93,7 +93,7 @@ useEffect(() => {
                 }
               }}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                isActive ? "bg-green-600 scale-125" : "bg-gray-300"
+                isActive ? "bg-sage scale-125" : "bg-gray-300"
               }`}
             ></button>
           );

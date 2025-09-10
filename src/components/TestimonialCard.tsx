@@ -25,7 +25,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ name, city, rating, text,
   }, [text]);
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 max-w-md mx-auto h-full flex flex-col justify-between max-h-[360px] ">
+    <div className="bg-white rounded-2xl shadow-lg p-6 max-w-md mx-auto h-full flex flex-col justify-between min-h-[260px] ">
       {/* Top: Rating + Review */}
       <div>
         <div className="flex items-center mb-4">
@@ -59,7 +59,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ name, city, rating, text,
         {showReadMore && (
           <button
             onClick={() => setExpanded(!expanded)}
-            className="text-green-600 text-sm font-semibold hover:underline focus:outline-none"
+            className="text-sage text-sm font-semibold hover:underline focus:outline-none"
           >
             {expanded ? 'Show less' : 'Read more'}
           </button>

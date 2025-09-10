@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import Slider, { Settings } from "react-slick";
 import TestimonialCard from "./TestimonialCard";
 import AnimatedSection from "./AnimatedSection";
@@ -19,60 +19,71 @@ interface TestimonialsCarouselProps {
   loading: boolean;
 }
 
+const getSlidesToShow = (width: number) => {
+  if (width < 768) return 1;
+  if (width < 1024) return 2;
+  return 3;
+};
+
 const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({ reviews, loading }) => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [dotOffset, setDotOffset] = useState<number>(0);
   const sliderRef = useRef<Slider | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [slidesToShow, setSlidesToShow] = useState<number>(() =>
+    typeof window !== "undefined" ? getSlidesToShow(window.innerWidth) : 3
+  );
 
-  // Shared height calculation function
-  const updateHeights = () => {
-    const slides = document.querySelectorAll(".testimonial-slide");
-    let maxHeight = 0;
-    slides.forEach((slide) => {
-      (slide as HTMLElement).style.height = "auto"; // reset first
-      const h = (slide as HTMLElement).offsetHeight;
-      if (h > maxHeight) maxHeight = h;
-    });
-    slides.forEach((slide) => {
-      (slide as HTMLElement).style.height = `${maxHeight}px`;
-    });
-  };
+  // Restore previous dots logic state
+  const [dotOffset, setDotOffset] = useState<number>(0);
 
+  // Update slidesToShow on resize (debounced via RAF)
+  useEffect(() => {
+    let rafId: number | null = null;
+    const onResize = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const newVal = getSlidesToShow(window.innerWidth);
+        setSlidesToShow((prev) => (prev !== newVal ? newVal : prev));
+      });
+    };
+    window.addEventListener("resize", onResize);
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  // Reset activeIndex & dotOffset when reviews length or slidesToShow change
+  useEffect(() => {
+    if (activeIndex > Math.max(0, reviews.length - 1)) setActiveIndex(0);
+    setDotOffset(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reviews.length, slidesToShow]);
+
+  // Slider settings driven by slidesToShow
   const settings: Settings = {
-    infinite: true,
+    infinite: reviews.length > slidesToShow,
     speed: 500,
-    slidesToShow: 3, // desktop default
+    slidesToShow,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: reviews.length > slidesToShow,
     autoplaySpeed: 4000,
     beforeChange: (_: number, next: number) => setActiveIndex(next),
     arrows: false,
     dots: false,
-    responsive: [
-      {
-        breakpoint: 640, // below 640px (mobile)
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-    onInit: () => updateHeights(),
-    onReInit: () => updateHeights(),
-    afterChange: () => updateHeights(),
+    adaptiveHeight: true,
+    swipeToSlide: true,
+    touchThreshold: 5,
+    draggable: true,
+    responsive: [], // handled by JS-driven slidesToShow
   };
 
-  // Initial + resize recalculation
-  useEffect(() => {
-    if (!reviews.length) return;
-    updateHeights();
-    window.addEventListener("resize", updateHeights);
-    return () => window.removeEventListener("resize", updateHeights);
-  }, [reviews]);
-
-  const renderDots = () => {
+  const renderDots = useCallback(() => {
     const totalSlides = reviews.length;
-    const visibleDots = [0, 1, 2].map((i) => (dotOffset + i) % totalSlides);
+    if (!totalSlides || totalSlides === 1) return null;
+
+    // how many visible dots we want (original logic used 3)
+    const visibleCount = Math.min(3, totalSlides);
+    const visibleDots = Array.from({ length: visibleCount }, (_, i) => (dotOffset + i) % totalSlides);
 
     return (
       <div className="flex justify-center space-x-2 mt-6">
@@ -84,20 +95,22 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({ reviews, lo
               onClick={() => {
                 if (sliderRef.current) {
                   sliderRef.current.slickGoTo(slideIndex);
-                  if (i === 2) {
-                    setDotOffset((dotOffset + 1) % totalSlides);
+                  // keep previous behavior: if clicking the rightmost visible dot, move the offset forward
+                  if (i === visibleCount - 1) {
+                    setDotOffset((prev) => (prev + 1) % totalSlides);
                   }
                 }
               }}
+              aria-label={`Go to slide ${slideIndex + 1}`}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 isActive ? "bg-sage scale-125" : "bg-gray-300"
               }`}
-            ></button>
+            />
           );
         })}
       </div>
     );
-  };
+  }, [reviews.length, dotOffset, activeIndex]);
 
   return (
     <section className="py-20 bg-beige">
@@ -114,27 +127,28 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({ reviews, lo
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(3)].map((_, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl shadow-lg p-6 animate-pulse h-full"
-              ></div>
+              <div key={index} className="bg-white rounded-2xl shadow-lg p-6 animate-pulse h-full"></div>
             ))}
           </div>
         ) : (
           <>
-            <Slider ref={sliderRef} {...settings}>
+            {/* Force Slider re-init when slidesToShow changes */}
+            <Slider key={slidesToShow} ref={sliderRef} {...settings}>
               {reviews.map((review: Review, index: number) => (
                 <div key={index} className="px-4 testimonial-slide">
-                  <TestimonialCard
-                    name={review.name}
-                    city={review.city || "Guest"}
-                    rating={review.rating}
-                    text={review.review}
-                    avatar={review.avatar_url}
-                  />
+                  <div className="w-full h-full">
+                    <TestimonialCard
+                      name={review.name}
+                      city={review.city || "Guest"}
+                      rating={review.rating}
+                      text={review.review}
+                      avatar={review.avatar_url}
+                    />
+                  </div>
                 </div>
               ))}
             </Slider>
+
             {renderDots()}
           </>
         )}

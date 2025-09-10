@@ -72,7 +72,7 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-8">
-              about aroma spa
+              About aromaspa
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Inspired by the aroma. Created for You. We are more than just a spa – we are a sanctuary 
@@ -88,7 +88,7 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
             <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-8">
-      aroma embodies wellness where healing meets harmony.            </h2>
+      aroma Embodies Wellness Where Healing Meets Harmony.            </h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
               At aroma spa, we believe in the transformative power of mindful therapies and conscious self-care. 
               Our sanctuary provides a space where you can disconnect from the world's chaos and reconnect with 
@@ -108,8 +108,8 @@ const About: React.FC = () => {
       <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
-              our core values
+           <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
+              Our Core Values
             </h2>
             <p className="text-lg text-gray-600">
               The principles that guide everything we do at aroma spa.
@@ -149,7 +149,7 @@ const About: React.FC = () => {
             <AnimatedSection animation="fade-in-left">
               <div>
                 <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
-                  our journey
+                  Our Journey
                 </h2>
                 <div className="space-y-6 text-gray-700 leading-relaxed">
                   <p>
@@ -304,7 +304,7 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-montserrat font-light mb-6">
-              our location
+              Our Location
             </h2>
             <p className="text-xl text-white/90">
               Visit us at our luxurious spa location in Hyderabad.
@@ -368,8 +368,8 @@ const About: React.FC = () => {
         <AnimatedSection>
               <div className="space-y-6">
                 <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-montserrat text-xl font-semibold mb-3 text-gray-500">7-1/92/C&92/F HIG, Above Fabindia Store,</h3>
-                  <p className="text-gray-600 mb-3">Opp. Aparna Sarovar Apartments, Nallagandla Main Road,<br />Hyderabad, Telangana, 500046</p>
+                  <h3 className="font-montserrat text-xl font-semibold mb-3 text-gray-500">aromaspa</h3>
+                  <p className="text-gray-600 mb-3">5ht Floor,Above Fabindia Store,Opp. Aparna Sarovar Apartments, Nallagandla Main Road,<br />Hyderabad, Telangana, 500046</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />
                     Mon-Sun:10:00 AM - 9:00 PM
@@ -407,7 +407,7 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
-              begin your wellness journey
+              Begin Your Wellness Journey
             </h2>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Experience the aroma spa difference and discover what it means to be truly cared for.

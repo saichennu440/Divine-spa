@@ -131,19 +131,19 @@ const servicesData: ServicesData = {
     'targeted-therapies': [
       {
         name: 'Foot Reflexology',
-        description: 'Calming leg & foot massage targeting reflex points to promote whole-body wellness.',
+        description: 'A calming leg massage that releases built-up tension, promotes circulation, and envelops your legs in soothing relaxation from thigh to toe. ',
         image: '/services/Foot Reflexology.jpg',
         variants: [{ duration: '30', price: '₹1000' }]
       },
       {
         name: 'Back Revival Therapy(without shower)',
-        description: 'Targeted back work to release knots and stiffness.',
+        description: 'Expert techniques paired with aromatic oils release knots and stiffness, leaving you refreshed and renewed. ',
         image: '/services/Back Revival Therapy.jpg',
         variants: [{ duration: '30', price: '₹1700' }]
       },
       {
         name: 'Head, Neck & Shoulder',
-        description: 'Rejuvenating head, neck and shoulder sequence to ease tension.',
+        description: 'RDrift into bliss as each precise movement rejuvenates muscles, calms the mind, and restores balance ',
         image: '/services/Head, Neck & Shoulder.jpg',
         variants: [{ duration: '30', price: '₹1200' }]
       }
@@ -204,7 +204,7 @@ const servicesData: ServicesData = {
     'full-body-polishing': [
       {
         name: 'Scrub (with shower)',
-        description: 'Energize your skin with the power of Vitamin C. This vibrant polish works to lighten sun damage, boost collagen, and enhance natural luminosity—perfect for reviving dull or tanned skin into a bright, youthful glow. ',
+        description: 'Experience an invigorating exfoliation that gently buffs away dullness and impurities, revealing skin that feels luxuriously smooth, soft, and renewed. This revitalizing treatment enhances circulation, awakens the senses, and leaves your body glowing with irresistible radiance. ',
         image: '/services/Polishing – Scrub.jpg',
         variants: [{ duration: '60', price: '₹2800' }]
       },

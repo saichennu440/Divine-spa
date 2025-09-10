@@ -1,0 +1,46 @@
+/* Base dot style */
+.custom-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #d1d5db; /* Tailwind gray-300 */
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* Active dot style */
+.slick-dots li.slick-active .custom-dot {
+  width: 14px;
+  height: 14px;
+  background-color: #16a34a; /* Tailwind green-600 */
+  transform: scale(1.2);
+}
+.dot-wrapper {
+  width: 20px;
+  height: 6px;
+  background-color: #d1d5db; /* gray-300 */
+  border-radius: 3px;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.dot-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background-color: #16a34a; /* green-600 */
+}
+
+.dot-wrapper.active .dot-fill {
+  animation: fillBar linear forwards;
+}
+
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

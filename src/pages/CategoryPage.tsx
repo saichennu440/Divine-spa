@@ -11,7 +11,7 @@ type CategoryKey = 'therapies' | 'facials' | 'full-body-polishing' | 'foot-pedic
 const prettyTitleFromSlug = (slug: string) =>
   slug
     .split('-')
-   // .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+   .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
     .join(' ');
 
 // ServiceCard component: reads variants and displays dynamic price/duration

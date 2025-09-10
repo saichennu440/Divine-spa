@@ -6,10 +6,14 @@ import AnimatedSection from '../components/AnimatedSection';
 import ServiceCard from '../components/ServiceCard';
 import TestimonialCard from '../components/TestimonialCard';
 import { useReviews } from '../hooks/useReviews';
-//import TestimonialsCarousel from '../components/TestimonialsCarousel';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import TestimonialsCarousel from '../components/TestimonialsCarousel';
 
 const Home: React.FC = () => {
-  const { reviews, loading: reviewsLoading } = useReviews(4);
+  const { reviews, loading: reviewsLoading } = useReviews();
   const services = [
     {
       title: 'Therapies',
@@ -108,7 +112,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
-              our sacred services
+              Our Sacred Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover our carefully curated collection of treatments, each designed to nurture your wellbeing 
@@ -129,52 +133,61 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+     {/* Testimonials Carousel */}
+     <TestimonialsCarousel reviews={reviews} loading={reviewsLoading} /> 
+      {/* Testimonials Section */}
+{/* <section className="py-20 bg-beige">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <AnimatedSection className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
+        what our guests say
+      </h2>
+      <p className="text-lg text-gray-600">
+        Hear from those who have experienced the aroma Spa difference.
+      </p>
+    </AnimatedSection>
 
-         {/* Testimonials Section */}
-      <section className="py-20 bg-beige">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
-              what our guests say
-            </h2>
-            <p className="text-lg text-gray-600">
-              Hear from those who have experienced the aroma Spa difference.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {reviewsLoading ? (
-              // Loading skeleton
-              [...Array(4)].map((_, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg p-6 animate-pulse">
-                  <div className="h-4 bg-gray-200 rounded mb-4"></div>
-                  <div className="h-16 bg-gray-200 rounded mb-4"></div>
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-gray-200 rounded-full mr-3"></div>
-                    <div className="h-4 bg-gray-200 rounded flex-1"></div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              reviews.map((review, index) => (
-              <AnimatedSection 
-                key={index} 
-                delay={index * 100}
-                animation="fade-in-up"
-              >
-                <TestimonialCard 
-                  name={review.name}
-                  city={review.city || 'Guest'}
-                  rating={review.rating}
-                  text={review.review}
-                  avatar={review.avatar_url}
-                />
-              </AnimatedSection>
-              ))
-            )}
+    {reviewsLoading ? (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {[...Array(4)].map((_, index) => (
+          <div key={index} className="bg-white rounded-2xl shadow-lg p-6 animate-pulse">
+            <div className="h-4 bg-gray-200 rounded mb-4"></div>
+            <div className="h-16 bg-gray-200 rounded mb-4"></div>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-gray-200 rounded-full mr-3"></div>
+              <div className="h-4 bg-gray-200 rounded flex-1"></div>
+            </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    ) : (
+      <Slider
+        dots={true}
+        infinite={true}
+        speed={500}
+        slidesToShow={3}
+        slidesToScroll={1}
+        responsive={[
+          { breakpoint: 1024, settings: { slidesToShow: 2 } },
+          { breakpoint: 640, settings: { slidesToShow: 1 } }
+        ]}
+      >
+        {reviews.map((review, index) => (
+          <div key={index} className="px-4 h-full flex">
+            <TestimonialCard
+              name={review.name}
+              city={review.city || "Guest"}
+              rating={review.rating}
+              text={review.review}
+              avatar={review.avatar_url}
+            />
+          </div>
+        ))}
+      </Slider>
+    )}
+  </div>
+</section> */}
+
 
       {/* Gallery Section */}
       {/* <section className="py-20">
@@ -214,7 +227,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-montserrat font-light mb-6">
-              exclusive  memberships 
+              Exclusive  Memberships 
             </h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto">
               Join our wellness community or share the gift of relaxation with someone special.
@@ -225,7 +238,7 @@ const Home: React.FC = () => {
             <AnimatedSection animation="fade-in-left">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
                 <Users className="h-12 w-12 mb-6 text-white" />
-                <h3 className="text-2xl font-montserrat font-semibold mb-4">wellness membership</h3>
+                <h3 className="text-2xl font-montserrat font-semibold mb-4">Wellness Membership</h3>
                 <p className="text-white/90 mb-6 leading-relaxed">
                   Enjoy unlimited access to our facilities, priority booking, exclusive member rates, 
                   and personalized wellness consultations.
@@ -268,10 +281,10 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
-              find our Sanctuary
+              Find Our Sanctuary
             </h2>
             <p className="text-lg text-gray-600">
-              Discover aroma spa location.
+              Discover Aroma Spa Location.
             </p>
           </AnimatedSection>
 
@@ -294,8 +307,8 @@ const Home: React.FC = () => {
             <AnimatedSection>
               <div className="space-y-6">
                 <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-montserrat text-xl font-semibold mb-3">7-1/92/C&92/F HIG, Above Fabindia Store,</h3>
-                  <p className="text-gray-600 mb-3">Opp.Aparna Sarovar Apartments,Nallagandla Main Road<br />Hyderabad, Telangana, 500046</p>
+                  <h3 className="font-montserrat text-xl font-semibold mb-3">aromaspa</h3>
+                  <p className="text-gray-600 mb-3">5th Floor,Above Fabindia Store,Opp.Aparna Sarovar Apartments,Nallagandla Main Road<br />Hyderabad, Telangana, 500046</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />
                     Mon-Sun: 10:00 AM - 9:00 PM

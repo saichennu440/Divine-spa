@@ -1,81 +1,146 @@
-// // src/components/TestimonialsCarousel.tsx
-// import React, { useState } from 'react';
-// import { useReviews } from '../context/ReviewContext';
-// import TestimonialCard from './TestimonialCard';
-// import AnimatedSection from '../components/AnimatedSection'; // keep if you have it
+import { useRef, useState, useEffect } from "react";
+import Slider, { Settings } from "react-slick";
+import TestimonialCard from "./TestimonialCard";
+import AnimatedSection from "./AnimatedSection";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./testimonial-dots.css";
 
-// const PAGE_SIZE = 4;
+interface Review {
+  name: string;
+  city?: string;
+  rating: number;
+  review: string;
+  avatar_url?: string | null;
+}
 
-// const TestimonialsCarousel: React.FC = () => {
-//   const { publishedReviews } = useReviews();
-//   const [page, setPage] = useState(0);
+interface TestimonialsCarouselProps {
+  reviews: Review[];
+  loading: boolean;
+}
 
-//   const pages = [];
-//   for (let i = 0; i < publishedReviews.length; i += PAGE_SIZE) {
-//     pages.push(publishedReviews.slice(i, i + PAGE_SIZE));
-//   }
+const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({ reviews, loading }) => {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [dotOffset, setDotOffset] = useState<number>(0);
+  const [cardHeight, setCardHeight] = useState<number | undefined>(undefined);
+  const sliderRef = useRef<Slider | null>(null);
 
-//   // no pages -> show nothing (or some seed content)
-//   if (pages.length === 0) return null;
+ const settings: Settings = {
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3, // desktop stays the same
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  beforeChange: (_: number, next: number) => setActiveIndex(next),
+  arrows: false,
+  dots: false,
+  responsive: [
+    {
+      breakpoint: 640, // below 640px (mobile)
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
 
-//   const canPrev = page > 0;
-//   const canNext = page < pages.length - 1;
 
-//   return (
-//     <section className="py-20 bg-beige">
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <AnimatedSection className="text-center mb-8">
-//           <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-3">what our guests say</h2>
-//           <p className="text-lg text-gray-600">hear from those who have experienced the aroma spa difference.</p>
-//         </AnimatedSection>
+  // Measure tallest card after render
+useEffect(() => {
+  if (!reviews.length) return;
 
-//         <div className="relative">
-//           {/* Grid of up to 4 cards */}
-        
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
-//   {pages[page].map((t, idx) => (
-//     <AnimatedSection key={t.id} delay={idx * 80} animation="fade-in-up">
-//       {/* wrapper ensures AnimatedSection doesn't collapse the child's height */}
-//       <div className="h-full">
-//         <TestimonialCard
-//           name={t.name}
-//           city={t.city || ''}
-//           rating={t.rating}
-//           text={t.review}
-//           avatar={t.avatar ?? undefined}
-//         />
-//       </div>
-//     </AnimatedSection>
-//   ))}
-//         </div>
-//           {/* Controls */}
-//           <div className="flex items-center justify-center space-x-4 mt-8">
-//             <button
-//               onClick={() => setPage(p => Math.max(0, p - 1))}
-//               disabled={!canPrev}
-//               aria-label="Previous testimonials"
-//               className={`px-4 py-2 rounded-full border ${canPrev ? 'bg-white hover:shadow' : 'bg-gray-100 text-gray-400 cursor-not-allowed'}`}
-//             >
-//               Prev
-//             </button>
+  const updateHeights = () => {
+    const slides = document.querySelectorAll(".testimonial-slide");
+    let maxHeight = 0;
+    slides.forEach((slide) => {
+      (slide as HTMLElement).style.height = "auto"; // reset first
+      const h = (slide as HTMLElement).offsetHeight;
+      if (h > maxHeight) maxHeight = h;
+    });
+    slides.forEach((slide) => {
+      (slide as HTMLElement).style.height = `${maxHeight}px`;
+    });
+  };
 
-//             <div className="text-sm text-gray-600">
-//               Page {page + 1} of {pages.length}
-//             </div>
+  // Run once after mount
+  updateHeights();
 
-//             <button
-//               onClick={() => setPage(p => Math.min(pages.length - 1, p + 1))}
-//               disabled={!canNext}
-//               aria-label="Next testimonials"
-//               className={`px-4 py-2 rounded-full border ${canNext ? 'bg-white hover:shadow' : 'bg-gray-100 text-gray-400 cursor-not-allowed'}`}
-//             >
-//               Next
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
+  // Run again on window resize
+  window.addEventListener("resize", updateHeights);
+  return () => window.removeEventListener("resize", updateHeights);
+}, [reviews]);
 
-// export default TestimonialsCarousel;
+
+  const renderDots = () => {
+    const totalSlides = reviews.length;
+    const visibleDots = [0, 1, 2].map(i => (dotOffset + i) % totalSlides);
+
+    return (
+      <div className="flex justify-center space-x-2 mt-6">
+        {visibleDots.map((slideIndex, i) => {
+          const isActive = activeIndex === slideIndex;
+          return (
+            <button
+              key={slideIndex}
+              onClick={() => {
+                if (sliderRef.current) {
+                  sliderRef.current.slickGoTo(slideIndex);
+                  if (i === 2) {
+                    setDotOffset((dotOffset + 1) % totalSlides);
+                  }
+                }
+              }}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                isActive ? "bg-green-600 scale-125" : "bg-gray-300"
+              }`}
+            ></button>
+          );
+        })}
+      </div>
+    );
+  };
+
+  return (
+    <section className="py-20 bg-beige">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AnimatedSection className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
+            What Our Guests Say
+          </h2>
+          <p className="text-lg text-gray-600">
+            Hear from those who have experienced the aroma Spa difference.
+          </p>
+        </AnimatedSection>
+
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(3)].map((_, index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-lg p-6 animate-pulse h-full"></div>
+            ))}
+          </div>
+        ) : (
+          <>
+            <Slider ref={sliderRef} {...settings}>
+              {reviews.map((review: Review, index: number) => (
+               <div key={index} className="px-4 testimonial-slide">
+  <TestimonialCard
+    name={review.name}
+    city={review.city || "Guest"}
+    rating={review.rating}
+    text={review.review}
+    avatar={review.avatar_url}
+  />
+</div>
+              ))}
+            </Slider>
+            {renderDots()}
+          </>
+        )}
+      </div>
+    </section>
+  );
+};
+
+export default TestimonialsCarousel;

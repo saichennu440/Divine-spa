@@ -79,7 +79,7 @@ const Membership: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-8">
-              wellness memberships
+              Wellness Memberships
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Join our membership plans — carefully priced packages that bundle treatments,
@@ -95,7 +95,7 @@ const Membership: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
-              choose your wellness family package
+              Choose Your Wellness Family Package
             </h2>
             <p className="text-lg text-gray-600">
 These packages are exclusively for Classic Swedish, Aromatic, Deep Tissue, Balinese And Traditional thai therapies only            </p>
@@ -108,7 +108,7 @@ These packages are exclusively for Classic Swedish, Aromatic, Deep Tissue, Balin
       {index === 3 && (
         <div className="lg:col-span-3 text-center mt-12 mb-6">
           <h2 className="text-3xl font-montserrat font-light text-gray-900 mb-4">
-            enhanced packages for you
+            Enhanced Packages For You
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             These packages are exclusively for Classic Swedish, Aroma, Deep Tissue, Balinese, 
@@ -121,15 +121,16 @@ Stone And Body polishing therapies ONLY
       {/* Existing card */}
       <AnimatedSection delay={index * 100} animation="fade-in-up">
         <div
-          className={`relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${
-            plan.popular ? 'ring-2 ring-sage scale-105' : ''
-          }`}
+          className={`relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden`}
+          //   ${
+          //   plan.popular ? 'ring-2 ring-sage scale-105' : ''
+          // }`}
         >
           {plan.popular && (
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <span className="bg-sage text-white px-6 py-2 rounded-full text-sm font-medium">
+              {/* <span className="bg-sage text-white px-6 py-2 rounded-full text-sm font-medium">
                 Most Popular
-              </span>
+              </span> */}
             </div>
           )}
 
@@ -169,11 +170,11 @@ Stone And Body polishing therapies ONLY
               }
               className={`w-full py-4 px-6 rounded-full font-medium transition-all duration-300 ${
                 plan.popular
-                  ? 'bg-sage hover:bg-sage-dark text-white hover:shadow-lg'
+                  ? 'border-2 border-sage text-sage hover:bg-sage hover:text-white'
                   : 'border-2 border-sage text-sage hover:bg-sage hover:text-white'
               }`}
             >
-              {plan.popular ? 'Start Membership' : 'Choose Plan'}
+              {plan.popular ? 'Choose Plan' : 'Choose Plan'}
             </button>
           </div>
         </div>
@@ -189,7 +190,7 @@ Stone And Body polishing therapies ONLY
       <section className="py-20 bg-beige">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">member exclusive benefits</h2>
+            <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">Member Exclusive Benefits</h2>
             <p className="text-lg text-gray-600">Enjoy these special perks as a valued member of our wellness community.</p>
           </AnimatedSection>
 
@@ -256,7 +257,7 @@ Stone And Body polishing therapies ONLY
       <section className="py-20 bg-cream">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">frequently asked questions</h2>
+            <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">Frequently Asked Questions</h2>
             <p className="text-lg text-gray-600">Everything you need to know about our membership program.</p>
           </AnimatedSection>
 
@@ -282,7 +283,7 @@ Stone And Body polishing therapies ONLY
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">ready to join our wellness community?</h2>
+            <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">Ready To Join Our Wellness Community?</h2>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">Start your transformative wellness journey today with a membership plan designed for your lifestyle.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={() => openPlanModal(null)} className="bg-sage hover:bg-sage-dark text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-lg">Start Membership</button>

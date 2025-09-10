@@ -110,7 +110,7 @@ const Contact: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-8">
-              get in touch
+              Get In Touch
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               We're here to help you begin your wellness journey. Reach out to us for appointments, 
@@ -130,7 +130,7 @@ const Contact: React.FC = () => {
                    {!isSubmitted ? (
                      <>
                        <h2 className="text-3xl font-montserrat font-semibold text-gray-900 mb-8">
-                         send us a message
+                         Send Us a Message
                        </h2>
                        <form onSubmit={handleSubmit} className="space-y-6">
                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -323,7 +323,7 @@ const Contact: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
-              find our sanctuary
+              Find Our Sanctuary
             </h2>
             <p className="text-lg text-gray-600">
               Discover aroma spa location.
@@ -349,8 +349,8 @@ const Contact: React.FC = () => {
             <AnimatedSection>
               <div className="space-y-6">
                 <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-montserrat text-xl font-semibold mb-3">7-1/92/C&92/F HIG, Above Fabindia Store,</h3>
-                  <p className="text-gray-600 mb-3">Opp.Aparna Sarovar Apartments, Nallagandla Main Road<br />Hyderabad, Telangana, 500046</p>
+                  <h3 className="font-montserrat text-xl font-semibold mb-3">aromaspa</h3>
+                  <p className="text-gray-600 mb-3">5th Floor,Above Fabindia Store,Opp.Aparna Sarovar Apartments, Nallagandla Main Road<br />Hyderabad, Telangana, 500046</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />
                     Mon-Sun: 10:00 AM - 9:00 PM

@@ -96,7 +96,7 @@ const Home: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-8">
-             aroma, the spirit in everything we do.            </h2>
+             Aroma, the spirit in everything we do.            </h2>
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
               At aroma spa, we believe in the transformative power of mindful therapies and conscious self-care. 
               Our sanctuary provides a space where ancient wisdom meets modern wellness, creating an experience 
@@ -307,7 +307,7 @@ const Home: React.FC = () => {
             <AnimatedSection>
               <div className="space-y-6">
                 <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-montserrat text-xl font-semibold mb-3">aromaspa</h3>
+                  <h3 className="font-montserrat text-xl font-semibold mb-3">Aroma spa</h3>
                   <p className="text-gray-600 mb-3">5th Floor,Above Fabindia Store,Opp.Aparna Sarovar Apartments,Nallagandla Main Road<br />Hyderabad, Telangana, 500046</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />

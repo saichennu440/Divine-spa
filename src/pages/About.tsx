@@ -368,7 +368,7 @@ const About: React.FC = () => {
         <AnimatedSection>
               <div className="space-y-6">
                 <div className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-montserrat text-xl font-semibold mb-3 text-gray-500">aromaspa</h3>
+                  <h3 className="font-montserrat text-xl font-semibold mb-3 text-gray-500">Aroma spa</h3>
                   <p className="text-gray-600 mb-3">5ht Floor,Above Fabindia Store,Opp. Aparna Sarovar Apartments, Nallagandla Main Road,<br />Hyderabad, Telangana, 500046</p>
                   <div className="flex items-center text-sm text-gray-500 mb-2">
                     <Clock className="h-4 w-4 mr-2" />

@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
           <h1 className={`text-5xl md:text-7xl lg:text-8xl font-montserrat font-light text-white mb-6 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            inspired by the aroma.
+            Inspired by the Aroma.
             <br />
             <span className="text-cream">created for you.</span>
           </h1>

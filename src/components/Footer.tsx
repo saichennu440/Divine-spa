@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
     src="/Aroma_Spa_Footer.jpg"            // <-- put the file name you used in /public here
     alt="Aroma Spa"
     className="h-10 md:h-14 w-auto object-contain mr-2"/>
-              aroma spa</h3>
+              Aroma spa</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Inspired by the aroma. Created for You. Experience transformative wellness through 
               mindful therapies and luxurious self-care.

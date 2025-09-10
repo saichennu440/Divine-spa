@@ -37,7 +37,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({ reviews, lo
   dots: false,
   responsive: [
     {
-      breakpoint: 640, // below 640px (mobile)
+      breakpoint: 740, // below 640px (mobile)
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,

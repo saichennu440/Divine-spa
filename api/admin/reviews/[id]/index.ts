@@ -23,10 +23,10 @@ export default async function handler(req: any, res: any) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // if (req.method !== 'DELETE') {
-  //   res.setHeader('Allow', 'DELETE, OPTIONS');
-  //   return res.status(405).json({ error: 'Method not allowed' });
-  // }
+  if (req.method !== 'DELETE') {
+    res.setHeader('Allow', 'DELETE, OPTIONS');
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
   try {
     if (!verifyAdminAuth(req)) {

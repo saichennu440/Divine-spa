@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Star, Check, Trash2, Eye, EyeOff, Calendar, Mail, User, MessageSquare } from 'lucide-react';
-import type { Review } from '../types/review';
+import type { Review } from './types/review';
 import AnimatedSection from '../components/AnimatedSection';
 
 const AdminReviews: React.FC = () => {

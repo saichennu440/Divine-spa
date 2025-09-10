@@ -1,8 +1,8 @@
-// api/admin/reviews/[id]/index.ts
+// pages/api/admin/reviews/[id]/index.ts
 import { createClient } from '@supabase/supabase-js';
 
 function verifyAdminAuth(req: any): boolean {
-  const authHeader = req.headers.authorization;
+  const authHeader = req.headers?.authorization;
   const adminKey = process.env.ADMIN_API_KEY;
   if (!adminKey) {
     console.error('ADMIN_API_KEY not configured in process.env');
@@ -14,6 +14,8 @@ function verifyAdminAuth(req: any): boolean {
 }
 
 export default async function handler(req: any, res: any) {
+  console.log('[delete] method=', req.method, 'url=', req.url);
+
   // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'DELETE, OPTIONS');
@@ -21,11 +23,12 @@ export default async function handler(req: any, res: any) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  try {
-    if (req.method !== 'DELETE') {
-      return res.status(405).json({ error: 'Method not allowed' });
-    }
+  if (req.method !== 'DELETE') {
+    res.setHeader('Allow', 'DELETE, OPTIONS');
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
+  try {
     if (!verifyAdminAuth(req)) {
       console.warn('delete: unauthorized. Authorization header:', req.headers.authorization);
       return res.status(401).json({ error: 'Unauthorized' });
@@ -33,8 +36,10 @@ export default async function handler(req: any, res: any) {
 
     const SUPABASE_URL = process.env.SUPABASE_URL;
     const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    if (!SUPABASE_URL) throw new Error('Missing SUPABASE_URL in process.env');
-    if (!SUPABASE_SERVICE_ROLE_KEY) throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY in process.env');
+    if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+      console.error('Supabase env missing');
+      return res.status(500).json({ error: 'Server misconfiguration' });
+    }
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
@@ -44,7 +49,6 @@ export default async function handler(req: any, res: any) {
     if (!id) return res.status(400).json({ error: 'Review ID is required' });
 
     if ((hard_delete === 'true' || hard_delete === true) && process.env.ALLOW_HARD_DELETE === 'true') {
-      // Hard delete
       const { error } = await supabase
         .from('reviews')
         .delete()
@@ -52,12 +56,11 @@ export default async function handler(req: any, res: any) {
 
       if (error) {
         console.error('delete (hard) DB error:', error);
-        return res.status(500).json({ error: error.message || 'Failed to delete review', details: error });
+        return res.status(500).json({ error: error.message || 'Failed to delete review' });
       }
 
       return res.status(200).json({ message: 'Review hard deleted successfully' });
     } else {
-      // Soft delete
       const { data: review, error } = await supabase
         .from('reviews')
         .update({
@@ -70,7 +73,7 @@ export default async function handler(req: any, res: any) {
 
       if (error) {
         console.error('delete (soft) DB error:', error);
-        return res.status(500).json({ error: error.message || 'Failed to delete review', details: error });
+        return res.status(500).json({ error: error.message || 'Failed to delete review' });
       }
 
       if (!review) {
@@ -81,9 +84,6 @@ export default async function handler(req: any, res: any) {
     }
   } catch (err: any) {
     console.error('Unhandled error in delete handler:', err);
-    return res.status(500).json({
-      error: String(err.message || err),
-      stack: err?.stack ? String(err.stack).split('\n').slice(0,10).join('\n') : null
-    });
+    return res.status(500).json({ error: String(err.message || err) });
   }
 }

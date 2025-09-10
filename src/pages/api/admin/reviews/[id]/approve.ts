@@ -1,8 +1,8 @@
-// api/admin/reviews/[id]/approve.ts
+// pages/api/admin/reviews/[id]/approve.ts
 import { createClient } from '@supabase/supabase-js';
 
 function verifyAdminAuth(req: any): boolean {
-  const authHeader = req.headers.authorization;
+  const authHeader = req.headers?.authorization;
   const adminKey = process.env.ADMIN_API_KEY;
   if (!adminKey) {
     console.error('ADMIN_API_KEY not configured in process.env');
@@ -14,18 +14,22 @@ function verifyAdminAuth(req: any): boolean {
 }
 
 export default async function handler(req: any, res: any) {
-  // CORS
+  // Debug log
+  console.log('[approve] method=', req.method, 'url=', req.url);
+
+  // CORS (keep permissive for admin UI; tighten in prod if needed)
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  try {
-    if (req.method !== 'POST') {
-      return res.status(405).json({ error: 'Method not allowed' });
-    }
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST, OPTIONS');
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
+  try {
     if (!verifyAdminAuth(req)) {
       console.warn('approve: unauthorized. Authorization header:', req.headers.authorization);
       return res.status(401).json({ error: 'Unauthorized' });
@@ -33,8 +37,10 @@ export default async function handler(req: any, res: any) {
 
     const SUPABASE_URL = process.env.SUPABASE_URL;
     const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    if (!SUPABASE_URL) throw new Error('Missing SUPABASE_URL in process.env');
-    if (!SUPABASE_SERVICE_ROLE_KEY) throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY in process.env');
+    if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+      console.error('Supabase env missing');
+      return res.status(500).json({ error: 'Server misconfiguration' });
+    }
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
@@ -57,7 +63,7 @@ export default async function handler(req: any, res: any) {
 
     if (error) {
       console.error('approve: DB error:', error);
-      return res.status(500).json({ error: error.message || 'Failed to approve review', details: error });
+      return res.status(500).json({ error: error.message || 'Failed to approve review' });
     }
 
     if (!review) {
@@ -80,9 +86,6 @@ export default async function handler(req: any, res: any) {
     return res.status(200).json({ message: 'Review approved successfully', review });
   } catch (err: any) {
     console.error('Unhandled error in approve handler:', err);
-    return res.status(500).json({
-      error: String(err.message || err),
-      stack: err?.stack ? String(err.stack).split('\n').slice(0,10).join('\n') : null
-    });
+    return res.status(500).json({ error: String(err.message || err) });
   }
 }

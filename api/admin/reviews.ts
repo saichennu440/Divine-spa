@@ -2,7 +2,6 @@
 import { createClient } from '@supabase/supabase-js';
 
 function verifyAdminAuth(req: any): boolean {
-  // ... (existing verifyAdminAuth function) ...
   const authHeader = req.headers.authorization;
   const adminKey = process.env.ADMIN_API_KEY;
   if (!adminKey) {
@@ -17,7 +16,7 @@ function verifyAdminAuth(req: any): boolean {
 export default async function handler(req: any, res: any) {
   // Basic CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Added PUT and DELETE
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
@@ -67,35 +66,9 @@ export default async function handler(req: any, res: any) {
         limit: limitNum,
         hasMore: (count || 0) > offset + limitNum
       });
-    } else if (req.method === 'DELETE') { // Added DELETE handler
-      // Extract the review ID from the URL path
-      const reviewId = req.url.split('/').pop();
-
-      if (!reviewId) {
-        return res.status(400).json({ error: 'Review ID missing from URL' });
-      }
-
-      const { error } = await supabase
-        .from('reviews')
-        .update({ deleted: true }) // Or use .delete() if you want to permanently remove
-        .eq('id', reviewId);
-
-      if (error) {
-        console.error('Supabase DB error deleting review:', error);
-        return res.status(500).json({ error: error.message || 'DB error', details: error });
-      }
-
-      if (error && error === 'PGRST116') { // Example error code for no rows found
-           return res.status(404).json({ error: 'Review not found' });
-      }
-
-
-      return res.status(200).json({ message: 'Review marked as deleted successfully' }); // Or status 204 No Content
-
-    } else { // Fallback for other methods
-       return res.status(405).json({ error: 'Method not allowed' });
     }
 
+    return res.status(405).json({ error: 'Method not allowed' });
 
   } catch (err: any) {
     console.error('Unhandled error in /api/admin/reviews:', err);

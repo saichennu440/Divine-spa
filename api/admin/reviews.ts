@@ -67,35 +67,50 @@ export default async function handler(req: any, res: any) {
         limit: limitNum,
         hasMore: (count || 0) > offset + limitNum
       });
-    } else if (req.method === 'DELETE') { // Added DELETE handler
-      // Extract the review ID from the URL path
-      const reviewId = req.url.split('/').pop();
+    }
 
-      if (!reviewId) {
-        return res.status(400).json({ error: 'Review ID missing from URL' });
+    // POST: add a new review
+    if (req.method === 'POST') {
+      const { name, city, rating, review, avatar_url, published = false } = req.body || {};
+      if (!name || !rating || !review) {
+        return res.status(400).json({ error: 'Missing required fields' });
+      }
+
+      const { data, error } = await supabase
+        .from('reviews')
+        .insert([{ name, city, rating, review, avatar_url, published, deleted: false }])
+        .select();
+
+      if (error) {
+        console.error('Supabase insert error:', error);
+        return res.status(500).json({ error: error.message || 'Insert error' });
+      }
+
+      return res.status(201).json({ review: data?.[0] });
+    }
+
+    // DELETE: remove a review by id
+    if (req.method === 'DELETE') {
+      const { id } = req.query;
+      if (!id) {
+        return res.status(400).json({ error: 'Missing review id' });
       }
 
       const { error } = await supabase
         .from('reviews')
-        .update({ deleted: true }) // Or use .delete() if you want to permanently remove
-        .eq('id', reviewId);
+        .update({ deleted: true })
+        .eq('id', id);
 
       if (error) {
-        console.error('Supabase DB error deleting review:', error);
-        return res.status(500).json({ error: error.message || 'DB error', details: error });
+        console.error('Supabase delete error:', error);
+        return res.status(500).json({ error: error.message || 'Delete error' });
       }
 
-      if (error && error=== 'PGRST116') { // Example error code for no rows found
-           return res.status(404).json({ error: 'Review not found' });
-      }
-
-
-      return res.status(200).json({ message: 'Review marked as deleted successfully' }); // Or status 204 No Content
-
-    } else { // Fallback for other methods
-       return res.status(405).json({ error: 'Method not allowed' });
+      return res.status(200).json({ success: true });
     }
 
+    // If method not handled above
+    return res.status(405).json({ error: 'Method not allowed' });
 
   } catch (err: any) {
     console.error('Unhandled error in /api/admin/reviews:', err);

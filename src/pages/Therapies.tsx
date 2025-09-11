@@ -7,9 +7,9 @@ import servicesData, { ServiceItem, Variant } from '../data/servicesData';
 
 const Therapies: React.FC = () => {
   const { openBooking } = useBooking();
-  const signature = servicesData.therapies['signature-therapies'] || [];
-  const classic = servicesData.therapies['classic-therapies'] || [];
-  const targeted = servicesData.therapies['targeted-therapies'] || [];
+  const signature = servicesData.therapies['Signature-therapies'] || [];
+  const classic = servicesData.therapies['Classic-therapies'] || [];
+  const targeted = servicesData.therapies['Targeted-therapies'] || [];
 
   // Card component: reads variants and shows dynamic price/duration
  // inside Therapies.tsx — replace the old ServiceCard with this
@@ -132,19 +132,19 @@ const ServiceCard: React.FC<{ item: ServiceItem }> = ({ item }) => {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4">
           <AnimatedSection className="mb-8">
-            <h2 className="text-3xl font-semibold mb-4">signature therapies</h2>
+            <h2 className="text-3xl font-semibold mb-4">Signature Therapies</h2>
             <p className="text-gray-600 mb-6">Our signature rituals for deep renewal.</p>
             {renderList(signature)}
           </AnimatedSection>
 
           <AnimatedSection className="mb-8">
-            <h2 className="text-3xl font-semibold mb-4">classic therapies</h2>
+            <h2 className="text-3xl font-semibold mb-4">Classic Therapies</h2>
             <p className="text-gray-600 mb-6">trusted classics for full-body relaxation.</p>
             {renderList(classic)}
           </AnimatedSection>
 
           <AnimatedSection className="mb-8">
-            <h2 className="text-3xl font-semibold mb-4">targeted therapies</h2>
+            <h2 className="text-3xl font-semibold mb-4">Targeted Therapies</h2>
             <p className="text-gray-600 mb-6">Short focused sessions for target relief.</p>
             {renderList(targeted)}
           </AnimatedSection>

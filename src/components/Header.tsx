@@ -23,7 +23,10 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
         slug: '/services/therapies',
         hasPage: true,
         children: Object.keys(servicesData.therapies).map((key) => ({
-          label: slugToLabel(key).toLowerCase(),               // "signature therapies" (lowercase)
+          label: key
+          .split('-')
+          .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+          .join(' '),               // "signature therapies" (uppercase)
           slug: `/services/therapies/${key}`,
         })),
       },
@@ -33,8 +36,11 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
         slug: '/services/facials',
         hasPage: true,
         children: Object.keys(servicesData.facials).map((key) => ({
-          label: slugToLabel(key).toLowerCase(),
-          slug: `/services/facials/${key}`,
+        label: key
+          .split('-')
+          .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+          .join(' '),
+        slug: `/services/facials/${key}`,
         })),
       },
       {
@@ -183,11 +189,11 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
                                     }`}
                                   >
                                         <span className="flex items-center justify-between">
-      <span>{m.label}</span>
-      {m.children && m.children.length > 0 && (
-        <ChevronDown className={`ml-3 h-4 w-4 transition-transform ${hoveredTop === m.id ? 'rotate-180' : ''}`} />
-      )}
-    </span>
+                                    <span>{m.label}</span>
+                                    {m.children && m.children.length > 0 && (
+                                      <ChevronDown className={`ml-3 h-4 w-4 transition-transform ${hoveredTop === m.id ? 'rotate-180' : ''}`} />
+                                    )}
+                                  </span>
                                   </Link>
                                 ) : (
                                   <div
@@ -197,11 +203,11 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
                                     aria-pressed={hoveredTop === m.id}
                                   >
                                       <span className="flex items-center justify-between">
-      <span>{m.label}</span>
-      {m.children && m.children.length > 0 && (
-        <ChevronDown className={`ml-3 h-4 w-4 transition-transform ${hoveredTop === m.id ? 'rotate-180' : ''}`} />
-      )}
-    </span>
+                                    <span>{m.label}</span>
+                                    {m.children && m.children.length > 0 && (
+                                      <ChevronDown className={`ml-3 h-4 w-4 transition-transform ${hoveredTop === m.id ? 'rotate-180' : ''}`} />
+                                    )}
+                                  </span>
                                   </div>
                                 )}
                               </div>
@@ -362,21 +368,21 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
                 onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
                 className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
               >
-                signature therapies
+                Signature Therapies
               </Link>
               <Link
                 to="/services/therapies/classic-therapies"
                 onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
                 className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
               >
-                classic therapies
+                Classic Therapies
               </Link>
               <Link
                 to="/services/therapies/targeted-therapies"
                 onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
                 className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
               >
-                targeted therapies
+                Targeted Therapies
               </Link>
             </div>
           )}
@@ -402,14 +408,14 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
                 onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
                 className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
               >
-                classic facials
+                Classic Facials
               </Link>
               <Link
                 to="/services/facials/premium-facials"
                 onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
                 className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
               >
-                premium facials
+                Premium Facials
               </Link>
             </div>
           )}

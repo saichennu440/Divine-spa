@@ -15,11 +15,11 @@ const About: React.FC = () => {
     {
       icon: <Heart className="h-8 w-8" />,
       title: 'Mindful Wellness',
-      description: 'We believe in the transformative power of mindful therapies that nurture your body, mind, and spirit.'
+      description: 'We believe in the transformative power of mindful therapies that nurture your body, mind.'
     },
     {
       icon: <Sparkles className="h-8 w-8" />,
-      title: 'aroma Excellence',
+      title: 'Aroma Excellence',
       description: 'Every treatment is crafted with aroma attention to detail, ensuring an exceptional experience.'
     },
     {
@@ -72,7 +72,7 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-8">
-              About aromaspa
+              About Aroma Spa
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Inspired by the aroma. Created for You. We are more than just a spa – we are a sanctuary 
@@ -88,7 +88,7 @@ const About: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
             <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-8">
-      aroma Embodies Wellness Where Healing Meets Harmony.            </h2>
+              Aroma Embodies Wellness Where Healing Meets Harmony.            </h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
               At aroma spa, we believe in the transformative power of mindful therapies and conscious self-care. 
               Our sanctuary provides a space where you can disconnect from the world's chaos and reconnect with 

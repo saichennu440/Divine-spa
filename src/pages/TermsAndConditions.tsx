@@ -42,7 +42,7 @@ const TermsAndConditions: React.FC = () => {
           </AnimatedSection>
 
           <AnimatedSection>
-            <h2 className="text-2xl font-semibold">4. Liability</h2>
+            <h2 className="text-2xl font-semibold">4. Liability's</h2>
             <p className="text-gray-600 mt-2">
               Our liability for any claim arising from the services is limited to the value of the treatment. We are not liable for
               indirect or consequential losses. Treatments are performed by trained therapists; results may vary.
@@ -52,7 +52,7 @@ const TermsAndConditions: React.FC = () => {
           <AnimatedSection>
             <h2 className="text-2xl font-semibold">5. Code of Conduct</h2>
             <p className="text-gray-600 mt-2">
-              Guests are expected to behave respectfully towards staff and other guests. Aggressive or abusive behaviour may
+              Guests are expected to behaves respectfully towards staff and other guests. Aggressive or abusive behaviour may
               result in refusal of service.
             </p>
           </AnimatedSection>
@@ -68,7 +68,7 @@ const TermsAndConditions: React.FC = () => {
           <AnimatedSection>
             <h2 className="text-2xl font-semibold">7. Governing Law</h2>
             <p className="text-gray-600 mt-2">
-              These terms are governed by the laws of the jurisdiction where the business operates. Any dispute will be subject
+              These terms are governed by the law of the jurisdiction where the business operates. Any dispute will be subject
               to the courts of that jurisdiction.
             </p>
           </AnimatedSection>

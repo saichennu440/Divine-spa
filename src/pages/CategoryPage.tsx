@@ -198,7 +198,7 @@ const CategoryPage: React.FC = () => {
             <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-4">
               {prettyTitleFromSlug(category)}
             </h1>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">All services in this category.</p>
+            {/* <p className="text-xl text-gray-700 max-w-3xl mx-auto">All services in this category.</p> */}
           </AnimatedSection>
         </div>
       </section>
@@ -208,7 +208,7 @@ const CategoryPage: React.FC = () => {
           {subKeys.map((k) => (
             <div key={k}>
               <AnimatedSection className="mb-6">
-                <h2 className="text-3xl font-semibold mb-4">{prettyTitleFromSlug(k)}</h2>
+                <h2 className="text-3xl font-montserrat mb-4">{prettyTitleFromSlug(k)}</h2>
                 <p className="text-gray-600 mb-6">{/* optional description if available in data */}</p>
               </AnimatedSection>
 

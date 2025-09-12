@@ -11,10 +11,10 @@ const rupee = (n?: number | null) =>
 const Membership: React.FC = () => {
   // same plans data imported earlier from franchise.xlsx (kept identical)
   const rawPlans = [
-    { name: 'Standard', hours: 7, price: 12000, validityMonths: 4, serviceValue: 20000, perHour: 1715 },
-    { name: 'Bronze', hours: 11, price: 18000, validityMonths: 6, serviceValue: 32000, perHour: 1637 },
+    { name: 'Pearl', hours: 7, price: 12000, validityMonths: 4, serviceValue: 20000, perHour: 1715 },
+    { name: 'Saphire', hours: 11, price: 18000, validityMonths: 6, serviceValue: 32000, perHour: 1637 },
    // { name: 'Silver', hours: 15, price: 24000, validityMonths: 8, serviceValue: 40000, perHour: 1600 },
-    { name: 'Gold', hours: 20, price: 30000, validityMonths: 10, serviceValue: 55000, perHour: 1500 },
+    { name: 'Emerald', hours: 20, price: 30000, validityMonths: 10, serviceValue: 55000, perHour: 1500 },
     { name: 'Treat', hours: 7, price: 17000, validityMonths: 4, serviceValue: 25000, perHour: 2429 },
     { name: 'Relax', hours: 11, price: 25000, validityMonths: 6, serviceValue: 38500, perHour: 2273 },
     //{ name: 'Discover', hours: 15, price: 32000, validityMonths: 8, serviceValue: 50000, perHour: 2133 },
@@ -107,10 +107,10 @@ These packages are exclusively for Classic Swedish, Aromatic, Deep Tissue, Balin
       {/* Insert heading & text before the 4th card */}
       {index === 3 && (
         <div className="lg:col-span-3 text-center mt-12 mb-6">
-          <h2 className="text-3xl font-montserrat font-light text-gray-900 mb-4">
+          <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
             Enhanced Packages For You
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 ">
             These packages are exclusively for Classic Swedish, Aroma, Deep Tissue, Balinese, 
 Traditional Thai, AROMA Signature, Tandem (Fours Hands), Herbal Potli, Hot 
 Stone And Body polishing therapies ONLY

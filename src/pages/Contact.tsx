@@ -334,7 +334,7 @@ const Contact: React.FC = () => {
           <AnimatedSection className="lg:col-span-2">
   <div className="bg-gray-200 rounded-2xl h-96 overflow-hidden">
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3805.9206589911087!2d78.30539617097662!3d17.463511180268647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s5th%20Floor%2C%20Above%20Fabindia%20Nallagandla%20Rd%2C%20Opp.Aparna%20sarovar%20Hyderabad%2C%20Telangana%2C%20500046!5e0!3m2!1sen!2sin!4v1755949936772!5m2!1sen!2sin"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7611.850252871066!2d78.2990486935791!3d17.46329740000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93fde0615921%3A0x298fbac9ad2c578b!2sAroma%20Spa!5e0!3m2!1sen!2sin!4v1757660121852!5m2!1sen!2sin"
       width="100%"
       height="100%"
       style={{ border: 0 }}

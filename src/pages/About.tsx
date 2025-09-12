@@ -172,7 +172,7 @@ const About: React.FC = () => {
             <AnimatedSection animation="fade-in-right">
               <div className="relative">
                 <img
-                  src="https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7611.850252871066!2d78.2990486935791!3d17.46329740000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93fde0615921%3A0x298fbac9ad2c578b!2sAroma%20Spa!5e0!3m2!1sen!2sin!4v1757660121852!5m2!1sen!2sin"
                   alt="aroma spa interior"
                   className="rounded-2xl shadow-2xl"
                 />

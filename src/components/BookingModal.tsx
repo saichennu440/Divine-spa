@@ -283,7 +283,7 @@ const BookingModal: React.FC = () => {
                     {/* Middle column: subcategories (if any) */}
                     <div className="col-span-1 lg:col-span-1">
                       <div className="mb-3">
-                        <h5 className="text-sm font-semibold text-gray-700 mb-2">Subcategories</h5>
+                        <h5 className="text-sm font-montserrat font-semibold text-gray-700 mb-2">Subcategories</h5>
                         <div className="flex flex-wrap gap-2">
                           {selectedCategory ? (
                             // @ts-ignore
@@ -309,7 +309,7 @@ const BookingModal: React.FC = () => {
                       </div>
 
                       <div>
-                        <h5 className="text-sm font-semibold text-gray-700 mb-2">Quick select</h5>
+                        <h5 className="text-sm font-montserrat font-semibold text-gray-700 mb-4 ">Quick select</h5>
                         <div className="text-sm text-gray-600">
                           {selectedServiceName ? (
                             <div className="flex items-center gap-3">
@@ -336,7 +336,7 @@ const BookingModal: React.FC = () => {
                     </div>
 
                     {/* Right column: service cards */}
-                    <div className="col-span-1 lg:col-span-2">
+                    <div className="col-span-1 lg:col-span-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {selectedCategory && selectedSub ? (
                           // @ts-ignore
@@ -346,26 +346,26 @@ const BookingModal: React.FC = () => {
                             // - if this service is currently selected in the formData, show the selected duration/price
                             // - otherwise show the first variant
                             const isThisServiceSelected = selectedServiceName === svc.name;
-                            const badgePrice = isThisServiceSelected ? (formData.servicePrice ?? variants[0]?.price ?? '—') : (variants[0]?.price ?? '—');
-                            const badgeDuration = isThisServiceSelected ? (formData.serviceDuration ?? variants[0]?.duration ?? '') : (variants[0]?.duration ?? '');
+                            //const badgePrice = isThisServiceSelected ? (formData.servicePrice ?? variants[0]?.price ?? '—') : (variants[0]?.price ?? '—');
+                            //const badgeDuration = isThisServiceSelected ? (formData.serviceDuration ?? variants[0]?.duration ?? '') : (variants[0]?.duration ?? '');
 
                             const isSelected = selectedServiceName === svc.name;
 
                             return (
                               <div key={svc.name + idx} className={`rounded-2xl overflow-hidden shadow-sm transform transition ${isSelected ? 'ring-2 ring-sage bg-sage/10' : 'bg-white'}`}>
                                 <div className="relative h-40 w-full">
-                                  <img src={svc.image ?? '/images/default-spa.jpg'} alt={svc.name} className="w-full h-full object-cover" />
-                                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                                  <img src={svc.image ?? '/Aroma_Spa_Footer.jpg'} alt={svc.name} className="w-full h-full object-cover" />
+                                  {/* <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
                                     <span className="text-sm font-semibold text-sage">{badgePrice}</span>
-                                  </div>
+                                  </div> */}
                                 </div>
 
                                 <div className="p-4">
                                   <div className="flex justify-between items-start">
-                                    <h4 className="text-md font-semibold text-gray-900">{svc.name}</h4>
-                                    <div className="text-xs text-gray-500 flex items-center">
+                                    <h4 className="text-md font-montserrat font-semibold text-gray-900">{svc.name}</h4>
+                                    {/* <div className="text-xs text-gray-500 flex items-center">
                                       <Clock className="h-4 w-4 mr-1" /> {badgeDuration ? `${badgeDuration} mins` : '—'}
-                                    </div>
+                                    </div> */}
                                   </div>
                                   <p className="text-sm text-gray-600 mt-2 line-clamp-3">{svc.description}</p>
 
@@ -418,7 +418,7 @@ const BookingModal: React.FC = () => {
                   {/* Date & Time selectors below the service picker */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-montserrat font-medium text-gray-700 mb-2">
                         <Calendar className="h-4 w-4 inline mr-2" /> Preferred Date
                       </label>
                       <input
@@ -432,7 +432,7 @@ const BookingModal: React.FC = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-montserrat font-medium text-gray-700 mb-2">
                         <Clock className="h-4 w-4 inline mr-2" /> Preferred Time
                       </label>
                       <select
@@ -451,7 +451,7 @@ const BookingModal: React.FC = () => {
 
               {step === 2 && (
                 <div className="space-y-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Your Information</h4>
+                  <h4 className="text-lg font-montserrat font-semibold text-gray-900 mb-4">Your Information</h4>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -484,14 +484,14 @@ const BookingModal: React.FC = () => {
 
               {step === 3 && (
                 <div className="space-y-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Additional Notes</h4>
+                  <h4 className="text-lg font-montserrat font-semibold text-gray-900 mb-4">Additional Notes</h4>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Special Requests or Health Considerations</label>
                     <textarea value={formData.notes} onChange={(e) => setFormData({...formData, notes: e.target.value})} rows={4} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent" placeholder="Please let us know about any allergies, medical conditions, or special preferences..." />
                   </div>
 
                   <div className="bg-cream rounded-lg p-4">
-                    <h5 className="font-semibold text-gray-900 mb-2">Booking Summary</h5>
+                    <h5 className="font-montserrat font-semibold text-gray-900 mb-2">Booking Summary</h5>
                     <div className="space-y-1 text-sm text-gray-600">
                       <p><span className="font-medium">Service:</span> {formData.service}</p>
                       <p><span className="font-medium">Duration:</span> {formData.serviceDuration ? `${formData.serviceDuration} mins` : '-'}</p>
@@ -510,7 +510,7 @@ const BookingModal: React.FC = () => {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check className="h-8 w-8 text-green-600" />
                   </div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">Booking Initiated!</h4>
+                  <h4 className="text-xl font-montserrat font-semibold text-gray-900 mb-2">Booking Initiated!</h4>
                   <p className="text-gray-600 mb-6">A WhatsApp message with the booking details has been prepared and opened on your device. Please press <strong>Send</strong> in WhatsApp to notify us. We've also copied the message to the clipboard as a backup.</p>
                   <button onClick={handleClose} className="bg-sage hover:bg-sage-dark text-white px-6 py-3 rounded-lg font-medium transition-colors">Close</button>
                 </div>

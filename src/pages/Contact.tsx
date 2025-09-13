@@ -228,7 +228,7 @@ const Contact: React.FC = () => {
                    ) : (
                      <div className="text-center py-8">
                        <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
-                       <h3 className="text-2xl font-serif font-semibold text-gray-900 mb-4">
+                       <h3 className="text-2xl font-montserrat font-semibold text-gray-900 mb-4">
                          Message Sent Successfully!
                        </h3>
                        <p className="text-gray-600 mb-6">
@@ -325,9 +325,9 @@ const Contact: React.FC = () => {
             <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
               Find Our Sanctuary
             </h2>
-            <p className="text-lg text-gray-600">
+            {/* <p className="text-lg text-gray-600">
               Discover aroma spa location.
-            </p>
+            </p> */}
           </AnimatedSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

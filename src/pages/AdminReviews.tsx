@@ -144,7 +144,7 @@ const AdminReviews: React.FC = () => {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <h2 className="mt-6 text-center text-3xl font-serif font-semibold text-gray-900">
+            <h2 className="mt-6 text-center text-3xl font-montserrat font-semibold text-gray-900">
               Admin Access
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
@@ -183,7 +183,7 @@ const AdminReviews: React.FC = () => {
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-serif font-semibold text-gray-900">
+            <h1 className="text-3xl font-montserrat font-semibold text-gray-900">
               Review Management
             </h1>
             <p className="text-gray-600 mt-2">
@@ -338,7 +338,7 @@ const AdminReviews: React.FC = () => {
               <div className="relative inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
                 <div className="bg-white px-6 py-6">
                   <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-xl font-serif font-semibold text-gray-900">
+                    <h3 className="text-xl font-montserrat font-semibold text-gray-900">
                       Review Details
                     </h3>
                     <button

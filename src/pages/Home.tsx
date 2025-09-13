@@ -283,9 +283,9 @@ const Home: React.FC = () => {
             <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-6">
               Find Our Sanctuary
             </h2>
-            <p className="text-lg text-gray-600">
+            {/* <p className="text-lg text-gray-600">
               Discover Aroma Spa Location.
-            </p>
+            </p> */}
           </AnimatedSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

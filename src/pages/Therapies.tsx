@@ -7,9 +7,9 @@ import servicesData, { ServiceItem, Variant } from '../data/servicesData';
 
 const Therapies: React.FC = () => {
   const { openBooking } = useBooking();
-  const signature = servicesData.therapies['Signature-therapies'] || [];
-  const classic = servicesData.therapies['Classic-therapies'] || [];
-  const targeted = servicesData.therapies['Targeted-therapies'] || [];
+  const signature = servicesData.therapies['signature-therapies'] || [];
+  const classic = servicesData.therapies['classic-therapies'] || [];
+  const targeted = servicesData.therapies['targeted-therapies'] || [];
 
   // Card component: reads variants and shows dynamic price/duration
  // inside Therapies.tsx — replace the old ServiceCard with this

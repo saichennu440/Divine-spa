@@ -77,40 +77,51 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({ reviews, lo
     responsive: [], // handled by JS-driven slidesToShow
   };
 
-  const renderDots = useCallback(() => {
-    const totalSlides = reviews.length;
-    if (!totalSlides || totalSlides === 1) return null;
+const renderDots = useCallback(() => {
+  const totalSlides = reviews.length;
+  if (!totalSlides || totalSlides === 1) return null;
 
-    // how many visible dots we want (original logic used 3)
-    const visibleCount = Math.min(3, totalSlides);
-    const visibleDots = Array.from({ length: visibleCount }, (_, i) => (dotOffset + i) % totalSlides);
+  const visibleCount = Math.min(3, totalSlides);
+  const previewCount = Math.min(2, totalSlides - visibleCount); // show 2 small dots after main ones
 
-    return (
-      <div className="flex justify-center space-x-2 mt-6">
-        {visibleDots.map((slideIndex, i) => {
-          const isActive = activeIndex === slideIndex;
-          return (
-            <button
-              key={slideIndex}
-              onClick={() => {
-                if (sliderRef.current) {
-                  sliderRef.current.slickGoTo(slideIndex);
-                  // keep previous behavior: if clicking the rightmost visible dot, move the offset forward
-                  if (i === visibleCount - 1) {
-                    setDotOffset((prev) => (prev + 1) % totalSlides);
-                  }
+  const visibleDots = Array.from({ length: visibleCount }, (_, i) => (dotOffset + i) % totalSlides);
+  const previewDots = Array.from({ length: previewCount }, (_, i) => (dotOffset + visibleCount + i) % totalSlides);
+
+  return (
+    <div className="flex justify-center space-x-2 mt-6">
+      {/* Main visible dots */}
+      {visibleDots.map((slideIndex, i) => {
+        const isActive = activeIndex === slideIndex;
+        return (
+          <button
+            key={`main-${slideIndex}`}
+            onClick={() => {
+              if (sliderRef.current) {
+                sliderRef.current.slickGoTo(slideIndex);
+                if (i === visibleCount - 1) {
+                  setDotOffset((prev) => (prev + 1) % totalSlides);
                 }
-              }}
-              aria-label={`Go to slide ${slideIndex + 1}`}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                isActive ? "bg-sage scale-125" : "bg-gray-300"
-              }`}
-            />
-          );
-        })}
-      </div>
-    );
-  }, [reviews.length, dotOffset, activeIndex]);
+              }
+            }}
+            aria-label={`Go to slide ${slideIndex + 1}`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              isActive ? "bg-sage scale-125" : "bg-gray-300 scale-100"
+            }`}
+          />
+        );
+      })}
+
+      {/* Preview dots (smaller, lighter) */}
+      {previewDots.map((slideIndex) => (
+        <div
+          key={`preview-${slideIndex}`}
+          className="w-2 h-2 rounded-full bg-gray-300 opacity-50"
+        />
+      ))}
+    </div>
+  );
+}, [reviews.length, dotOffset, activeIndex]);
+
 
   return (
     <section className="py-20 bg-beige">

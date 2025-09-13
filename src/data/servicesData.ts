@@ -17,9 +17,9 @@ export type ServiceItem = {
 
 export interface ServicesData {
   therapies: {
-    'Signature-therapies': ServiceItem[];
-    'Classic-therapies': ServiceItem[];
-    'Targeted-therapies': ServiceItem[];
+    'signature-therapies': ServiceItem[];
+    'classic-therapies': ServiceItem[];
+    'targeted-therapies': ServiceItem[];
   };
   facials: {
     'classic-facials': ServiceItem[];
@@ -35,7 +35,7 @@ export interface ServicesData {
 
 const servicesData: ServicesData = {
   therapies: {
-    'Signature-therapies': [
+    'signature-therapies': [
       {
         name: 'Signature Therapy',
         description: 'Our Signature Therapy is the ultimate indulgence, a harmonious fusion of traditional and contemporary techniques designed for complete relaxation and renewal. Every detail, from the choice of oils to the rhythm of touch, is designed for a journey of exquisite relaxation.',
@@ -74,7 +74,7 @@ const servicesData: ServicesData = {
       }
     ],
 
-    'Classic-therapies': [
+    'classic-therapies': [
       {
         name: 'Swedish Therapy',
         description:
@@ -128,7 +128,7 @@ const servicesData: ServicesData = {
       }
     ],
 
-    'Targeted-therapies': [
+    'targeted-therapies': [
       {
         name: 'Foot Reflexology',
         description: 'A calming leg massage that releases built-up tension, promotes circulation, and envelops your legs in soothing relaxation from thigh to toe. ',

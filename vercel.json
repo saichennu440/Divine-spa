@@ -1,5 +1,9 @@
+
 {
   "rewrites": [
-    { "source": "/admin/reviews(.*)", "destination": "/" }
+    {
+      "source": "/((?!api|_next|.*\\..*).*)",
+      "destination": "/index.html"
+    }
   ]
 }

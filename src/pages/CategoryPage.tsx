@@ -17,28 +17,22 @@ const prettyTitleFromSlug = (slug: string) =>
 // ServiceCard component: reads variants and displays dynamic price/duration
 const ServiceCard: React.FC<{ item: ServiceItem; onBook: (payload: any) => void }> = ({ item, onBook }) => {
   const variants: Variant[] = item.variants ?? [];
-
-  // active variant index (default to 0 if variants exist, otherwise -1)
   const [activeIdx, setActiveIdx] = React.useState<number>(() => (variants.length > 0 ? 0 : -1));
 
   React.useEffect(() => {
-    // keep activeIdx valid if variants change
-    if (variants.length > 0 && (activeIdx < 0 || activeIdx >= variants.length)) {
-      setActiveIdx(0);
-    }
-    if (variants.length === 0 && activeIdx !== -1) {
-      setActiveIdx(-1);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (variants.length > 0 && (activeIdx < 0 || activeIdx >= variants.length)) setActiveIdx(0);
+    if (variants.length === 0 && activeIdx !== -1) setActiveIdx(-1);
   }, [variants.length]);
 
-  const active = activeIdx >= 0 ? variants[activeIdx] : variants[0];
+  const nameMatch = item.name.match(/^(.*?)\s*\((.+)\)\s*$/);
+  const mainTitle = nameMatch ? nameMatch[1] : item.name;
+  const parenthesis = nameMatch ? nameMatch[2] : null;
 
+  const active = activeIdx >= 0 ? variants[activeIdx] : variants[0];
   const displayPrice = active?.price ?? '—';
   const displayDuration = active?.duration ? `${active.duration} mins` : '—';
 
   const handleBook = () => {
-    // pass chosen variant to booking modal so it can prefill
     onBook({
       service: item.name,
       serviceDuration: active?.duration ?? '',
@@ -48,66 +42,83 @@ const ServiceCard: React.FC<{ item: ServiceItem; onBook: (payload: any) => void 
 
   return (
     <AnimatedSection delay={0} animation="fade-in-up">
-      <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all overflow-hidden h-full flex flex-col">
+        {/* Image */}
         <div className="relative h-64">
-          <img src={item.image ?? '/images/default-spa.jpg'} alt={item.name} className="w-full h-full object-cover" />
-
-          {/* <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2">
-            <span className="text-2xl font-montserrat font-semibold text-sage">
-              {displayPrice}
-            </span>
-          </div> */}
+          <img
+            src={item.image ?? '/images/default-spa.jpg'}
+            alt={item.name}
+            className="w-full h-full object-cover"
+          />
         </div>
 
-        <div className="p-8">
-          <div className="flex justify-between items-start mb-4">
-            <h3 className="text-2xl font-montserrat font-semibold text-gray-900">{item.name}</h3>
-            {/* <div className="flex items-center text-sm text-gray-500">
-              <Clock className="h-4 w-4 mr-1" />
-              {displayDuration}
-            </div> */}
+        {/* Content */}
+        <div className="p-8 flex flex-col flex-grow">
+          {/* Top section */}
+          <div className="flex-grow">
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-2xl font-montserrat font-semibold text-gray-900">
+                {mainTitle}
+                {parenthesis && (
+                  <span className="block text-sm font-montserrat text-gray-600 mt-1">
+                    ({parenthesis})
+                  </span>
+                )}
+              </h3>
+            </div>
+
+            <p className="text-gray-600 mb-6 leading-relaxed">{item.description}</p>
+
+
+            {Array.isArray(item.features) && item.features.length > 0 && (
+              <div className="mb-6">
+                <div className="grid grid-cols-2 gap-2">
+                  {item.features.map((f, i) => (
+                    <div key={i} className="flex items-center text-sm text-gray-600">
+                      <Star className="h-4 w-4 text-sage mr-2 flex-shrink-0" />
+                      {f}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
-          <p className="text-gray-600 mb-6 leading-relaxed">{item.description}</p>
-
-          {variants.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-6">
-              {variants.map((v, idx) => (
-                <button
-                  key={`${item.name}-v-${v.duration}-${idx}`}
-                  type="button"
-                  onClick={() => setActiveIdx(idx)}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${
-                    idx === activeIdx ? 'bg-sage text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {v.duration} mins — {v.price}
-                </button>
-              ))}
-            </div>
-          )}
-
-          {item.features && item.features.length > 0 && (
-            <div className="mb-6">
-              <div className="grid grid-cols-2 gap-2">
-                {item.features.map((f, i) => (
-                  <div key={i} className="flex items-center text-sm text-gray-600">
-                    <Star className="h-4 w-4 text-sage mr-2 flex-shrink-0" />
-                    {f}
-                  </div>
+          {/* Bottom fixed section */}
+          <div className="mt-auto pt-4 border-t border-gray-100">
+            <div className="flex items-center justify-between mb-4">
+              {variants.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                {variants.map((v, idx) => (
+                  <button
+                    key={`${item.name}-v-${v.duration}-${idx}`}
+                    type="button"
+                    onClick={() => setActiveIdx(idx)}
+                    className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${
+                      idx === activeIdx
+                        ? 'bg-sage text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {v.duration} mins — {v.price}
+                  </button>
                 ))}
               </div>
+            )}
             </div>
-          )}
-
-          <button onClick={handleBook} className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300">
-            Book This Treatment <ArrowRight className="inline ml-2 h-4 w-4" />
-          </button>
+            <button
+              onClick={handleBook}
+              className="w-full bg-sage hover:bg-sage-dark text-white py-3 px-6 rounded-full font-medium transition-all duration-300"
+            >
+              Book This Treatment <ArrowRight className="inline ml-2 h-4 w-4" />
+            </button>
+          </div>
         </div>
       </div>
     </AnimatedSection>
   );
 };
+
 
 const CategoryPage: React.FC = () => {
   const { openBooking } = useBooking();
@@ -158,7 +169,7 @@ const CategoryPage: React.FC = () => {
 
     return (
       <div className="pt-20">
-        <section className="py-20 bg-gradient-to-b from-cream to-white text-center">
+        <section className="py-10 bg-gradient-to-b from-cream to-white text-center">
           <div className="max-w-4xl mx-auto px-4">
             <AnimatedSection>
               <div className="inline-flex items-center justify-center w-20 h-20 bg-sage/10 rounded-full mb-8">
@@ -172,14 +183,12 @@ const CategoryPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-16">
+        <section className="py-2">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {list.map((t, i) => (
-                <div key={`${t.name}-${i}`}>
-                  <ServiceCard item={t} onBook={handleOpenBookingWith} />
-                </div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+               {list.map((t, i) => (
+    <ServiceCard key={`${t.name}-${i}`} item={t} onBook={handleOpenBookingWith} />
+  ))}
             </div>
           </div>
         </section>
@@ -212,7 +221,7 @@ const CategoryPage: React.FC = () => {
                 <p className="text-gray-600 mb-6">{/* optional description if available in data */}</p>
               </AnimatedSection>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                 {(categoryData[k] || []).map((t, i) => (
                   <div key={`${t.name}-${i}`}>
                     <ServiceCard item={t} onBook={handleOpenBookingWith} />

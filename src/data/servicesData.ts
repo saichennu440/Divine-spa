@@ -46,7 +46,7 @@ const servicesData: ServicesData = {
         ]
       },
       {
-        name: 'Tandem (Four Hands) Therapy',
+        name: 'Tandem Four Hands Therapy',
         description: 'Indulge in the pinnacle of relaxation as two expert therapists move in perfect synchrony, melting tension, enhancing circulation, and delivering an unparalleled sense of serenity. Every stroke is harmonized to soothe both body and mind, where time seems to pause, and every sense is delighted.',
         image: '/services/Tandem (Four Hands) Therapy.jpg',
         variants: [
@@ -136,7 +136,7 @@ const servicesData: ServicesData = {
         variants: [{ duration: '30', price: '₹1000' }]
       },
       {
-        name: 'Back Revival Therapy(without shower)',
+        name: 'Back Revival Therapy',
         description: 'Expert techniques paired with aromatic oils release knots and stiffness, leaving you refreshed and renewed. ',
         image: '/services/Back Revival Therapy.jpg',
         variants: [{ duration: '30', price: '₹1700' }]
@@ -165,7 +165,7 @@ const servicesData: ServicesData = {
         variants: [{ duration: '60', price: '₹1500' }]
       },
       {
-        name: 'Rejuvenating (All skin types)',
+        name: 'Rejuvenating\n (All skin types)',
         description: 'Reveal your skin’s natural radiance through meticulous care that enhances texture, tone, and vitality.',
         image: '/services/Facials – Rejuvenating.jpg',
         variants: [{ duration: '60', price: '₹1700' }]
@@ -250,7 +250,7 @@ const servicesData: ServicesData = {
         variants: [{ duration: '60', price: '₹1400' }]
       },
       {
-        name: 'Brightening & De-Tan Pedicure',
+        name: 'Brightening De-Tan Pedicure',
         description: 'This pampering ritual, enriched with vibrant fruit extracts, gently exfoliates and detoxifies, transforming dull, tired feet into a brighter, softer, and more radiant version of themselves',
         image: '/services/Pedicure – Brightening De-Tan.jpg',
         variants: [{ duration: '60', price: '₹1700' }]

@@ -268,7 +268,13 @@ const Contact: React.FC = () => {
                          <Phone className="h-5 w-5 mr-3 text-white/80" />
                          <div>
                            <p className="font-bold text-white">Call Us</p>
-                           <p className="text-white/90">9318629318</p>
+                           {/* <p className="text-white/90">9318629318</p> */}
+                           <a 
+                              href="tel:+91 9318629318"
+                              className="text-white/90">
+                              {/* <Phone className="h-4 w-4 mr-3 text-sage" /> */}
+                              <span>9318629318</span>
+                              </a>
                          </div>
                        </div>
                        <div className="flex items-center">

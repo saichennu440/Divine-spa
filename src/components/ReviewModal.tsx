@@ -402,12 +402,12 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ isOpen, onClose }) => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">City</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Area</label>
                     <input
                       type="text"
                       value={reviewData.city}
                       onChange={(e) => setReviewData({ ...reviewData, city: e.target.value })}
-                      placeholder="e.g., New York"
+                      placeholder="e.g., kukatpally"
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-transparent"
                     />
                   </div>

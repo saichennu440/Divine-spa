@@ -16,6 +16,7 @@ import Membership from './pages/Membership';
 import FullBodyPolishing from './pages/FullBodyPolishing';
 import FootPedicure from './pages/FootPedicure';
 import CategoryPage from './pages/CategoryPage';
+import AllServices from './pages/AllServices';
 import Contact from './pages/Contact';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import ReviewButton from './components/ReviewButton';
@@ -63,7 +64,7 @@ function App() {
 
       {/* specific subcategory page, e.g. /services/therapies/signature-therapies */}
       <Route path="/services/:category/:sub" element={<CategoryPage />} />
-
+      <Route path="/services/all" element={<AllServices />} />
         <Route path="/services/full-body-polishing" element={<FullBodyPolishing />} />
         <Route path="/services/foot-pedicure" element={<FootPedicure />} />
               <Route path="/membership" element={<Membership />} />

@@ -13,7 +13,7 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, image, path }) => {
   const navigate = useNavigate();
   return (
-    <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden scale-on-hover">
+    <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden scale-on-hover flex flex-col h-full ">
       <div className="relative h-48 overflow-hidden">
         <img 
           src={image} 

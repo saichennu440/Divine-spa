@@ -91,14 +91,15 @@ const Membership: React.FC = () => {
       </section>
 
       {/* Membership Plans */}
-      <section className="py-20">
+      <section className="py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">
               Choose Your Wellness Family Package
             </h2>
             <p className="text-lg text-gray-600">
-These packages are exclusively for Classic Swedish, Aromatic, Deep Tissue, Balinese And Traditional thai therapies only            </p>
+            Discover wellness packages crafted for Swedish, Aromatic, Deep Tissue, Balinese, and Dry Thai therapies.
+            </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -111,9 +112,7 @@ These packages are exclusively for Classic Swedish, Aromatic, Deep Tissue, Balin
             Enhanced Packages For You
           </h2>
           <p className="text-lg text-gray-600 ">
-            These packages are exclusively for Classic Swedish, Aroma, Deep Tissue, Balinese, 
-Traditional Thai, AROMA Signature, Tandem (Fours Hands), Herbal Potli, Hot 
-Stone And Body polishing therapies ONLY
+          These packages are exclusively for Swedish, Aromatic, Deep Tissue, Balinese, Dry Thai, Signature, Tandem (Fours Hands), Herbal Potli, Hot Stone And Body polishing therapies
           </p>
         </div>
       )}

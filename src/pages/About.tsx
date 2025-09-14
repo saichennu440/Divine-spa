@@ -84,7 +84,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Mission Statement */}
-      <section className="py-20">
+      <section className="py-5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
             <h2 className="text-4xl md:text-5xl font-montserrat font-light text-gray-900 mb-8">

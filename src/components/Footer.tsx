@@ -27,10 +27,17 @@ const Footer: React.FC = () => {
                 
 
               </div>
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <Phone className="h-4 w-4 mr-3 text-sage" />
                 <span className="text-gray-300">9318629318</span>
-              </div>
+              </div> */}
+
+                         <a 
+                            href="tel:+91 9318629318"
+                            className="flex items-center">
+                <Phone className="h-4 w-4 mr-3 text-sage" />
+                            <span>9318629318</span>
+                          </a>
               {/* <div className="flex items-start">
                 <MapPin className="h-4 w-4 mr-3 mt-1 text-sage flex-shrink-0" />
                 <span className="text-gray-300">
@@ -56,7 +63,7 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <Link to="/services/therapies" className="text-gray-300 hover:text-sage transition-colors">
+                <Link to="/services/all" className="text-gray-300 hover:text-sage transition-colors">
                   Services
                 </Link>
               </li>
@@ -195,9 +202,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="text-center lg:text-right">
               <p className="flex items-center justify-center lg:justify-end text-sm text-gray-400">
-                © 2025 aroma spa. All rights reserved. Made with 
-                <Heart className="h-4 w-4 mx-1 text-red-500" />
-                <a href='#'>by Scalers</a>
+                © 2025 aroma spa. All rights reserved
               </p>
             </div>
           </div>

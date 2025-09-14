@@ -306,9 +306,9 @@ const About: React.FC = () => {
             <h2 className="text-4xl font-montserrat font-light mb-6">
               Our Location
             </h2>
-            <p className="text-xl text-white/90">
+            {/* <p className="text-xl text-white/90">
               Visit us at our luxurious spa location in Hyderabad.
-            </p>
+            </p> */}
           </AnimatedSection>
 
           {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

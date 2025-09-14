@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
             style={{ transitionDelay: '600ms' }}
           >
             <Calendar className="h-5 w-5" />
-            <span>book an appointment</span>
+            <span>Book an Appointment</span>
           </button>
 
           {/* Secondary CTAs */}

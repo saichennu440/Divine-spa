@@ -174,8 +174,8 @@ const CategoryPage: React.FC = () => {
 
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {list.map((t, i) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {list.map((t, i) => (
                 <div key={`${t.name}-${i}`}>
                   <ServiceCard item={t} onBook={handleOpenBookingWith} />
                 </div>
@@ -195,7 +195,7 @@ const CategoryPage: React.FC = () => {
       <section className="py-20 bg-gradient-to-b from-cream to-white text-center">
         <div className="max-w-4xl mx-auto px-4">
           <AnimatedSection>
-            <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-4">
+            <h1 className="text-5xl md:text-6xl font-montserrat font-light text-gray-900 mb-6">
               {prettyTitleFromSlug(category)}
             </h1>
             {/* <p className="text-xl text-gray-700 max-w-3xl mx-auto">All services in this category.</p> */}
@@ -203,7 +203,7 @@ const CategoryPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-2">
         <div className="max-w-7xl mx-auto px-4 space-y-20">
           {subKeys.map((k) => (
             <div key={k}>

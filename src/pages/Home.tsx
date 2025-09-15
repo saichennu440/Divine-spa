@@ -20,28 +20,28 @@ const Home: React.FC = () => {
       description: 'Professional therapeutic treatments including Swedish, Deep Tissue, Hot Stone, and Aromatherapy therapy for ultimate relaxation.',
       icon: <Sparkles className="h-8 w-8" />,
       path: '/services/therapies',
-      image: '/home/Therapies.jpg'
+      image: '/home/Therapies.webp'
     },
     {
       title: 'Facials',
       description: 'Rejuvenating skin treatments designed to cleanse, hydrate, and restore your natural glow.',
       icon: <Heart className="h-8 w-8" />,
        path: '/services/facials',
-      image: '/home/Facial.jpg'
+      image: '/home/Facial.webp'
     },
     {
       title: 'Full body Polishing',
       description: 'Luxurious exfoliation therapy that smooths, brightens, and revitalizes your entire body.',
           path: '/services/full-body-polishing',
       icon: <Droplets className="h-8 w-8" />,
-      image: '/home/Body_Polishing.jpg'
+      image: '/home/Body_Polishing.webp'
     },
     {
       title: 'Foot pedicure',
       description: 'Pampering foot care to refresh, soften, and beautify for perfectly polished toes.',
       icon: <Flower2 className="h-8 w-8" />,
           path: '/services/foot-pedicure',
-      image: '/home/Foot_Pedicure.jpg'
+      image: '/home/Foot_Pedicure.webp'
     }
   ];
 

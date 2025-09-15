@@ -203,7 +203,7 @@ const servicesData: ServicesData = {
   'full-body-polishing': {
     'full-body-polishing': [
       {
-        name: 'Scrub (with shower)',
+        name: 'Scrub (With Shower)',
         description: 'Experience an invigorating exfoliation that gently buffs away dullness and impurities, revealing skin that feels luxuriously smooth, soft, and renewed. This revitalizing treatment enhances circulation, awakens the senses, and leaves your body glowing with irresistible radiance. ',
         image: '/services/Polishing – Scrub.jpg',
         variants: [{ duration: '60', price: '₹2800' }]

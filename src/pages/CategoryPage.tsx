@@ -221,13 +221,11 @@ const CategoryPage: React.FC = () => {
                 <p className="text-gray-600 mb-6">{/* optional description if available in data */}</p>
               </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-                {(categoryData[k] || []).map((t, i) => (
-                  <div key={`${t.name}-${i}`}>
-                    <ServiceCard item={t} onBook={handleOpenBookingWith} />
-                  </div>
-                ))}
-              </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+      {(categoryData[k] || []).map((t, i) => (
+        <ServiceCard key={`${t.name}-${i}`} item={t} onBook={handleOpenBookingWith} />
+      ))}
+    </div>
             </div>
           ))}
         </div>

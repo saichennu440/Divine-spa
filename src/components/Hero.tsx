@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
           }`}>
             Inspired by the Aroma.
             <br />
-            <span className="text-cream">created for you.</span>
+            <span className="text-cream">Created for You.</span>
           </h1>
           
           <p className={`text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto font-light leading-relaxed transition-all duration-1000 delay-300 ${

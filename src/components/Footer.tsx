@@ -22,8 +22,8 @@ const Footer: React.FC = () => {
             </p>
             <div className="space-y-3">
               <div className="flex items-center">
-                <MapPin className="h-4 w-4 mr-3 text-sage" />
-                <span className="text-gray-300" >7-1/92/C&92/F HIG, Above Fabindia Store, <br></br>Opp.Aparna Sarovar Apartments, Nallagandla Main Road, <br></br>Hyderabad, Telangana, 500046</span>
+                <MapPin className="h-5 w-4 mr-3 text-sage" />
+                <span className="text-gray-300" >5th Floor, Above Fabindia Store, <br></br>Opp.Aparna Sarovar Apartments, Nallagandla Main Road, <br></br>Hyderabad, Telangana, 500046</span>
                 
 
               </div>

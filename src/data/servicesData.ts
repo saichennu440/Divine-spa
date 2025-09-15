@@ -255,7 +255,7 @@ const servicesData: ServicesData = {
       {
         name: 'Brightening De-Tan Pedicure',
         description: 'This pampering ritual, enriched with vibrant fruit extracts, gently exfoliates and detoxifies, transforming dull, tired feet into a brighter, softer, and more radiant version of themselves',
-        image: '/services/Pedicure – Brightening De-Tan.jpg',
+        image: '/services/Pedicure – Brightening De-Tan.webp',
         variants: [{ duration: '60', price: '₹1700' }]
       },
       {

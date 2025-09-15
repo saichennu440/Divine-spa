@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Heart, Users, Droplets, Flower2, Leaf, MapPin, Clock } from 'lucide-react';
+import { Sparkles, Heart, Users, Droplets, Flower2, Leaf, MapPin, Clock, Phone } from 'lucide-react';
 import Hero from '../components/Hero';
 import AnimatedSection from '../components/AnimatedSection';
 import ServiceCard from '../components/ServiceCard';
@@ -313,8 +313,13 @@ const Home: React.FC = () => {
                     <Clock className="h-4 w-4 mr-2" />
                     Mon-Sun: 10:00 AM - 9:00 PM
                   </div>
-                  <p className="text-sage font-medium">9318629318</p>
-                </div>
+         <a 
+              href="tel:+91 9318629318"
+              className="inline-flex items-center space-x-2 text-sage font-medium "
+            >
+              <Phone className="h-8 w-5" />
+              <span>9318629318</span>
+            </a>                </div>
 
                 {/* <div className="bg-white rounded-xl shadow-lg p-6">
                   <h3 className="font-montserrat text-xl font-semibold mb-3">Beverly Hills</h3>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState ,} from 'react';
-import { Heart, Users, Award, Sparkles, Clock, MapPin } from 'lucide-react';
+import { Heart, Users, Award, Sparkles, Clock, MapPin, Phone } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
 import { useBooking } from '../context/BookingContext';
 import { Link } from 'react-router-dom';
@@ -374,7 +374,13 @@ const About: React.FC = () => {
                     <Clock className="h-4 w-4 mr-2" />
                     Mon-Sun:10:00 AM - 9:00 PM
                   </div>
-                  <p className="text-sage font-medium">9318629318</p>
+                           <a 
+              href="tel:+91 9318629318"
+              className="inline-flex items-center space-x-2 text-sage font-medium "
+            >
+              <Phone className="h-8 w-5" />
+              <span>9318629318</span>
+            </a>
                 </div>
 
                 {/* <div className="bg-white rounded-xl shadow-lg p-6">

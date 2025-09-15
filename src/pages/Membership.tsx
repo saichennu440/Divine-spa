@@ -283,7 +283,7 @@ const Membership: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-4xl font-montserrat font-light text-gray-900 mb-6">Ready To Join Our Wellness Community?</h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">Start your transformative wellness journey today with a membership plan designed for your lifestyle.</p>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">Start your transformative wellness journey today with a membership plan designed for your lifestyle.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={() => openPlanModal(null)} className="bg-sage hover:bg-sage-dark text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-lg">Start Membership</button>
               {/* <button onClick={() => openPlanModal(null)} className="border-2 border-sage text-sage hover:bg-sage hover:text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300">Schedule Consultation</button> */}

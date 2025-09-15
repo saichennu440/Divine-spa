@@ -17,8 +17,8 @@ export type ServiceItem = {
 
 export interface ServicesData {
   therapies: {
-    'signature-therapies': ServiceItem[];
     'classic-therapies': ServiceItem[];
+    'signature-therapies': ServiceItem[];
     'targeted-therapies': ServiceItem[];
   };
   facials: {
@@ -35,97 +35,8 @@ export interface ServicesData {
 
 const servicesData: ServicesData = {
 
- facials: {
-    'classic-facials': [
-      {
-        name: 'Facial Clean-up (Watermelon / Strawberry)',
-        description: 'A burst of hydration/Antioxidant-rich cleanse for tired, stressed skin.',
-        image: '/services/Facials – Clean ups.jpg',
-        variants: [{ duration: '30', price: '₹1200' }]
-      },
-      {
-        name: 'Hydra Dew (Dry & Dehydrated)',
-        description: 'Immerse your delicate skin in exquisite moisture, calming and protecting it with every touch',
-        image: '/services/Facials – Hydra Dew.jpg',
-        variants: [{ duration: '60', price: '₹1500' }]
-      },
-      {
-        name: 'Rejuvenating\n (All skin types)',
-        description: 'Reveal your skin’s natural radiance through meticulous care that enhances texture, tone, and vitality.',
-        image: '/services/Facials – Rejuvenating.jpg',
-        variants: [{ duration: '60', price: '₹1700' }]
-      },
-      {
-        name: 'Herbal Pearl',
-        description: 'Indulge in the healing touch of nature’s finest herbs, and reveal skin that feels renewed and luminous.',
-        image: '/services/Facials – Herbal Pearl.jpg',
-        variants: [{ duration: '60', price: '₹2700' }]
-      }
-    ],
-
-    'premium-facials': [
-      {
-        name: 'Deep Pore Cleansing (Oily Skin)',
-        description: 'An expertly crafted extract that refreshes oily skin while maintaining its natural balance. Enriched with skin-loving nutrients to smooth, nourish, and reveal a clear, radiant glow.',
-        image: '/services/Facials – Deep Pore Cleansing.jpg',
-        variants: [{ duration: '60', price: '₹3100' }]
-      },
-      {
-        name: 'Whitening Facial (Dull & Uneven)',
-        description: 'Harness the power of advanced sun filters to reduce melanin formation, protect against UV rays, and unveil a naturally bright, balanced skin tone.',
-        image: '/services/Facials – Whitening.jpg',
-        variants: [{ duration: '60', price: '₹3300' }]
-      },
-      {
-        name: 'Herbal Gold (Signature)',
-        description: 'Nature’s touch, meticulously crafted from herbal essences, delivering visible transformation from the first touch.',
-        image: '/services/Facials – Herbal Gold.jpg',
-        variants: [{ duration: '60', price: '₹4500' }]
-      }
-    ]
-  },
-
   therapies: {
-    'signature-therapies': [
-      {
-        name: 'Signature Therapy',
-        description: 'Our Signature Therapy is the ultimate indulgence, a harmonious fusion of traditional and contemporary techniques designed for complete relaxation and renewal. Every detail, from the choice of oils to the rhythm of touch, is designed for a journey of exquisite relaxation.',
-        image: '/services/Signature Therapy.jpg',
-        variants: [
-          { duration: '90', price: '₹5300' },
-          { duration: '120', price: '₹6000' }
-        ]
-      },
-      {
-        name: 'Tandem Four Hands Therapy',
-        description: 'Indulge in the pinnacle of relaxation as two expert therapists move in perfect synchrony, melting tension, enhancing circulation, and delivering an unparalleled sense of serenity. Every stroke is harmonized to soothe both body and mind, where time seems to pause, and every sense is delighted.',
-        image: '/services/Tandem (Four Hands) Therapy.jpg',
-        variants: [
-          { duration: '60', price: '₹5300' },
-          { duration: '90', price: '₹6000' }
-        ]
-      },
-      {
-        name: 'Herbal Potli Therapy',
-        description: 'A warm, soothing therapy using herbal poultices infused with medicinal herbs glide over your body, melting tension, uplifting the senses, and infusing your skin with nature’s restorative essence',
-        image: '/services/Herbal Potli Therapy.jpg',
-        variants: [
-          { duration: '60', price: '₹4100' },
-          { duration: '90', price: '₹5300' }
-        ]
-      },
-      {
-        name: 'Hot Stone Therapy',
-        description: 'Smooth, heated stones meet skilled hands to glide over your body, penetrating deep into tired muscles. This therapy warms your muscles from within, releasing deep-seated stress and and tension while restoring deep inner harmony.',
-        image: '/services/Hot Stone Therapy.jpg',
-        variants: [
-          { duration: '60', price: '₹4100' },
-          { duration: '90', price: '₹5300' }
-        ]
-      }
-    ],
-
-    'classic-therapies': [
+        'classic-therapies': [
       {
         name: 'Swedish Therapy',
         description:
@@ -179,6 +90,47 @@ const servicesData: ServicesData = {
       }
     ],
 
+    'signature-therapies': [
+      {
+        name: 'Signature Therapy',
+        description: 'Our Signature Therapy is the ultimate indulgence, a harmonious fusion of traditional and contemporary techniques designed for complete relaxation and renewal. Every detail, from the choice of oils to the rhythm of touch, is designed for a journey of exquisite relaxation.',
+        image: '/services/Signature Therapy.jpg',
+        variants: [
+          { duration: '90', price: '₹5300' },
+          { duration: '120', price: '₹6000' }
+        ]
+      },
+      {
+        name: 'Tandem Four Hands Therapy',
+        description: 'Indulge in the pinnacle of relaxation as two expert therapists move in perfect synchrony, melting tension, enhancing circulation, and delivering an unparalleled sense of serenity. Every stroke is harmonized to soothe both body and mind, where time seems to pause, and every sense is delighted.',
+        image: '/services/Tandem (Four Hands) Therapy.jpg',
+        variants: [
+          { duration: '60', price: '₹5300' },
+          { duration: '90', price: '₹6000' }
+        ]
+      },
+      {
+        name: 'Herbal Potli Therapy',
+        description: 'A warm, soothing therapy using herbal poultices infused with medicinal herbs glide over your body, melting tension, uplifting the senses, and infusing your skin with nature’s restorative essence',
+        image: '/services/Herbal Potli Therapy.jpg',
+        variants: [
+          { duration: '60', price: '₹4100' },
+          { duration: '90', price: '₹5300' }
+        ]
+      },
+      {
+        name: 'Hot Stone Therapy',
+        description: 'Smooth, heated stones meet skilled hands to glide over your body, penetrating deep into tired muscles. This therapy warms your muscles from within, releasing deep-seated stress and and tension while restoring deep inner harmony.',
+        image: '/services/Hot Stone Therapy.jpg',
+        variants: [
+          { duration: '60', price: '₹4100' },
+          { duration: '90', price: '₹5300' }
+        ]
+      }
+    ],
+
+
+
     'targeted-therapies': [
       {
         name: 'Foot Reflexology',
@@ -197,6 +149,56 @@ const servicesData: ServicesData = {
         description: 'RDrift into bliss as each precise movement rejuvenates muscles, calms the mind, and restores balance ',
         image: '/services/Head, Neck & Shoulder.jpg',
         variants: [{ duration: '30', price: '₹1200' }]
+      }
+    ]
+  },
+
+ facials: {
+    'classic-facials': [
+      {
+        name: 'Facial Clean-up (Watermelon / Strawberry)',
+        description: 'A burst of hydration/Antioxidant-rich cleanse for tired, stressed skin.',
+        image: '/services/Facials – Clean ups.jpg',
+        variants: [{ duration: '30', price: '₹1200' }]
+      },
+      {
+        name: 'Hydra Dew (Dry & Dehydrated)',
+        description: 'Immerse your delicate skin in exquisite moisture, calming and protecting it with every touch',
+        image: '/services/Facials – Hydra Dew.jpg',
+        variants: [{ duration: '60', price: '₹1500' }]
+      },
+      {
+        name: 'Rejuvenating\n (All skin types)',
+        description: 'Reveal your skin’s natural radiance through meticulous care that enhances texture, tone, and vitality.',
+        image: '/services/Facials – Rejuvenating.jpg',
+        variants: [{ duration: '60', price: '₹1700' }]
+      },
+      {
+        name: 'Herbal Pearl',
+        description: 'Indulge in the healing touch of nature’s finest herbs, and reveal skin that feels renewed and luminous.',
+        image: '/services/Facials – Herbal Pearl.jpg',
+        variants: [{ duration: '60', price: '₹2700' }]
+      }
+    ],
+
+    'premium-facials': [
+      {
+        name: 'Deep Pore Cleansing (Oily Skin)',
+        description: 'An expertly crafted extract that refreshes oily skin while maintaining its natural balance. Enriched with skin-loving nutrients to smooth, nourish, and reveal a clear, radiant glow.',
+        image: '/services/Facials – Deep Pore Cleansing.jpg',
+        variants: [{ duration: '60', price: '₹3100' }]
+      },
+      {
+        name: 'Whitening Facial (Dull & Uneven)',
+        description: 'Harness the power of advanced sun filters to reduce melanin formation, protect against UV rays, and unveil a naturally bright, balanced skin tone.',
+        image: '/services/Facials – Whitening.jpg',
+        variants: [{ duration: '60', price: '₹3300' }]
+      },
+      {
+        name: 'Herbal Gold (Signature)',
+        description: 'Nature’s touch, meticulously crafted from herbal essences, delivering visible transformation from the first touch.',
+        image: '/services/Facials – Herbal Gold.jpg',
+        variants: [{ duration: '60', price: '₹4500' }]
       }
     ]
   },

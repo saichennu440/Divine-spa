@@ -112,7 +112,7 @@ const Membership: React.FC = () => {
             Enhanced Packages For You
           </h2>
           <p className="text-lg text-gray-600 ">
-          These packages are exclusively for Swedish, Aromatic, Deep Tissue, Balinese, Dry Thai, Signature, Tandem (Fours Hands), Herbal Potli, Hot Stone And Body polishing therapies
+          These packages are exclusively for Swedish, Aromatic, Deep Tissue, Balinese, Dry Thai,<br></br> Signature, Tandem (Fours Hands), Herbal Potli, Hot Stone And Body polishing therapies
           </p>
         </div>
       )}

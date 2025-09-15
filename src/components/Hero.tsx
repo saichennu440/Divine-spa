@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             <Link
-              to="/services/therapies"
+              to="/services/all"
               className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md hover:bg-white/30 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105"
             >
               <Eye className="h-4 w-4" />

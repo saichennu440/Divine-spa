@@ -34,6 +34,57 @@ export interface ServicesData {
 }
 
 const servicesData: ServicesData = {
+
+ facials: {
+    'classic-facials': [
+      {
+        name: 'Facial Clean-up (Watermelon / Strawberry)',
+        description: 'A burst of hydration/Antioxidant-rich cleanse for tired, stressed skin.',
+        image: '/services/Facials – Clean ups.jpg',
+        variants: [{ duration: '30', price: '₹1200' }]
+      },
+      {
+        name: 'Hydra Dew (Dry & Dehydrated)',
+        description: 'Immerse your delicate skin in exquisite moisture, calming and protecting it with every touch',
+        image: '/services/Facials – Hydra Dew.jpg',
+        variants: [{ duration: '60', price: '₹1500' }]
+      },
+      {
+        name: 'Rejuvenating\n (All skin types)',
+        description: 'Reveal your skin’s natural radiance through meticulous care that enhances texture, tone, and vitality.',
+        image: '/services/Facials – Rejuvenating.jpg',
+        variants: [{ duration: '60', price: '₹1700' }]
+      },
+      {
+        name: 'Herbal Pearl',
+        description: 'Indulge in the healing touch of nature’s finest herbs, and reveal skin that feels renewed and luminous.',
+        image: '/services/Facials – Herbal Pearl.jpg',
+        variants: [{ duration: '60', price: '₹2700' }]
+      }
+    ],
+
+    'premium-facials': [
+      {
+        name: 'Deep Pore Cleansing (Oily Skin)',
+        description: 'An expertly crafted extract that refreshes oily skin while maintaining its natural balance. Enriched with skin-loving nutrients to smooth, nourish, and reveal a clear, radiant glow.',
+        image: '/services/Facials – Deep Pore Cleansing.jpg',
+        variants: [{ duration: '60', price: '₹3100' }]
+      },
+      {
+        name: 'Whitening Facial (Dull & Uneven)',
+        description: 'Harness the power of advanced sun filters to reduce melanin formation, protect against UV rays, and unveil a naturally bright, balanced skin tone.',
+        image: '/services/Facials – Whitening.jpg',
+        variants: [{ duration: '60', price: '₹3300' }]
+      },
+      {
+        name: 'Herbal Gold (Signature)',
+        description: 'Nature’s touch, meticulously crafted from herbal essences, delivering visible transformation from the first touch.',
+        image: '/services/Facials – Herbal Gold.jpg',
+        variants: [{ duration: '60', price: '₹4500' }]
+      }
+    ]
+  },
+
   therapies: {
     'signature-therapies': [
       {
@@ -146,56 +197,6 @@ const servicesData: ServicesData = {
         description: 'RDrift into bliss as each precise movement rejuvenates muscles, calms the mind, and restores balance ',
         image: '/services/Head, Neck & Shoulder.jpg',
         variants: [{ duration: '30', price: '₹1200' }]
-      }
-    ]
-  },
-
-  facials: {
-    'classic-facials': [
-      {
-        name: 'Facial Clean-up (Watermelon / Strawberry)',
-        description: 'A burst of hydration/Antioxidant-rich cleanse for tired, stressed skin.',
-        image: '/services/Facials – Clean ups.jpg',
-        variants: [{ duration: '30', price: '₹1200' }]
-      },
-      {
-        name: 'Hydra Dew (Dry & Dehydrated)',
-        description: 'Immerse your delicate skin in exquisite moisture, calming and protecting it with every touch',
-        image: '/services/Facials – Hydra Dew.jpg',
-        variants: [{ duration: '60', price: '₹1500' }]
-      },
-      {
-        name: 'Rejuvenating\n (All skin types)',
-        description: 'Reveal your skin’s natural radiance through meticulous care that enhances texture, tone, and vitality.',
-        image: '/services/Facials – Rejuvenating.jpg',
-        variants: [{ duration: '60', price: '₹1700' }]
-      },
-      {
-        name: 'Herbal Pearl',
-        description: 'Indulge in the healing touch of nature’s finest herbs, and reveal skin that feels renewed and luminous.',
-        image: '/services/Facials – Herbal Pearl.jpg',
-        variants: [{ duration: '60', price: '₹2700' }]
-      }
-    ],
-
-    'premium-facials': [
-      {
-        name: 'Deep Pore Cleansing (Oily Skin)',
-        description: 'An expertly crafted extract that refreshes oily skin while maintaining its natural balance. Enriched with skin-loving nutrients to smooth, nourish, and reveal a clear, radiant glow.',
-        image: '/services/Facials – Deep Pore Cleansing.jpg',
-        variants: [{ duration: '60', price: '₹3100' }]
-      },
-      {
-        name: 'Whitening Facial (Dull & Uneven)',
-        description: 'Harness the power of advanced sun filters to reduce melanin formation, protect against UV rays, and unveil a naturally bright, balanced skin tone.',
-        image: '/services/Facials – Whitening.jpg',
-        variants: [{ duration: '60', price: '₹3300' }]
-      },
-      {
-        name: 'Herbal Gold (Signature)',
-        description: 'Nature’s touch, meticulously crafted from herbal essences, delivering visible transformation from the first touch.',
-        image: '/services/Facials – Herbal Gold.jpg',
-        variants: [{ duration: '60', price: '₹4500' }]
       }
     ]
   },

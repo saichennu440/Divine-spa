@@ -17,6 +17,19 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const menu = React.useMemo(() => {
     const slugToLabel = (s: string) => s.replace(/-/g, ' ');
     return [
+            {
+        id: 'facials',
+        label: 'Facials',
+        slug: '/services/facials',
+        hasPage: true,
+        children: Object.keys(servicesData.facials).map((key) => ({
+        label: key
+          .split('-')
+          .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+          .join(' '),
+        slug: `/services/facials/${key}`,
+        })),
+      },
       {
         id: 'therapies',
         label: 'Therapies',
@@ -28,19 +41,6 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
           .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
           .join(' '),               // "signature therapies" (uppercase)
           slug: `/services/therapies/${key}`,
-        })),
-      },
-      {
-        id: 'facials',
-        label: 'Facials',
-        slug: '/services/facials',
-        hasPage: true,
-        children: Object.keys(servicesData.facials).map((key) => ({
-        label: key
-          .split('-')
-          .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
-          .join(' '),
-        slug: `/services/facials/${key}`,
         })),
       },
       {
@@ -348,6 +348,39 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
     <div id="mobile-services-panel" className="mt-2 bg-white rounded-lg shadow-lg border border-gray-100 py-2">
       {/* Top-level items (accordion-like) */}
       <div className="divide-y divide-gray-100">
+      {/* Facials (non-navigating, expandable) */}
+        <div>
+          <button
+            type="button"
+            onClick={() => setMobileExpanded(mobileExpanded === 'facials' ? null : 'facials')}
+            className="w-full text-left px-4 py-3 flex items-center justify-between hover:bg-cream hover:text-sage transition-colors"
+            aria-expanded={mobileExpanded === 'facials'}
+            aria-controls="mobile-facials-list"
+          >
+            <span className="font-medium text-gray-700">Facials</span>
+            <ChevronDown className={`h-4 w-4 transition-transform ${mobileExpanded === 'facials' ? 'rotate-180 text-sage' : ''}`} />
+          </button>
+
+          {mobileExpanded === 'facials' && (
+            <div id="mobile-facials-list" className="pl-6 pr-4 pb-3 pt-1 text-sm">
+              <Link
+                to="/services/facials/classic-facials"
+                onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
+                className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
+              >
+                Classic Facials
+              </Link>
+              <Link
+                to="/services/facials/premium-facials"
+                onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
+                className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
+              >
+                Premium Facials
+              </Link>
+            </div>
+          )}
+        </div>
+
         {/* Therapies (non-navigating, expandable) */}
         <div>
           <button
@@ -388,38 +421,6 @@ const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
           )}
         </div>
 
-        {/* Facials (non-navigating, expandable) */}
-        <div>
-          <button
-            type="button"
-            onClick={() => setMobileExpanded(mobileExpanded === 'facials' ? null : 'facials')}
-            className="w-full text-left px-4 py-3 flex items-center justify-between hover:bg-cream hover:text-sage transition-colors"
-            aria-expanded={mobileExpanded === 'facials'}
-            aria-controls="mobile-facials-list"
-          >
-            <span className="font-medium text-gray-700">Facials</span>
-            <ChevronDown className={`h-4 w-4 transition-transform ${mobileExpanded === 'facials' ? 'rotate-180 text-sage' : ''}`} />
-          </button>
-
-          {mobileExpanded === 'facials' && (
-            <div id="mobile-facials-list" className="pl-6 pr-4 pb-3 pt-1 text-sm">
-              <Link
-                to="/services/facials/classic-facials"
-                onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
-                className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
-              >
-                Classic Facials
-              </Link>
-              <Link
-                to="/services/facials/premium-facials"
-                onClick={() => { setIsServicesDropdownOpen(false); setIsMobileMenuOpen(false); setMobileExpanded(null); }}
-                className="block py-2 text-gray-700 hover:text-sage hover:bg-gray-50 rounded"
-              >
-                Premium Facials
-              </Link>
-            </div>
-          )}
-        </div>
 
         {/* Fully Body Polishing (navigates directly) */}
         <div>

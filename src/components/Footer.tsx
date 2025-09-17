@@ -17,8 +17,8 @@ const Footer: React.FC = () => {
     className="h-10 md:h-14 w-auto object-contain mr-2"/>
               Aroma spa</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Inspired by the aroma. Created for You. Experience transformative wellness through 
-              mindful therapies and luxurious self-care.
+              Inspired by the Aroma. Created for You. Experience Transformative wellness Through 
+              Mindful Therapies and Luxurious Self-Care.
             </p>
             <div className="space-y-3">
               <div className="flex items-center">

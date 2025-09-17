@@ -35,9 +35,14 @@ const Footer: React.FC = () => {
                          <a 
                             href="tel:+91 9318629318"
                             className="flex items-center">
-                <Phone className="h-4 w-4 mr-3 text-sage" />
+                <Phone className="h-5 w-4 mr-3 text-sage" />
                             <span>9318629318</span>
                           </a>
+
+              <a href="mailto:connect@aromaspa.in" className="flex items-center">
+                <Mail className="h-8 w-4 mr-3 text-sage" />
+                <span>connect@aromaspa.in</span>
+              </a>
               {/* <div className="flex items-start">
                 <MapPin className="h-4 w-4 mr-3 mt-1 text-sage flex-shrink-0" />
                 <span className="text-gray-300">
@@ -45,6 +50,7 @@ const Footer: React.FC = () => {
                   Hyderabad, Telanaga 
                 </span>
               </div> */}
+              
             </div>
           </div>
 

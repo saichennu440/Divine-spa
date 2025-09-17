@@ -1,5 +1,7 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+//import SplashScreen from './components/SplashScreen';
 import PopupBanner from "./components/PopupBanner";
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -34,6 +36,25 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 function App() {
+  //   const [showSplash, setShowSplash] = useState(true);
+  // const [isLoaded, setIsLoaded] = useState(false);
+
+  // useEffect(() => {
+  //   // Simulate app loading
+  //   const timer = setTimeout(() => {
+  //     setIsLoaded(true);
+  //   }, 1000);
+
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+  // const handleSplashComplete = () => {
+  //   setShowSplash(false);
+  // };
+
+  // if (showSplash || !isLoaded) {
+  //   return <SplashScreen onComplete={handleSplashComplete} />;
+  // }
   return (
     <BookingProvider>
       <Router>
